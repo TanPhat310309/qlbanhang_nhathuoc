@@ -1,0 +1,155 @@
+.phuclong-header {
+    background-color: white;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); 
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+}
+
+.header-top-bar {
+    background-color: white;
+    padding: 10px 20px;
+    border-bottom: 1px solid #f0f0f0; 
+}
+
+.header-top-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.header-delivery-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.delivery-text, .delivery-phone {
+    font-weight: bold;
+    color: #c8102e;
+    font-size: 14px;
+}
+
+.delivery-scooter {
+    margin-left: 10px;
+    color: #28a745;
+    font-size: 20px;
+}
+
+.header-logo-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.header-logo-image {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease; 
+}
+
+.header-logo-image:hover {
+    transform: scale(1.05);
+}
+
+.header-user-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.login-link {
+    background: none;
+    border: none;
+    color: #333;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px 10px;
+    transition: color 0.2s;
+}
+
+
+.cart-button {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border: 1.5px solid #1a472a;
+    border-radius: 20px; 
+    background-color: white;
+    color: #1a472a;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.cart-button:hover {
+    background-color: #1a472a;
+    color: white;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #c8102e; 
+    color: white;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.header-navigation {
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.nav-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.nav-link {
+    color: #333;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 15px 20px;
+    display: block;
+    transition: 0.3s;
+}
+
+.nav-link:hover, .nav-item-with-dropdown:hover > .nav-link {
+    color: #1a472a;
+    background-color: #f9f9f9;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-top: 3px solid #1a472a;
+    z-index: 1000;
+}
