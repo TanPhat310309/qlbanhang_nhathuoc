@@ -1,10 +1,10 @@
 .phuclong-header {
-    background-color: white;
-    width: 100%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); 
-    position: sticky; 
-    top: 0;
-    z-index: 1000;
+  background-color: white;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); 
+  position: sticky; 
+  top: 0;
+  z-index: 1000;
 }
 
 .header-top-bar {
@@ -66,17 +66,6 @@
     gap: 15px;
     flex: 1;
     justify-content: flex-end;
-}
-
-.login-link {
-    background: none;
-    border: none;
-    color: #333;
-    font-weight: 500;
-    cursor: pointer;
-    font-size: 14px;
-    padding: 5px 10px;
-    transition: color 0.2s;
 }
 
 
@@ -143,6 +132,10 @@
     background-color: #f9f9f9;
 }
 
+.nav-item-with-dropdown {
+    position: relative;
+}
+
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -152,4 +145,22 @@
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     border-top: 3px solid #1a472a;
     z-index: 1000;
+    display: none;
+}
+
+.nav-item-with-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+    color: #1a472a;
 }

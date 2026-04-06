@@ -9,7 +9,6 @@ const Header = () => {
     const [currentUser, setCurrentUser] = useState(null);
     const navigate = useNavigate();
 
-    // Lấy số lượng món trong giỏ hàng (tổng quantity) và thông tin user
     useEffect(() => {
         const updateCartCount = () => {
             const savedCart = localStorage.getItem('cart');
@@ -46,11 +45,9 @@ const Header = () => {
             }
         };
 
-        // Cập nhật ngay khi load trang
         updateCartCount();
         updateCurrentUser();
 
-        // Lắng nghe khi giỏ hàng hoặc user được cập nhật
         window.addEventListener('cartUpdated', updateCartCount);
         window.addEventListener('userUpdated', updateCurrentUser);
         window.addEventListener('storage', () => {
@@ -68,19 +65,17 @@ const Header = () => {
         };
     }, []);
 
-    // Dropdown menu items
     const coffeeMenuItems = [
-        { text: 'Hành trình tách cà phê đậm', href: '/coffee/hanh-trinh-tach-ca-phe' },
-        { text: 'Hạt cà phê Phúc Long', href: '/coffee/hat-ca-phe-phuc-long' },
-        { text: 'Nghệ thuật pha chế', href: '/coffee/nghe-thuat-pha-che' }
+        { text: 'Thuốc kê đơn',},
+        { text: 'Thuốc không kê đơn',},
     ];
 
     return (
         <header className="phuclong-header">
-            {/* Top Section: Header Bar */}
+            {}
             <div className="header-top-bar">
                 <div className="header-top-content">
-                    {/* Left: Free Delivery Info */}
+                    {}
 <div className="header-delivery-info">
                         <span className="delivery-text">Free Delivery</span>
                         <i className="fas fa-phone delivery-icon"></i>
@@ -90,14 +85,14 @@ const Header = () => {
                         </div>
                     </div>
 
-                    {/* Center: Logo */}
+                    {}
                     <div className="header-logo-container">
                         <div className="phuclong-logo">
                             <img src={logoImage} alt="Logo" className="header-logo-image" />
                         </div>
                     </div>
 
-                    {/* Right: User Actions */}
+                    {}
                     <div className="header-user-actions">
                         <button
                             className="login-link"
@@ -123,19 +118,19 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* Bottom Section: Navigation Bar */}
+            {}
             <nav className="header-navigation">
                 <div className="nav-content">
                     <a href="/" className="nav-link">TRANG CHỦ</a>
                     
-                    {/* CÀ PHÊ với Dropdown */}
+                    {}
                     <div 
                         className="nav-item-with-dropdown"
                         onMouseEnter={() => setHoveredMenu('coffee')}
                         onMouseLeave={() => setHoveredMenu(null)}
                     >
                         <a href="/coffee" className={`nav-link ${hoveredMenu === 'coffee' ? 'active' : ''}`}>
-                            CÀ PHÊ
+                            THUỐC
                         </a>
                         {hoveredMenu === 'coffee' && (
                             <div className="dropdown-menu">
@@ -152,11 +147,10 @@ href={item.href}
                         )}
                     </div>
 
-                    <a href="/tea" className="nav-link">TRÀ</a>
-                    <a href="/drinks" className="nav-link">THỨC UỐNG</a>
-                    <a href="/products" className="nav-link">SẢN PHẨM</a>
-                    <a href="/promotions" className="nav-link">KHUYẾN MÃI</a>
-                    <a href="/about" className="nav-link">VỀ CHÚNG TÔI</a>
+                    <a href="/drinks" className="nav-link">THỰC PHẨM CHỨC NĂNG</a>
+                    <a href="/products" className="nav-link">DỤNG CỤ Y TẾ</a>
+                    <a href="/promotions" className="nav-link">CHĂM SÓC CÁ NHÂN</a>
+                    <a href="/about" className="nav-link">MẸ VÀ BÉ</a>
                 </div>
             </nav>
         </header>
