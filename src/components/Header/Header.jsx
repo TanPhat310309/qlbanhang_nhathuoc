@@ -66,9 +66,8 @@ const Header = () => {
     }, []);
 
     const coffeeMenuItems = [
-        { text: 'Hành trình tách cà phê đậm', href: '/coffee/hanh-trinh-tach-ca-phe' },
-        { text: 'Hạt cà phê Phúc Long', href: '/coffee/hat-ca-phe-phuc-long' },
-        { text: 'Nghệ thuật pha chế', href: '/coffee/nghe-thuat-pha-che' }
+        { text: 'Thuốc kê đơn',},
+        { text: 'Thuốc không kê đơn',},
     ];
 
     return (
@@ -80,7 +79,7 @@ const Header = () => {
 <div className="header-delivery-info">
                         <span className="delivery-text">Free Delivery</span>
                         <i className="fas fa-phone delivery-icon"></i>
-                        <span className="delivery-phone">1800 6779</span>
+                        <span className="delivery-phone">08 1234 4540</span>
                         <div className="delivery-scooter">
                             <i className="fas fa-motorcycle"></i>
                         </div>
@@ -96,6 +95,7 @@ const Header = () => {
                     {}
                     <div className="header-user-actions">
                         <button
+                            className="login-link"
                             onClick={() => navigate('/login')}
                         >
                             {currentUser ? (currentUser.name || currentUser.user) : 'Đăng nhập'}
@@ -130,7 +130,7 @@ const Header = () => {
                         onMouseLeave={() => setHoveredMenu(null)}
                     >
                         <a href="/coffee" className={`nav-link ${hoveredMenu === 'coffee' ? 'active' : ''}`}>
-                            CÀ PHÊ
+                            THUỐC
                         </a>
                         {hoveredMenu === 'coffee' && (
                             <div className="dropdown-menu">
@@ -147,11 +147,10 @@ href={item.href}
                         )}
                     </div>
 
-                    <a href="/tea" className="nav-link">TRÀ</a>
-                    <a href="/drinks" className="nav-link">THỨC UỐNG</a>
-                    <a href="/products" className="nav-link">SẢN PHẨM</a>
-                    <a href="/promotions" className="nav-link">KHUYẾN MÃI</a>
-                    <a href="/about" className="nav-link">VỀ CHÚNG TÔI</a>
+                    <a href="/drinks" className="nav-link">THỰC PHẨM CHỨC NĂNG</a>
+                    <a href="/products" className="nav-link">DỤNG CỤ Y TẾ</a>
+                    <a href="/promotions" className="nav-link">CHĂM SÓC CÁ NHÂN</a>
+                    <a href="/about" className="nav-link">MẸ VÀ BÉ</a>
                 </div>
             </nav>
         </header>

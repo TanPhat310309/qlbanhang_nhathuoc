@@ -1,0 +1,12 @@
+[
+  { "id": 1, "role": "Quản lý", "name": "Nguyễn Thị Mai", "gender": "Nữ", "birthdate": "1985-10-15", "phone": "0912345670" },
+  { "id": 2, "role": "Dược sĩ", "name": "Trần Văn Bình", "gender": "Nam", "birthdate": "1992-05-20", "phone": "0912345671" },
+  { "id": 3, "role": "Dược sĩ", "name": "Lê Hoàng Yến", "gender": "Nữ", "birthdate": "1995-08-12", "phone": "0912345672" },
+  { "id": 4, "role": "Dược sĩ", "name": "Phạm Quốc Bảo", "gender": "Nam", "birthdate": "1990-11-03", "phone": "0912345673" },
+  { "id": 5, "role": "Dược sĩ", "name": "Hoàng Thu Thủy", "gender": "Nữ", "birthdate": "1998-02-28", "phone": "0912345674" },
+  { "id": 6, "role": "Thu ngân", "name": "Vũ Anh Tuấn", "gender": "Nam", "birthdate": "1996-07-09", "phone": "0912345675" },
+  { "id": 7, "role": "Thu ngân", "name": "Đặng Thị Hương", "gender": "Nữ", "birthdate": "1999-12-01", "phone": "0912345676" },
+  { "id": 8, "role": "Dược sĩ", "name": "Bùi Văn Nam", "gender": "Nam", "birthdate": "1993-04-18", "phone": "0912345677" },
+  { "id": 9, "role": "Thu ngân", "name": "Ngô Bích Ngọc", "gender": "Nữ", "birthdate": "1997-09-25", "phone": "0912345678" },
+  { "id": 10, "role": "Quản lý", "name": "Lý Hải Đăng", "gender": "Nam", "birthdate": "1980-03-14", "phone": "0912345679" }
+]

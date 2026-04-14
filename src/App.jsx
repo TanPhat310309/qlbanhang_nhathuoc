@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import Header from './components/Header/Header';
-
+import Footer from './components/Footer/Footer';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import HeaderGPT_4 from './components/Header/HeaderGPT_4';
 function App() {
   const location = useLocation();
   return (
     <>
- <Header />
-      
-    
+ <HeaderGPT_4 />
+  
+    <div className='container'></div>
+
+  <Footer />
+  
     </>
   );
 }
