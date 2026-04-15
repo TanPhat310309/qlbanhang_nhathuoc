@@ -1,8 +1,8 @@
 [
   
-  { "id": 1, "name": "Amoxicillin 500mg", "categoryid": 1, "price": 50000, "image": "../src/img/amoxicillin500mg.png" },
-  { "id": 2, "name": "Augmentin 1g", "categoryid": 1, "price": 180000, "image": "../src/img/augmentin1g.png" },
-  { "id": 3, "name": "Zinnat 500mg", "categoryid": 1, "price": 250000, "image": "../src/img/zinnat500g.png" },
+  { "id": 1, "name": "Amoxicillin 500mg", "categoryid": 1, "price": 50000, "image": "src/img/amoxicillin500mg.png" },
+  { "id": 2, "name": "Augmentin 1g", "categoryid": 1, "price": 180000, "image": "src/img/augmentin1g.png" },
+  { "id": 3, "name": "Zinnat 500mg", "categoryid": 1, "price": 250000, "image": "src/img/zinnat500g.png" },
   { "id": 4, "name": "Losartan 50mg", "categoryid": 1, "price": 45000, "image": "src/img/losartan50mg.png" },
   { "id": 5, "name": "Amlodipine 5mg", "categoryid": 1, "price": 30000, "image": "src/img/amlodipine5mg.png" },
   { "id": 6, "name": "Metformin 500mg", "categoryid": 1, "price": 35000, "image": "src/img/metformin500mg.png" },
