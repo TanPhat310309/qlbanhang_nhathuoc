@@ -1,7 +1,7 @@
 [
-  { "id": 1, "name": "Amoxicillin 500mg", "categoryid": 1, "price": 50000, "image": "src/img/amoxicillin500mg.png" },
-  { "id": 2, "name": "Augmentin 1g", "categoryid": 1, "price": 180000, "image": "src/img/augmentin1g.png" },
-  { "id": 3, "name": "Zinnat 500mg", "categoryid": 1, "price": 250000, "image": "src/img/zinnat500g.png" }
+  { "id": 1, "name": "Amoxicillin 500mg", "categoryid": 1, "price": 50000, "image": "../src/img/amoxicillin500mg.png" },
+  { "id": 2, "name": "Augmentin 1g", "categoryid": 1, "price": 180000, "image": "../src/img/augmentin1g.png" },
+  { "id": 3, "name": "Zinnat 500mg", "categoryid": 1, "price": 250000, "image": "../src/img/zinnat500g.png" }
 ]
 
 
