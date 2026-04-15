@@ -1,7 +1,7 @@
 [
-  { "id": 1, "name": "Amoxicillin 500mg", "categoryid": 1, "price": 50000, "image": "/img/amoxicillin500mg.png" },
-  { "id": 2, "name": "Augmentin 1g", "categoryid": 1, "price": 180000, "image": "/img/augmentin1g.png" },
-  { "id": 3, "name": "Zinnat 500mg", "categoryid": 1, "price": 250000, "image": "/img/zinnat500g.png" }
+  { "id": 1, "name": "Amoxicillin 500mg", "categoryid": 1, "price": 50000, "image": "src/img/amoxicillin500mg.png" },
+  { "id": 2, "name": "Augmentin 1g", "categoryid": 1, "price": 180000, "image": "src/img/augmentin1g.png" },
+  { "id": 3, "name": "Zinnat 500mg", "categoryid": 1, "price": 250000, "image": "src/img/zinnat500g.png" }
 ]
 
 
@@ -26,7 +26,7 @@ function App() {
     <>
       <HeaderGPT_4 />
       
-      <main style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', padding: '20px' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', padding: '20px' }}>
         {products.map((item) => (
           <img 
             key={item.id} 
@@ -35,7 +35,7 @@ function App() {
             style={{ width: '150px', height: '150px', objectFit: 'contain', border: '1px solid #ccc' }} 
           />
         ))}
-      </main>
+      </div>
 
       <Footer />
     </>
