@@ -12,11 +12,8 @@ function App() {
     <>
       <HeaderGPT_4 />
       {/* Khai báo Routes để điều hướng */}
-      <Routes>
-        <Route path="/" element={<ProductList />} />
-        <Route path="/product/:id" element={<DetailProduct />} />
-      </Routes>
-      <Footer />
+<ProductList />
+  <DetailProduct />
     </>
   );
 }

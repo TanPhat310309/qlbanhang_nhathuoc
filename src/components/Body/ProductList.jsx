@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Bổ sung thêm hook này để chuyển trang
+import { useNavigate } from 'react-router-dom';
 import './ProductList.css';
 import amlodipineImg from '../../img/lsp1/amlodipine5mg.png';
 import amoxicillinImg from '../../img/lsp1/amoxicillin500mg.png';
