@@ -1,15 +1,15 @@
 [
   
-  { "id": 1, "name": "Amoxicillin 500mg", "categoryid": 1, "price": 50000, "imageKey": "/src/img/amoxicillin500mg.png" },
-  { "id": 2, "name": "Augmentin 1g", "categoryid": 1, "price": 180000, "imageKey": "/src/img/augmentin1g.png" },
-  { "id": 3, "name": "Zinnat 500mg", "categoryid": 1, "price": 250000, "imageKey": "/src/img/zinnat500g.png" },
-  { "id": 4, "name": "Losartan 50mg", "categoryid": 1, "price": 45000, "imageKey": "/src/img/losartan50mg.png" },
-  { "id": 5, "name": "Amlodipine 5mg", "categoryid": 1, "price": 30000, "imageKey": "/src/img/amlodipine5mg.png" },
-  { "id": 6, "name": "Metformin 500mg", "categoryid": 1, "price": 35000, "imageKey": "/src/img/metformin500mg.png" },
-  { "id": 7, "name": "Lipitor 20mg", "categoryid": 1, "price": 320000, "imageKey": "/src/img/lipitor20mg.png" },
-  { "id": 8, "name": "Omeprazol 20mg", "categoryid": 1, "price": 80000, "imageKey": "/src/img/omeprazol20mg.png" },
-  { "id": 9, "name": "Salbutamol 2mg", "categoryid": 1, "price": 25000, "imageKey": "/src/img/salbutamol2mg.png" },
-  { "id": 10, "name": "Diazepam 5mg", "categoryid": 1, "price": 55000, "imageKey": "/src/img/diazepam5mg.png" },
+  { "id": 1, "name": "Amoxicillin 500mg", "categoryid": 1, "price": 50000, "imageKey": "amoxicillin" },
+  { "id": 2, "name": "Augmentin 1g", "categoryid": 1, "price": 180000, "imageKey": "augmentin" },
+  { "id": 3, "name": "Zinnat 500mg", "categoryid": 1, "price": 250000, "imageKey": "zinnat500g.png" },
+  { "id": 4, "name": "Losartan 50mg", "categoryid": 1, "price": 45000, "imageKey": "losartan50mg.png" },
+  { "id": 5, "name": "Amlodipine 5mg", "categoryid": 1, "price": 30000, "imageKey": "amlodipine" },
+  { "id": 6, "name": "Metformin 500mg", "categoryid": 1, "price": 35000, "imageKey": "metformin500mg.png" },
+  { "id": 7, "name": "Lipitor 20mg", "categoryid": 1, "price": 320000, "imageKey": "lipitor20mg.png" },
+  { "id": 8, "name": "Omeprazol 20mg", "categoryid": 1, "price": 80000, "imageKey": "omeprazol20mg.png" },
+  { "id": 9, "name": "Salbutamol 2mg", "categoryid": 1, "price": 25000, "imageKey": "salbutamol2mg.png" },
+  { "id": 10, "name": "Diazepam 5mg", "categoryid": 1, "price": 55000, "imageKey": "diazepam5mg.png" },
 
 
   { "id": 11, "name": "Paracetamol 500mg", "categoryid": 2, "price": 20000, "image": "src/img/paracetamol.png" },

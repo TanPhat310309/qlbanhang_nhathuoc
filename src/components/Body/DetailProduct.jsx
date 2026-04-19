@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
-import sp1Image from '../../img/lsp1/amlodipine5mg.png';
-import sp2Image from '../../img/lsp1/amoxicillin500mg.png';
-import sp3Image from '../../img/lsp1/diazepam5mg.png';
 import './DetailProduct.css';
+import amlodipineImg from '../../img/lsp1/amlodipine5mg.png';
+import amoxicillinImg from '../../img/lsp1/amoxicillin500mg.png';
+import augmentinImg from '../../img/lsp1/augmentin1g.png';
+// ... import đủ 10 file
 
 const imageMap = {
-  sp1: sp1Image,
-  sp2: sp2Image,
-  sp3: sp3Image
+  'amlodipine': amlodipineImg,
+  'amoxicillin': amoxicillinImg,
+  'augmentin': augmentinImg,
+  // ... map đủ 10 key tương ứng với file JSON
 };
 
 const DetailProduct = () => {
