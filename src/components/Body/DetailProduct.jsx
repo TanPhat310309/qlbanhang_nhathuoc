@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import './DetailProduct.css';
-import amlodipineImg from '../../img/lsp1/amlodipine5mg.png';
-import amoxicillinImg from '../../img/lsp1/amoxicillin500mg.png';
-import augmentinImg from '../../img/lsp1/augmentin1g.png';
-
+import sp1Img from '../../img/sp1.png';
+import sp2Img from '../../img/sp2.png';
+import sp3Img from '../../img/sp3.png';
 
 const imageMap = {
-  'amlodipine': amlodipineImg,
-  'amoxicillin': amoxicillinImg,
-  'augmentin': augmentinImg,
- 
+  'sp1': sp1Img,
+  'sp2': sp2Img,
+  'sp3': sp3Img,
 };
 
 const DetailProduct = () => {
