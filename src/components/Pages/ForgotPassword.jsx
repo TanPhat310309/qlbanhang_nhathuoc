@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaRegKeyboard, FaChevronLeft } from 'react-icons/fa';
 import './ForgotPassword.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const ForgotPassword = ({ onSwitchTo }) => {
   const [contactInfo, setContactInfo] = useState('');

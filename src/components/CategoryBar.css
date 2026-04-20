@@ -1,0 +1,28 @@
+/* Màu nền xanh đậm chuẩn Izumi Pharmacy */
+.category-bar {
+  background-color: #0b5394;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Ẩn thanh cuộn ngang nếu danh mục quá dài bị tràn trên màn hình nhỏ */
+.hide-scroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.hide-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Định dạng chữ và hiệu ứng hover */
+.category-link {
+  font-size: 14px;
+  white-space: nowrap; /* Ép chữ không bị rớt dòng */
+  transition: all 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.category-link:hover {
+  background-color: rgba(255, 255, 255, 0.15); /* Sáng lên một xíu khi rê chuột */
+  color: #fff !important;
+}
