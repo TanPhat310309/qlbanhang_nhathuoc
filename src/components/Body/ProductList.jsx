@@ -1,25 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import ProductCard from './ProductCard';
 import './ProductList.css';
-import amlodipineImg from '../../img/lsp1/amlodipine5mg.png';
-import amoxicillinImg from '../../img/lsp1/amoxicillin500mg.png';
-import augmentinImg from '../../img/lsp1/augmentin1g.png';
-// ... import đủ 10 file ảnh của bạn vào đây
+import sp1Img from '../../img/sp1.png';
+import sp2Img from '../../img/sp2.png';
+import sp3Img from '../../img/sp3.png';
 
 const imageMap = {
-  'amlodipine': amlodipineImg,
-  'amoxicillin': amoxicillinImg,
-  'augmentin': augmentinImg,
-  // ... map đủ 10 key tương ứng với file JSON
+  'sp1': sp1Img,
+  'sp2': sp2Img,
+  'sp3': sp3Img,
 };
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  
-  // Khởi tạo hàm chuyển trang
-  const navigate = useNavigate();
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -66,30 +61,7 @@ const ProductList = () => {
     <div className="product-list-container">
       <div className="product-list">
         {products.map((product) => (
-          /* Đã thay thế <ProductCard /> bằng thẻ div bọc trực tiếp nội dung */
-          <div 
-            key={product.id} 
-            className="product-card" 
-            onClick={() => navigate(`/product/${product.id}`, { state: { product } })}
-            style={{ cursor: 'pointer', background: '#fff', border: '1px solid #e0e0e0', borderRadius: '12px', padding: '16px', transition: 'transform 0.2s', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}
-          >
-            <img 
-              src={product.image || 'https://via.placeholder.com/200'} 
-              alt={product.name} 
-              style={{ width: '100%', height: '200px', objectFit: 'contain', marginBottom: '12px' }}
-            />
-            <div className="product-info" style={{ textAlign: 'center' }}>
-              <h3 style={{ fontSize: '18px', margin: '0 0 8px', color: '#0f172a' }}>{product.name}</h3>
-              <p className="price" style={{ color: '#d35400', fontWeight: 'bold', fontSize: '16px', margin: '0 0 12px' }}>
-                {product.price.toLocaleString('vi-VN')} đ
-              </p>
-              <button 
-                style={{ width: '100%', padding: '10px', background: '#0066cc', color: 'white', border: 'none', borderRadius: '8px', fontWeight: '600', cursor: 'pointer' }}
-              >
-                Xem chi tiết
-              </button>
-            </div>
-          </div>
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>
