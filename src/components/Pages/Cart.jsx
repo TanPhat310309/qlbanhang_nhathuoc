@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Cart.css';
 
+
 const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
     const navigate = useNavigate();
 
-    // Lấy dữ liệu giỏ hàng từ localStorage khi component được mount
+  
     useEffect(() => {
         const savedCart = localStorage.getItem('cart');
         if (savedCart) {
@@ -14,35 +15,37 @@ const Cart = () => {
         }
     }, []);
 
-    // Hàm cập nhật localStorage và báo cho Header biết để nhảy số
-    const updateCartData = (newCart) => {
+   
+    const updateCart = (newCart) => {
         setCartItems(newCart);
         localStorage.setItem('cart', JSON.stringify(newCart));
         window.dispatchEvent(new Event('cartUpdated'));
     };
 
-    // Tăng giảm số lượng
+    
     const handleQuantityChange = (id, change) => {
         const newCart = cartItems.map(item => {
             if (item.id === id) {
                 const newQuantity = item.quantity + change;
+             
                 return { ...item, quantity: newQuantity > 0 ? newQuantity : 1 };
             }
             return item;
         });
-        updateCartData(newCart);
+        updateCart(newCart);
     };
 
-    // Xóa sản phẩm khỏi giỏ
-    const handleRemoveItem = (id) => {
-        const newCart = cartItems.filter(item => item.id !== id);
-        updateCartData(newCart);
+
+    const handleRemoveItem = (productId) => {
+        const newCart = cartItems.filter(item => item.id !== productId);
+        updateCart(newCart);
     };
 
-    // Tính tổng tiền
+  
     const calculateTotal = () => {
         return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
     };
+
 
     if (cartItems.length === 0) {
         return (
@@ -64,7 +67,7 @@ const Cart = () => {
             <h1 className="cart-title">Giỏ hàng của bạn</h1>
             
             <div className="cart-layout">
-                {/* Cột danh sách sản phẩm */}
+
                 <div className="cart-items-section">
                     {cartItems.map((item) => (
                         <div key={item.id} className="cart-item-card">
@@ -94,10 +97,11 @@ const Cart = () => {
                                 </button>
                             </div>
                         </div>
-                    ))}
+                    )
+                    )
+                    }
                 </div>
 
-                {/* Cột Tổng kết đơn hàng */}
                 <div className="cart-summary-section">
                     <div className="summary-card">
                         <h3>Tóm tắt đơn hàng</h3>
@@ -126,7 +130,9 @@ const Cart = () => {
                 </div>
             </div>
         </div>
+
     );
+
 };
 
 export default Cart;
