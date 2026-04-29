@@ -112,6 +112,7 @@ const HeaderGPT_4 = () => {
                             <span className="user-name-text">
                                 {/* Bản 4: Thêm Đăng ký vào chỗ này */}
                                 {currentUser ? (currentUser.name || currentUser.user) : 'Đăng nhập / Đăng ký'}
+
                             </span>
                         </button>
                         

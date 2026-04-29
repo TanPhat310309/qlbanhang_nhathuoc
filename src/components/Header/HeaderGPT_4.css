@@ -8,7 +8,6 @@
   --white: #ffffff;
   --shadow-soft: 0 4px 20px rgba(0, 131, 176, 0.08);
   --shadow-hover: 0 8px 25px rgba(0, 131, 176, 0.15);
-  /* Chỉnh lại transition cho nhạy hơn một chút khi click */
   --transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1); 
 }
 
@@ -16,7 +15,6 @@ body {
   font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
-/* Chống bôi đen text khi click liên tục vào nút */
 button {
   user-select: none; 
 }
@@ -38,7 +36,6 @@ button {
   height: 45px;
 }
 
-/* TOP BAR */
 .header-top-bar-v4 {
   background-color: var(--white);
   padding: 12px 20px;
@@ -55,7 +52,6 @@ button {
   position: relative;
 }
 
-/* DELIVERY INFO */
 .header-delivery-info-v4 {
   display: flex;
   align-items: center;
@@ -84,7 +80,6 @@ button {
   font-size: 14px;
 }
 
-/* LOGO */
 .header-logo-container-v4 {
   position: absolute;
   left: 50%;
@@ -125,12 +120,10 @@ button {
   opacity: 0.3;
 }
 
-/* Hiệu ứng nhún khi nhấn chuột vào Logo */
 .header-logo-container-v4:active {
   transform: translateX(-50%) scale(0.95);
 }
 
-/* USER ACTIONS */
 .header-user-actions-v4 {
   display: flex;
   align-items: center;
@@ -148,8 +141,8 @@ button {
   align-items: center;
   gap: 8px;
   transition: var(--transition);
-  padding: 5px; /* Thêm padding để vùng bấm rộng ra xíu */
-  border-radius: 25px; /* Bo góc mượt mà */
+  padding: 5px;
+  border-radius: 25px;
 }
 
 .icon-circle {
@@ -179,7 +172,6 @@ button {
   box-shadow: 0 4px 10px rgba(0, 131, 176, 0.3);
 }
 
-/* Hiệu ứng nhún khi nhấn Đăng nhập */
 .login-link-v4:active {
   transform: scale(0.94);
 }
@@ -190,7 +182,6 @@ button {
   background-color: #e0e0e0;
 }
 
-/* LANG */
 .language-selector-v4 {
   display: flex;
   background: var(--bg-light);
@@ -214,12 +205,10 @@ button {
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-/* Hiệu ứng nhún cho nút chọn ngôn ngữ */
 .lang-btn:active {
   transform: scale(0.85);
 }
 
-/* CART BUTTON */
 .cart-button-v4 {
   display: flex;
   align-items: center;
@@ -239,7 +228,6 @@ button {
   box-shadow: 0 6px 18px rgba(0, 131, 176, 0.4);
 }
 
-/* Hiệu ứng nhún cho nút Giỏ hàng - Rất quan trọng để tạo cảm giác "chạm" tốt */
 .cart-button-v4:active {
   transform: translateY(0) scale(0.95);
   box-shadow: 0 2px 6px rgba(0, 131, 176, 0.2);
@@ -280,7 +268,6 @@ button {
   letter-spacing: 0.3px;
 }
 
-/* NAVIGATION */
 .header-navigation-v4 {
   background-color: var(--white);
 }
@@ -312,7 +299,6 @@ button {
   transition: var(--transition);
 }
 
-/* Đã chỉnh lại đường gạch chân mỏng 2px như Bản 2 theo ý bạn */
 .nav-link-v4::after {
   content: '';
   position: absolute;
@@ -337,7 +323,6 @@ button {
   color: var(--primary-color);
 }
 
-/* Hiệu ứng mờ nhẹ khi click vào Menu */
 .nav-link-v4:active {
   opacity: 0.7;
 }
@@ -352,7 +337,6 @@ button {
   position: relative;
 }
 
-/* DROPDOWN MENU */
 .dropdown-menu-v4 {
   position: absolute;
   top: 100%;
@@ -409,7 +393,6 @@ button {
   transform: translateX(0);
 }
 
-/* Nhún nhẹ khi nhấn vào mục con trong Dropdown */
 .dropdown-item-v4:active {
   transform: scale(0.98);
   background: rgba(0, 131, 176, 0.1);
