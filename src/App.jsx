@@ -9,18 +9,28 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
   const location = useLocation();
-  
+  const hideChrome = 
+    location.pathname === '/login' ||
+    location.pathname === '/signup' ||
+    location.pathname === '/admin';
+   
   return (
     <>
-      <HeaderGPT_4 />
-          <Routes>
-            <Route path="/" element={<ProductList />} />
-            <Route path="/products" element={<ProductList />} />
-            <Route path="/product/:id" element={<DetailProduct />} />
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
-      <Footer />
-      <ChatBubble />
+      {!hideChrome && <HeaderGPT_4 />}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <ProductList />
+              <ChatBubble />
+            </>
+          }
+        />
+        <Route path="/product/:id" element={<DetailProduct/>} />
+        <Route path="/cart" element={<Cart/>} />
+      </Routes>
+      {!hideChrome && <Footer />}
     </>
   );
 }

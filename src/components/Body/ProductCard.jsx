@@ -45,24 +45,22 @@ const ProductCard = ({ product }) => {
       </div>
       <h3 className="product-name">{product.name}</h3>
 
-
-        <div className="product-pricing">
-        {product.originalPrice && (
-          <div className="original-price-section">
-            <span className="original-price">{product.originalPrice.toLocaleString('vi-VN')} đ</span>
-            <span className="discount">
-              -{Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
-            </span>
-          </div>
-        )}
-        
+<div className="product-pricing">
+        <div className="original-price-section">
+          {product.originalPrice ? (
+            <>
+              <span className="original-price">{product.originalPrice.toLocaleString('vi-VN')} ₫</span>
+              <span className="discount">
+                -{Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
+              </span>
+            </>
+          ) : (
+            <span>&nbsp;</span>
+          )}
+        </div>
         <div className="current-price">
           {product.price ? product.price.toLocaleString('vi-VN') : 0} đ{product.unit ? `/${product.unit}` : ''}
         </div>
-      </div>
-
-      <div className="product-rating-sales">
-        <span className="rating">{product.rating}</span>
       </div>
 
       <button 

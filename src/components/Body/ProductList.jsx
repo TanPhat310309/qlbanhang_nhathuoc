@@ -18,8 +18,8 @@ const ProductList = () => {
     const loadData = async () => {
       try {
         const [productsRes, categoriesRes] = await Promise.all([
-          fetch(`${jsonBase}products.json`),
-          fetch(`${jsonBase}category.json`)
+          fetch('/products.json'),
+          fetch('/category.json')
         ]);
 
         if (!productsRes.ok) {

@@ -90,13 +90,13 @@ const DetailProduct = () => {
 
           <div className="detail-price" style={{ marginBottom: '25px' }}>
             <span className="current-price">
-              {product.price?.toLocaleString('vi-VN')} đ{product.unit ? `/${product.unit}` : ''}
+              {product.price?.toLocaleString('vi-VN')} ₫{product.unit ? `/${product.unit}` : ''}
             </span>
             
             {product.originalPrice && (
               <>
                 <span className="original-price">
-                  {product.originalPrice.toLocaleString('vi-VN')} đ
+                  {product.originalPrice.toLocaleString('vi-VN')} ₫
                 </span>
                 <span className="discount">
                   Giảm {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
@@ -121,23 +121,27 @@ const DetailProduct = () => {
             className="buy-now-button"
             style={{ width: '100%', padding: '16px', fontSize: '18px', borderRadius: '8px' }}
             onClick={() => {
-              const savedCart = localStorage.getItem('cart');
-              const cart = savedCart ? JSON.parse(savedCart) : [];
-              const existingItemIndex = cart.findIndex(item => item.id === product.id);
+    const savedCart = localStorage.getItem('cart');
+    const cart = savedCart ? JSON.parse(savedCart) : [];
+    const existingItemIndex = cart.findIndex(item => item.id === product.id);
+    
+    const currentTime = Date.now(); 
 
-              if (existingItemIndex >= 0) {
-                cart[existingItemIndex].quantity += 1;
-              } else {
-                cart.push({
-                  ...product,
-                  quantity: 1
-                });
-              }
+    if (existingItemIndex >= 0) {
+        cart[existingItemIndex].quantity += 1;
+        cart[existingItemIndex].addedAt = currentTime; 
+    } else {
+        cart.push({
+            ...product,
+            quantity: 1,
+            addedAt: currentTime
+        });
+    }
 
-              localStorage.setItem('cart', JSON.stringify(cart));
-              window.dispatchEvent(new Event('cartUpdated'));
-              navigate('/cart');
-            }}
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.dispatchEvent(new Event('cartUpdated'));
+    navigate('/cart');
+}}
           >
             Mua ngay
           </button>
