@@ -1,111 +1,410 @@
 [
-  { "id": 1, "name": "Thuốc kháng sinh Amoxicillin 500mg Domesco (Hộp 10 vỉ x 10 viên)", "categoryid": 1, "price": 50000, "unit": "hộp", "imageKey": "sp1" },
-  { "id": 2, "name": "Thuốc kháng sinh Augmentin 1g GSK (Hộp 2 vỉ x 7 viên)", "categoryid": 1, "price": 180000, "originalPrice": 210000, "unit": "hộp", "imageKey": "sp2" },
-  { "id": 3, "name": "Thuốc kháng sinh Zinnat 500mg GSK (Hộp 1 vỉ x 10 viên)", "categoryid": 1, "price": 250000, "unit": "hộp", "imageKey": "sp3" },
-  { "id": 4, "name": "Thuốc trị tăng huyết áp Losartan 50mg (Hộp 3 vỉ x 10 viên)", "categoryid": 1, "price": 45000, "unit": "hộp", "imageKey": "sp4" },
-  { "id": 5, "name": "Thuốc trị tăng huyết áp Amlodipine 5mg Domesco (Hộp 3 vỉ x 10 viên)", "categoryid": 1, "price": 30000, "unit": "hộp", "imageKey": "sp5" },
-  { "id": 6, "name": "Thuốc trị tiểu đường Metformin 500mg Stada (Hộp 5 vỉ x 10 viên)", "categoryid": 1, "price": 35000, "unit": "hộp", "imageKey": "sp6" },
-  { "id": 7, "name": "Thuốc hạ mỡ máu Lipitor 20mg Pfizer (Hộp 3 vỉ x 10 viên)", "categoryid": 1, "price": 320000, "originalPrice": 380000, "unit": "hộp", "imageKey": "sp7" },
-  { "id": 8, "name": "Thuốc trị viêm loét dạ dày Omeprazol 20mg Dược Hậu Giang (Hộp 3 vỉ x 10 viên)", "categoryid": 1, "price": 80000, "unit": "hộp", "imageKey": "sp8" },
-  { "id": 9, "name": "Thuốc giãn phế quản giảm ho Salbutamol 2mg (Vỉ 10 viên)", "categoryid": 1, "price": 25000, "unit": "vỉ", "imageKey": "sp9" },
-  { "id": 10, "name": "Thuốc an thần hỗ trợ giấc ngủ Diazepam 5mg (Hộp 5 vỉ x 10 viên)", "categoryid": 1, "price": 55000, "unit": "hộp", "imageKey": "sp10" },
+  { 
+    "id": 1, "name": "Thuốc kháng sinh Amoxicillin 500mg Domesco (Hộp 10 vỉ x 10 viên)", "categoryid": 1, "price": 50000, "unit": "hộp", "imageKey": "sp1",
+    "brand": "Domesco", "description": "Amoxicillin là kháng sinh nhóm penicillin, dùng để điều trị các bệnh nhiễm khuẩn do vi khuẩn nhạy cảm gây ra.", "ingredients": "Amoxicillin 500mg, tá dược vừa đủ.", "usage": "Người lớn: 1 viên/lần, ngày 2-3 lần sau ăn.", "note": "Không dùng cho người mẫn cảm với Penicillin. Cần có chỉ định của bác sĩ."
+  },
+  { 
+    "id": 2, "name": "Thuốc kháng sinh Augmentin 1g GSK (Hộp 2 vỉ x 7 viên)", "categoryid": 1, "price": 180000, "originalPrice": 210000, "unit": "hộp", "imageKey": "sp2",
+    "brand": "GSK", "description": "Kháng sinh phổ rộng điều trị nhiễm khuẩn đường hô hấp, tiết niệu, da và mô mềm.", "ingredients": "Amoxicillin 875mg, Clavulanic acid 125mg.", "usage": "Người lớn và trẻ em >40kg: 1 viên/lần x 2 lần/ngày.", "note": "Uống ngay trước bữa ăn để giảm thiểu tác dụng phụ trên dạ dày."
+  },
+  { 
+    "id": 3, "name": "Thuốc kháng sinh Zinnat 500mg GSK (Hộp 1 vỉ x 10 viên)", "categoryid": 1, "price": 250000, "unit": "hộp", "imageKey": "sp3",
+    "brand": "GSK", "description": "Thuốc kháng sinh Cephalosporin thế hệ 2 điều trị nhiễm khuẩn hô hấp, tiết niệu.", "ingredients": "Cefuroxime axetil 500mg.", "usage": "Người lớn: 1 viên 500mg x 2 lần/ngày trong 7 ngày.", "note": "Phụ nữ có thai cần tham khảo ý kiến bác sĩ trước khi dùng."
+  },
+  { 
+    "id": 4, "name": "Thuốc trị tăng huyết áp Losartan 50mg (Hộp 3 vỉ x 10 viên)", "categoryid": 1, "price": 45000, "unit": "hộp", "imageKey": "sp4",
+    "brand": "Domesco", "description": "Thuốc đối kháng thụ thể Angiotensin II, dùng điều trị tăng huyết áp nguyên phát.", "ingredients": "Losartan potassium 50mg.", "usage": "Liều khởi đầu 50mg/ngày, có thể tăng lên 100mg/ngày.", "note": "Thường xuyên kiểm tra huyết áp trong quá trình sử dụng."
+  },
+  { 
+    "id": 5, "name": "Thuốc trị tăng huyết áp Amlodipine 5mg Domesco (Hộp 3 vỉ x 10 viên)", "categoryid": 1, "price": 30000, "unit": "hộp", "imageKey": "sp5",
+    "brand": "Domesco", "description": "Thuốc chẹn kênh canxi giúp giãn mạch máu, hạ huyết áp và điều trị đau thắt ngực.", "ingredients": "Amlodipine 5mg.", "usage": "Người lớn: 5mg/lần/ngày, có thể tăng lên 10mg/ngày.", "note": "Có thể gây phù mắt cá chân nhẹ ở một số bệnh nhân."
+  },
+  { 
+    "id": 6, "name": "Thuốc trị tiểu đường Metformin 500mg Stada (Hộp 5 vỉ x 10 viên)", "categoryid": 1, "price": 35000, "unit": "hộp", "imageKey": "sp6",
+    "brand": "Stada", "description": "Thuốc điều trị đái tháo đường type 2, giúp kiểm soát lượng đường trong máu.", "ingredients": "Metformin hydrochloride 500mg.", "usage": "Bắt đầu với 500mg x 1-2 lần/ngày cùng bữa ăn.", "note": "Tránh dùng đồ uống có cồn trong thời gian uống thuốc."
+  },
+  { 
+    "id": 7, "name": "Thuốc hạ mỡ máu Lipitor 20mg Pfizer (Hộp 3 vỉ x 10 viên)", "categoryid": 1, "price": 320000, "originalPrice": 380000, "unit": "hộp", "imageKey": "sp7",
+    "brand": "Pfizer", "description": "Thuốc nhóm Statin giúp giảm cholesterol xấu (LDL) và triglyceride trong máu.", "ingredients": "Atorvastatin 20mg.", "usage": "1 viên/ngày, uống vào bất kỳ thời điểm nào trong ngày.", "note": "Cần kết hợp chế độ ăn kiêng giảm mỡ. Báo bác sĩ nếu bị đau cơ bất thường."
+  },
+  { 
+    "id": 8, "name": "Thuốc trị viêm loét dạ dày Omeprazol 20mg Dược Hậu Giang (Hộp 3 vỉ x 10 viên)", "categoryid": 1, "price": 80000, "unit": "hộp", "imageKey": "sp8",
+    "brand": "Dược Hậu Giang", "description": "Thuốc ức chế bơm proton giúp giảm tiết axit dạ dày, trị viêm loét và trào ngược.", "ingredients": "Omeprazol 20mg.", "usage": "1 viên/ngày uống trước bữa ăn sáng 30 phút.", "note": "Không nhai hoặc nghiền nát viên thuốc, uống nguyên viên với nước."
+  },
+  { 
+    "id": 9, "name": "Thuốc giãn phế quản giảm ho Salbutamol 2mg (Vỉ 10 viên)", "categoryid": 1, "price": 25000, "unit": "vỉ", "imageKey": "sp9",
+    "brand": "Pharmedic", "description": "Điều trị co thắt phế quản trong hen suyễn, viêm phế quản mạn tính.", "ingredients": "Salbutamol 2mg.", "usage": "Người lớn: 2-4mg x 3-4 lần/ngày.", "note": "Có thể gây run tay nhẹ hoặc nhịp tim nhanh."
+  },
+  { 
+    "id": 10, "name": "Thuốc an thần hỗ trợ giấc ngủ Diazepam 5mg (Hộp 5 vỉ x 10 viên)", "categoryid": 1, "price": 55000, "unit": "hộp", "imageKey": "sp10",
+    "brand": "Vidipha", "description": "Thuốc an thần, giải lo âu, hỗ trợ điều trị mất ngủ và co giật.", "ingredients": "Diazepam 5mg.", "usage": "Uống 1 viên trước khi đi ngủ theo chỉ định của bác sĩ.", "note": "Thuốc kê đơn (Rx). Có thể gây nghiện nếu lạm dụng."
+  },
 
-  { "id": 11, "name": "Thuốc giảm đau hạ sốt Paracetamol 500mg Dược Hậu Giang (Vỉ 10 viên)", "categoryid": 2, "price": 20000, "unit": "vỉ", "imageKey": "sp11" },
-  { "id": 12, "name": "Thuốc giảm đau hạ sốt Panadol Extra Đỏ có Caffeine (Viên nén)", "categoryid": 2, "price": 1500, "originalPrice": 2000, "unit": "viên", "imageKey": "sp12" },
-  { "id": 13, "name": "Thuốc trị cảm cúm sổ mũi Decolgen ND (Vỉ 10 viên)", "categoryid": 2, "price": 25000, "unit": "vỉ", "imageKey": "sp13" },
-  { "id": 14, "name": "Thuốc trị cảm cúm nhức đầu Tiffy Dey (Vỉ 4 viên)", "categoryid": 2, "price": 22000, "unit": "vỉ", "imageKey": "sp14" },
-  { "id": 15, "name": "Gói bột bù nước và điện giải Oresol 245 vị cam dễ uống (Gói 4.1g)", "categoryid": 2, "price": 15000, "unit": "gói", "imageKey": "sp15" },
-  { "id": 16, "name": "Thuốc bột trị tiêu chảy Smecta vị cam vanilla (Hộp 30 gói)", "categoryid": 2, "price": 45000, "unit": "hộp", "imageKey": "sp16" },
-  { "id": 17, "name": "Thuốc nhai trị đau dạ dày ợ chua Maalox Sanofi (Hộp 4 vỉ x 10 viên)", "categoryid": 2, "price": 50000, "originalPrice": 65000, "unit": "hộp", "imageKey": "sp17" },
-  { "id": 18, "name": "Cao dán giảm đau nhức xương khớp Hisamitsu Salonpas (Hộp 20 gói x 10 miếng)", "categoryid": 2, "price": 20000, "unit": "hộp", "imageKey": "sp18" },
-  { "id": 19, "name": "Viên sủi bổ sung vitamin tăng đề kháng Berocca Performance vị cam (Tuýp 15 viên)", "categoryid": 2, "price": 85000, "unit": "tuýp", "imageKey": "sp19" },
-  { "id": 20, "name": "Kẹo ngậm giảm ho sát khuẩn họng Strepsils Original (Hộp 2 vỉ x 12 viên)", "categoryid": 2, "price": 35000, "unit": "hộp", "imageKey": "sp20" },
+  { 
+    "id": 11, "name": "Thuốc giảm đau hạ sốt Paracetamol 500mg Dược Hậu Giang (Vỉ 10 viên)", "categoryid": 2, "price": 20000, "unit": "vỉ", "imageKey": "sp11",
+    "brand": "Dược Hậu Giang", "description": "Giảm đau nhẹ đến vừa và hạ sốt nhanh chóng an toàn.", "ingredients": "Paracetamol 500mg.", "usage": "Người lớn: 1-2 viên/lần, các lần cách nhau 4-6 giờ.", "note": "Không dùng quá 4g (8 viên) trong 24 giờ để bảo vệ gan."
+  },
+  { 
+    "id": 12, "name": "Thuốc giảm đau hạ sốt Panadol Extra Đỏ có Caffeine (Viên nén)", "categoryid": 2, "price": 1500, "originalPrice": 2000, "unit": "viên", "imageKey": "sp12",
+    "brand": "GSK", "description": "Giảm các cơn đau dữ dội như đau đầu, đau răng, đau cơ nhờ kết hợp Caffeine.", "ingredients": "Paracetamol 500mg, Caffeine 65mg.", "usage": "Người lớn: 1-2 viên/lần, tối đa 8 viên/ngày.", "note": "Tránh dùng cùng đồ uống chứa nhiều Caffeine như cà phê, trà đậm."
+  },
+  { 
+    "id": 13, "name": "Thuốc trị cảm cúm sổ mũi Decolgen ND (Vỉ 10 viên)", "categoryid": 2, "price": 25000, "unit": "vỉ", "imageKey": "sp13",
+    "brand": "United Pharma", "description": "Thuốc không gây buồn ngủ, trị các triệu chứng cảm cúm, sổ mũi, nghẹt mũi.", "ingredients": "Paracetamol 500mg, Phenylephrine 10mg.", "usage": "Người lớn: 1-2 viên/lần, 3-4 lần/ngày.", "note": "Thận trọng cho người bị cao huyết áp."
+  },
+  { 
+    "id": 14, "name": "Thuốc trị cảm cúm nhức đầu Tiffy Dey (Vỉ 4 viên)", "categoryid": 2, "price": 22000, "unit": "vỉ", "imageKey": "sp14",
+    "brand": "Thai Nakorn", "description": "Đặc trị các triệu chứng cảm cúm, nhức đầu, hắt hơi, sổ mũi.", "ingredients": "Paracetamol 500mg, Chlorpheniramine 2mg.", "usage": "Người lớn: 1 viên/lần, 2-3 lần/ngày.", "note": "Thuốc có thể gây buồn ngủ, không dùng khi lái xe hoặc vận hành máy móc."
+  },
+  { 
+    "id": 15, "name": "Gói bột bù nước và điện giải Oresol 245 vị cam dễ uống (Gói 4.1g)", "categoryid": 2, "price": 15000, "unit": "gói", "imageKey": "sp15",
+    "brand": "Brawn", "description": "Bù nước và điện giải cho cơ thể khi bị tiêu chảy, sốt cao, hoặc vận động ra nhiều mồ hôi.", "ingredients": "Glucose, Natri Clorid, Kali Clorid, Natri Citrat.", "usage": "Pha 1 gói với đúng 200ml nước đun sôi để nguội. Uống rải rác trong ngày.", "note": "Dung dịch đã pha chỉ sử dụng trong vòng 24 giờ."
+  },
+  { 
+    "id": 16, "name": "Thuốc bột trị tiêu chảy Smecta vị cam vanilla (Hộp 30 gói)", "categoryid": 2, "price": 45000, "unit": "hộp", "imageKey": "sp16",
+    "brand": "Ipsen", "description": "Bảo vệ niêm mạc ruột, điều trị tiêu chảy cấp và mạn tính cho cả người lớn và trẻ em.", "ingredients": "Diosmectite 3g/gói.", "usage": "Trẻ em >2 tuổi: 2-3 gói/ngày. Người lớn: 3 gói/ngày pha với nước.", "note": "Uống cách xa các thuốc khác ít nhất 2 giờ."
+  },
+  { 
+    "id": 17, "name": "Thuốc nhai trị đau dạ dày ợ chua Maalox Sanofi (Hộp 4 vỉ x 10 viên)", "categoryid": 2, "price": 50000, "originalPrice": 65000, "unit": "hộp", "imageKey": "sp17",
+    "brand": "Sanofi", "description": "Trung hòa axit dạ dày, giảm nhanh các cơn đau dạ dày, ợ chua, khó tiêu.", "ingredients": "Nhôm hydroxyd, Magnesi hydroxyd.", "usage": "Nhai kỹ 1-2 viên/lần sau bữa ăn hoặc khi có cơn đau.", "note": "Không dùng liên tục quá 2 tuần nếu không có ý kiến bác sĩ."
+  },
+  { 
+    "id": 18, "name": "Cao dán giảm đau nhức xương khớp Hisamitsu Salonpas (Hộp 20 gói x 10 miếng)", "categoryid": 2, "price": 20000, "unit": "hộp", "imageKey": "sp18",
+    "brand": "Hisamitsu", "description": "Giảm nhanh các cơn đau cơ, mỏi cơ, cứng vai, đau lưng đơn giản.", "ingredients": "Methyl Salicylate, L-Menthol, Tocopherol Acetate.", "usage": "Dán lên vùng da bị đau. Không dán quá 3 lần/ngày.", "note": "Không dán lên vết thương hở hoặc vùng da bị trầy xước."
+  },
+  { 
+    "id": 19, "name": "Viên sủi bổ sung vitamin tăng đề kháng Berocca Performance vị cam (Tuýp 15 viên)", "categoryid": 2, "price": 85000, "unit": "tuýp", "imageKey": "sp19",
+    "brand": "Bayer", "description": "Bổ sung các Vitamin nhóm B, Vitamin C, Canxi, Magie giúp tỉnh táo và giảm mệt mỏi.", "ingredients": "Vitamin C, Vitamin B complex, Canxi, Magie, Kẽm.", "usage": "1 viên/ngày hòa tan trong 200ml nước.", "note": "Không dùng cho người bị sỏi thận hoặc suy thận nặng."
+  },
+  { 
+    "id": 20, "name": "Kẹo ngậm giảm ho sát khuẩn họng Strepsils Original (Hộp 2 vỉ x 12 viên)", "categoryid": 2, "price": 35000, "unit": "hộp", "imageKey": "sp20",
+    "brand": "Reckitt Benckiser", "description": "Sát khuẩn vùng họng, làm dịu cổ họng, giảm ho và đau rát họng.", "ingredients": "Amylmetacresol, Dichlorobenzyl alcohol.", "usage": "Ngậm 1 viên để tan từ từ trong miệng cách mỗi 2-3 giờ.", "note": "Không dùng cho trẻ em dưới 6 tuổi vì nguy cơ hóc."
+  },
 
-  { "id": 21, "name": "Dầu cá hỗ trợ tim mạch bổ mắt Omega 3 Fish Oil Kirkland Signature 1000mg (Lọ 400 viên)", "categoryid": 3, "price": 350000, "originalPrice": 420000, "unit": "lọ", "imageKey": "sp21" },
-  { "id": 22, "name": "Viên uống tăng đề kháng sáng da Nat C Vitamin C 1000mg Mega We Care (Hộp 30 viên)", "categoryid": 3, "price": 120000, "unit": "hộp", "imageKey": "sp22" },
-  { "id": 23, "name": "Viên uống bổ sung Canxi D3 hỗ trợ xương chắc khỏe (Lọ 60 viên)", "categoryid": 3, "price": 150000, "unit": "lọ", "imageKey": "sp23" },
-  { "id": 24, "name": "Viên uống tổng hợp B Complex Royal Care hỗ trợ giảm mệt mỏi (Hộp 60 viên)", "categoryid": 3, "price": 200000, "unit": "hộp", "imageKey": "sp24" },
-  { "id": 25, "name": "Viên uống bổ khớp giảm đau Glucosamine 1500mg Kirkland (Lọ 375 viên)", "categoryid": 3, "price": 450000, "unit": "lọ", "imageKey": "sp25" },
-  { "id": 26, "name": "Viên uống bổ não tăng tuần hoàn máu Ginkgo Biloba 120mg Trunature (Lọ 340 viên)", "categoryid": 3, "price": 250000, "unit": "lọ", "imageKey": "sp26" },
-  { "id": 27, "name": "Viên uống bổ sung sắt và acid folic cho phụ nữ có thai Ferrovit (Hộp 5 vỉ x 10 viên)", "categoryid": 3, "price": 80000, "unit": "hộp", "imageKey": "sp27" },
-  { "id": 28, "name": "Viên uống bổ sung kẽm hỗ trợ trị mụn Puritans Pride Zinc 50mg (Lọ 100 viên)", "categoryid": 3, "price": 180000, "unit": "lọ", "imageKey": "sp28" },
-  { "id": 29, "name": "Men vi sinh hỗ trợ tiêu hóa giảm khóc dạ đề BioGaia Protectis Baby Drops (Lọ 5ml)", "categoryid": 3, "price": 380000, "unit": "lọ", "imageKey": "sp29" },
-  { "id": 30, "name": "Viên uống đẹp da chống lão hóa Youtheory Collagen Type 1 2 & 3 (Hộp 390 viên)", "categoryid": 3, "price": 550000, "originalPrice": 650000, "unit": "hộp", "imageKey": "sp30" },
+  { 
+    "id": 21, "name": "Dầu cá hỗ trợ tim mạch bổ mắt Omega 3 Fish Oil Kirkland 1000mg (Lọ 400 viên)", "categoryid": 3, "price": 350000, "originalPrice": 420000, "unit": "lọ", "imageKey": "sp21",
+    "brand": "Kirkland Signature", "description": "Bổ sung Omega-3 dồi dào giúp bảo vệ tim mạch, tăng cường thị lực và trí não.", "ingredients": "Fish Oil 1000mg chứa 300mg Omega-3 (EPA & DHA).", "usage": "Uống 1 viên x 2 lần/ngày, uống trong bữa ăn.", "note": "Sản phẩm này không phải là thuốc, không thay thế thuốc chữa bệnh."
+  },
+  { 
+    "id": 22, "name": "Viên uống tăng đề kháng sáng da Nat C Vitamin C 1000mg Mega We Care (Hộp 30 viên)", "categoryid": 3, "price": 120000, "unit": "hộp", "imageKey": "sp22",
+    "brand": "Mega We Care", "description": "Tăng cường sức đề kháng, hỗ trợ làm sáng da và bảo vệ thành mạch máu.", "ingredients": "Vitamin C 1000mg dạng muối Ascorbate ít gây xót dạ dày.", "usage": "1 viên/ngày sau bữa ăn sáng.", "note": "Uống nhiều nước trong ngày để tránh sỏi thận."
+  },
+  { 
+    "id": 23, "name": "Viên uống bổ sung Canxi D3 hỗ trợ xương chắc khỏe (Lọ 60 viên)", "categoryid": 3, "price": 150000, "unit": "lọ", "imageKey": "sp23",
+    "brand": "Nature's Bounty", "description": "Cung cấp Canxi và Vitamin D3 giúp xương, răng chắc khỏe, phòng ngừa loãng xương.", "ingredients": "Canxi 600mg, Vitamin D3 400 IU.", "usage": "Người lớn uống 1-2 viên/ngày sau bữa ăn.", "note": "Nên uống vào buổi sáng để cơ thể hấp thụ tốt nhất."
+  },
+  { 
+    "id": 24, "name": "Viên uống tổng hợp B Complex Royal Care hỗ trợ giảm mệt mỏi (Hộp 60 viên)", "categoryid": 3, "price": 200000, "unit": "hộp", "imageKey": "sp24",
+    "brand": "Royal Care", "description": "Cung cấp toàn diện các vitamin nhóm B hỗ trợ chuyển hóa năng lượng, giảm căng thẳng thần kinh.", "ingredients": "Vitamin B1, B2, B5, B6, B12, Acid Folic.", "usage": "Uống 1 viên/ngày sau khi ăn.", "note": "Nước tiểu có thể có màu vàng đậm do vitamin B2."
+  },
+  { 
+    "id": 25, "name": "Viên uống bổ khớp giảm đau Glucosamine 1500mg Kirkland (Lọ 375 viên)", "categoryid": 3, "price": 450000, "unit": "lọ", "imageKey": "sp25",
+    "brand": "Kirkland Signature", "description": "Nuôi dưỡng sụn khớp, tăng dịch nhờn, giảm khô cứng và đau nhức xương khớp.", "ingredients": "Glucosamine HCl 1500mg, MSM 1500mg.", "usage": "Uống 2 viên/ngày cùng bữa ăn.", "note": "Người dị ứng hải sản cần thận trọng khi sử dụng."
+  },
+  { 
+    "id": 26, "name": "Viên uống bổ não tăng tuần hoàn máu Ginkgo Biloba 120mg Trunature (Lọ 340 viên)", "categoryid": 3, "price": 250000, "unit": "lọ", "imageKey": "sp26",
+    "brand": "Trunature", "description": "Tăng cường tuần hoàn máu não, cải thiện trí nhớ, giảm chóng mặt và tiền đình.", "ingredients": "Chiết xuất lá Bạch quả (Ginkgo Biloba) 120mg.", "usage": "Uống 1 viên/ngày sau bữa ăn.", "note": "Dừng sử dụng 2 tuần trước khi phẫu thuật."
+  },
+  { 
+    "id": 27, "name": "Viên uống bổ sung sắt và acid folic cho phụ nữ có thai Ferrovit (Hộp 5 vỉ x 10 viên)", "categoryid": 3, "price": 80000, "unit": "hộp", "imageKey": "sp27",
+    "brand": "Mega We Care", "description": "Phòng và điều trị thiếu máu do thiếu sắt ở phụ nữ có thai, người suy dinh dưỡng.", "ingredients": "Sắt Fumarat, Acid Folic, Vitamin B12.", "usage": "Uống 1 viên/lần, 1-2 lần/ngày sau khi ăn.", "note": "Có thể gây đi ngoài phân đen (bình thường). Không uống chung với Canxi."
+  },
+  { 
+    "id": 28, "name": "Viên uống bổ sung kẽm hỗ trợ trị mụn Puritans Pride Zinc 50mg (Lọ 100 viên)", "categoryid": 3, "price": 180000, "unit": "lọ", "imageKey": "sp28",
+    "brand": "Puritan's Pride", "description": "Bổ sung kẽm, tăng đề kháng, điều tiết bã nhờn hỗ trợ giảm mụn viêm hiệu quả.", "ingredients": "Zinc Gluconate 50mg.", "usage": "Uống 1 viên/ngày cùng với bữa ăn.", "note": "Uống kẽm lúc bụng đói có thể gây buồn nôn."
+  },
+  { 
+    "id": 29, "name": "Men vi sinh hỗ trợ tiêu hóa giảm khóc dạ đề BioGaia Protectis Baby Drops (Lọ 5ml)", "categoryid": 3, "price": 380000, "unit": "lọ", "imageKey": "sp29",
+    "brand": "BioGaia", "description": "Men vi sinh tự nhiên, cải thiện hệ tiêu hóa, giảm đau bụng co thắt ở trẻ sơ sinh.", "ingredients": "L. reuteri DSM 17938.", "usage": "Nhỏ 5 giọt/ngày trực tiếp hoặc pha vào sữa nguội.", "note": "Bảo quản ở nhiệt độ 5-25 độ C."
+  },
+  { 
+    "id": 30, "name": "Viên uống đẹp da chống lão hóa Youtheory Collagen Type 1 2 & 3 (Hộp 390 viên)", "categoryid": 3, "price": 550000, "originalPrice": 650000, "unit": "hộp", "imageKey": "sp30",
+    "brand": "Youtheory", "description": "Bổ sung Collagen và Vitamin C giúp da căng mịn, tóc và móng chắc khỏe.", "ingredients": "Hydrolyzed Collagen 6000mg, Vitamin C 90mg.", "usage": "Uống 6 viên/ngày, có thể chia làm 2-3 lần.", "note": "Hiệu quả tốt nhất khi uống trước khi ăn 30 phút."
+  },
 
-  { "id": 31, "name": "Sữa rửa mặt dịu nhẹ cho mọi loại da Cetaphil Gentle Skin Cleanser (Chai 500ml)", "categoryid": 4, "price": 330000, "unit": "chai", "imageKey": "sp31" },
-  { "id": 32, "name": "Kem chống nắng kiểm soát dầu La Roche-Posay Anthelios XL SPF 50+ (Tuýp 50ml)", "categoryid": 4, "price": 480000, "originalPrice": 550000, "unit": "tuýp", "imageKey": "sp32" },
-  { "id": 33, "name": "Nước tẩy trang dành cho da nhạy cảm Bioderma Sensibio H2O (Chai 500ml)", "categoryid": 4, "price": 495000, "unit": "chai", "imageKey": "sp33" },
-  { "id": 34, "name": "Kem bôi giảm mụn ẩn và mụn viêm Differin Adapalene 0.1% (Tuýp 30g)", "categoryid": 4, "price": 350000, "unit": "tuýp", "imageKey": "sp34" },
-  { "id": 35, "name": "Dưỡng chất khoáng cô đặc phục hồi da màng bảo vệ Vichy Minéral 89 (Chai 50ml)", "categoryid": 4, "price": 850000, "originalPrice": 990000, "unit": "chai", "imageKey": "sp35" },
-  { "id": 36, "name": "Nước xịt khoáng làm dịu da cấp ẩm Avene Thermal Spring Water (Chai 300ml)", "categoryid": 4, "price": 320000, "unit": "chai", "imageKey": "sp36" },
-  { "id": 37, "name": "Kem dưỡng ẩm phục hồi da mặt và cơ thể Cerave Moisturizing Cream (Hũ 340g)", "categoryid": 4, "price": 410000, "unit": "hũ", "imageKey": "sp37" },
-  { "id": 38, "name": "Sữa tắm làm sạch sâu cho da nhạy cảm Eucerin pH5 Washlotion (Chai 400ml)", "categoryid": 4, "price": 450000, "unit": "chai", "imageKey": "sp38" },
-  { "id": 39, "name": "Dầu gội trị nấm và làm sạch gàu ngứa Selsun Anti-Dandruff (Chai 100ml)", "categoryid": 4, "price": 95000, "unit": "chai", "imageKey": "sp39" },
-  { "id": 40, "name": "Son dưỡng môi mềm mịn ngăn ngừa nứt nẻ Vaseline Lip Therapy Original (Hũ 7g)", "categoryid": 4, "price": 65000, "unit": "hũ", "imageKey": "sp40" },
+  { 
+    "id": 31, "name": "Sữa rửa mặt dịu nhẹ cho mọi loại da Cetaphil Gentle Skin Cleanser (Chai 500ml)", "categoryid": 4, "price": 330000, "unit": "chai", "imageKey": "sp31",
+    "brand": "Cetaphil", "description": "Làm sạch nhẹ nhàng mà không gây khô da, duy trì độ pH tự nhiên, an toàn cho da nhạy cảm.", "ingredients": "Nước, Cetyl Alcohol, Propylene Glycol...", "usage": "Dùng 1-2 lần/ngày. Rửa với nước hoặc dùng khan lau bằng khăn mềm.", "note": "Có thể sử dụng an toàn cho cả da em bé."
+  },
+  { 
+    "id": 32, "name": "Kem chống nắng kiểm soát dầu La Roche-Posay Anthelios XL SPF 50+ (Tuýp 50ml)", "categoryid": 4, "price": 480000, "originalPrice": 550000, "unit": "tuýp", "imageKey": "sp32",
+    "brand": "La Roche-Posay", "description": "Bảo vệ da tối đa trước tia UVA/UVB, công nghệ kiểm soát bóng nhờn mướt mịn.", "ingredients": "Màng lọc Mexoplex, Nước khoáng La Roche-Posay.", "usage": "Thoa trước khi ra nắng 20 phút. Thoa lại sau mỗi 2h nếu bơi lội.", "note": "Phù hợp nhất cho da dầu và da hỗn hợp thiên dầu."
+  },
+  { 
+    "id": 33, "name": "Nước tẩy trang dành cho da nhạy cảm Bioderma Sensibio H2O (Chai 500ml)", "categoryid": 4, "price": 495000, "unit": "chai", "imageKey": "sp33",
+    "brand": "Bioderma", "description": "Làm sạch sâu lớp trang điểm và bụi bẩn mà không làm tổn thương hàng rào bảo vệ da.", "ingredients": "Công nghệ Micellar, chiết xuất dưa leo.", "usage": "Thấm vào bông tẩy trang, lau nhẹ nhàng lên mặt và mắt. Không cần rửa lại với nước.", "note": "An toàn cho vùng da quanh mắt."
+  },
+  { 
+    "id": 34, "name": "Kem bôi giảm mụn ẩn và mụn viêm Differin Adapalene 0.1% (Tuýp 30g)", "categoryid": 4, "price": 350000, "unit": "tuýp", "imageKey": "sp34",
+    "brand": "Galderma", "description": "Thuốc bôi đặc trị mụn trứng cá, mụn ẩn, giúp gom cồi mụn và giảm sừng hóa nang lông.", "ingredients": "Adapalene 0.1%.", "usage": "Thoa một lớp mỏng lên vùng mụn 1 lần/ngày vào buổi tối.", "note": "Da có thể bị đỏ và bong tróc trong 1-2 tuần đầu. Bắt buộc dùng kem chống nắng."
+  },
+  { 
+    "id": 35, "name": "Dưỡng chất khoáng cô đặc phục hồi da màng bảo vệ Vichy Minéral 89 (Chai 50ml)", "categoryid": 4, "price": 850000, "originalPrice": 990000, "unit": "chai", "imageKey": "sp35",
+    "brand": "Vichy", "description": "Cấp ẩm sâu, phục hồi và củng cố hàng rào bảo vệ da trước tác nhân môi trường.", "ingredients": "89% nước khoáng núi lửa Vichy, Hyaluronic Acid.", "usage": "Sử dụng sáng và tối sau bước toner.", "note": "Thích hợp cho mọi loại da, kể cả da nhạy cảm nhất."
+  },
+  { 
+    "id": 36, "name": "Nước xịt khoáng làm dịu da cấp ẩm Avene Thermal Spring Water (Chai 300ml)", "categoryid": 4, "price": 320000, "unit": "chai", "imageKey": "sp36",
+    "brand": "Avene", "description": "Xịt khoáng tinh khiết, làm dịu da kích ứng, cháy nắng, giảm đỏ ngay lập tức.", "ingredients": "100% Nước khoáng Avene tự nhiên.", "usage": "Xịt một lớp sương mỏng lên mặt, để yên 2-3 phút rồi vỗ nhẹ.", "note": "Không lắc chai trước khi xịt để tránh làm hỏng vòi."
+  },
+  { 
+    "id": 37, "name": "Kem dưỡng ẩm phục hồi da mặt và cơ thể Cerave Moisturizing Cream (Hũ 340g)", "categoryid": 4, "price": 410000, "unit": "hũ", "imageKey": "sp37",
+    "brand": "Cerave", "description": "Dưỡng ẩm sâu suốt 24h, phục hồi hàng rào ceramide cho da khô đến rất khô.", "ingredients": "3 loại Ceramide thiết yếu, Hyaluronic Acid.", "usage": "Thoa lượng vừa đủ lên da mặt và cơ thể mỗi ngày.", "note": "Chất kem đặc, nên dùng vào mùa đông hoặc cho da body khô nẻ."
+  },
+  { 
+    "id": 38, "name": "Sữa tắm làm sạch sâu cho da nhạy cảm Eucerin pH5 Washlotion (Chai 400ml)", "categoryid": 4, "price": 450000, "unit": "chai", "imageKey": "sp38",
+    "brand": "Eucerin", "description": "Làm sạch cơ thể dịu nhẹ, cân bằng độ pH5 lý tưởng để da không bị mất nước.", "ingredients": "Dexpanthenol, công thức pH5 Enzyme Protection.", "usage": "Tạo bọt nhẹ nhàng và tắm toàn thân.", "note": "Khuyên dùng cho người bị viêm da cơ địa hoặc da siêu nhạy cảm."
+  },
+  { 
+    "id": 39, "name": "Dầu gội trị nấm và làm sạch gàu ngứa Selsun Anti-Dandruff (Chai 100ml)", "categoryid": 4, "price": 95000, "unit": "chai", "imageKey": "sp39",
+    "brand": "Rohto", "description": "Đặc trị gàu mảng, gàu nấm, ức chế bã nhờn da đầu hiệu quả.", "ingredients": "Selenium Sulfide 1%.", "usage": "Dùng thay dầu gội 2 lần/tuần. Giữ trên da đầu 3-5 phút trước khi xả sạch.", "note": "Tránh để bọt xà phòng dính vào mắt. Không dùng khi có vết thương hở trên da đầu."
+  },
+  { 
+    "id": 40, "name": "Son dưỡng môi mềm mịn ngăn ngừa nứt nẻ Vaseline Lip Therapy Original (Hũ 7g)", "categoryid": 4, "price": 65000, "unit": "hũ", "imageKey": "sp40",
+    "brand": "Vaseline", "description": "Khóa ẩm vượt trội, làm mềm môi khô nứt nẻ chỉ sau một đêm.", "ingredients": "100% Petroleum Jelly tinh khiết.", "usage": "Thoa lên môi bất cứ khi nào cảm thấy khô.", "note": "Có thể dùng làm mặt nạ ngủ cho môi vào ban đêm."
+  },
 
-  { "id": 41, "name": "Máy đo huyết áp bắp tay tự động Omron HEM-7120 (Bảo hành 5 năm)", "categoryid": 5, "price": 790000, "originalPrice": 850000, "unit": "cái", "imageKey": "sp41" },
-  { "id": 42, "name": "Máy đo đường huyết Accu-Chek Instant kiểm tra tại nhà (Bộ kèm que thử)", "categoryid": 5, "price": 1200000, "unit": "bộ", "imageKey": "sp42" },
-  { "id": 43, "name": "Nhiệt kế điện tử hồng ngoại đo trán Microlife FR1MF1", "categoryid": 5, "price": 650000, "unit": "cái", "imageKey": "sp43" },
-  { "id": 44, "name": "Máy xông khí dung mũi họng siêu âm Omron NE-C101", "categoryid": 5, "price": 950000, "unit": "bộ", "imageKey": "sp44" },
-  { "id": 45, "name": "Cân sức khỏe điện tử kính cường lực Reiwa (Tải trọng tối đa 180kg)", "categoryid": 5, "price": 350000, "originalPrice": 450000, "unit": "cái", "imageKey": "sp45" },
-  { "id": 46, "name": "Que thử thai phát hiện sớm QuickStick (Hộp 1 cái)", "categoryid": 5, "price": 25000, "unit": "hộp", "imageKey": "sp46" },
-  { "id": 47, "name": "Máy tạo oxy 5 lít chuyên dụng cho gia đình Hakawa HK-Oxy5L", "categoryid": 5, "price": 4500000, "unit": "máy", "imageKey": "sp47" },
-  { "id": 48, "name": "Đai thắt lưng cột sống cao cấp Olumba hỗ trợ chỉnh hình", "categoryid": 5, "price": 450000, "unit": "cái", "imageKey": "sp48" },
-  { "id": 49, "name": "Nạng nhôm tập đi Lucass dành cho người phục hồi chức năng (Cặp)", "categoryid": 5, "price": 250000, "unit": "cặp", "imageKey": "sp49" },
-  { "id": 50, "name": "Máy massage xung điện trị liệu giảm đau cơ Omron HV-F021", "categoryid": 5, "price": 600000, "originalPrice": 750000, "unit": "máy", "imageKey": "sp50" },
+  { 
+    "id": 41, "name": "Máy đo huyết áp bắp tay tự động Omron HEM-7120 (Bảo hành 5 năm)", "categoryid": 5, "price": 790000, "originalPrice": 850000, "unit": "cái", "imageKey": "sp41",
+    "brand": "Omron", "description": "Đo huyết áp bắp tay tự động, thao tác một nút bấm đơn giản, cảnh báo nhịp tim bất thường.", "ingredients": "Máy chính, vòng bít, pin AA, sách HDSD.", "usage": "Quấn vòng bít quanh bắp tay trái, ngang mức tim và bấm Start.", "note": "Nghỉ ngơi 5 phút trước khi đo. Không nói chuyện trong lúc máy đang chạy."
+  },
+  { 
+    "id": 42, "name": "Máy đo đường huyết Accu-Chek Instant kiểm tra tại nhà (Bộ kèm que thử)", "categoryid": 5, "price": 1200000, "unit": "bộ", "imageKey": "sp42",
+    "brand": "Roche", "description": "Đo đường huyết nhanh chóng, chính xác, có thang chỉ thị màu cảnh báo đường huyết cao/thấp.", "ingredients": "Máy, bút lấy máu, 10 kim, 10 que thử.", "usage": "Lấy một giọt máu nhỏ ở đầu ngón tay đưa vào que thử đã gắn vào máy.", "note": "Rửa tay sạch và lau khô hoàn toàn trước khi lấy máu."
+  },
+  { 
+    "id": 43, "name": "Nhiệt kế điện tử hồng ngoại đo trán Microlife FR1MF1", "categoryid": 5, "price": 650000, "unit": "cái", "imageKey": "sp43",
+    "brand": "Microlife", "description": "Đo nhiệt độ trán không cần chạm, cho kết quả sau 1 giây, rất phù hợp cho em bé.", "ingredients": "Máy, pin, hộp nhựa bảo vệ.", "usage": "Đặt máy cách trán 1-3cm và bấm nút đo.", "note": "Cảnh báo sốt bằng màn hình chuyển màu đỏ nếu nhiệt độ >37.5 độ C."
+  },
+  { 
+    "id": 44, "name": "Máy xông khí dung mũi họng siêu âm Omron NE-C101", "categoryid": 5, "price": 950000, "unit": "bộ", "imageKey": "sp44",
+    "brand": "Omron", "description": "Hỗ trợ điều trị viêm phế quản, hen suyễn nhờ tạo hạt sương nhỏ mịn len lỏi sâu vào phổi.", "ingredients": "Máy nén khí, bầu xông, ống dẫn, mặt nạ xông người lớn/trẻ em.", "usage": "Pha thuốc theo chỉ định bác sĩ vào bầu xông, đeo mặt nạ và bật máy.", "note": "Vệ sinh sạch sẽ bầu xông và mặt nạ sau mỗi lần sử dụng bằng nước ấm."
+  },
+  { 
+    "id": 45, "name": "Cân sức khỏe điện tử kính cường lực Reiwa (Tải trọng tối đa 180kg)", "categoryid": 5, "price": 350000, "originalPrice": 450000, "unit": "cái", "imageKey": "sp45",
+    "brand": "Reiwa", "description": "Cân trọng lượng cơ thể chính xác, mặt kính cường lực sang trọng, hiển thị màn hình LED.", "ingredients": "Kính cường lực 6mm, cảm biến tải trọng.", "usage": "Bước chân trần lên cân để máy tự động bật và đọc chỉ số.", "note": "Đặt cân trên mặt phẳng cứng (không đặt trên thảm) để có kết quả đúng."
+  },
+  { 
+    "id": 46, "name": "Que thử thai phát hiện sớm QuickStick (Hộp 1 cái)", "categoryid": 5, "price": 25000, "unit": "hộp", "imageKey": "sp46",
+    "brand": "QuickStick", "description": "Phát hiện thai sớm và độ chính xác lên tới 99% chỉ sau 7 ngày trễ kinh.", "ingredients": "Que thử có chứa kháng thể kháng HCG.", "usage": "Nhúng que vào cốc nước tiểu theo vạch mũi tên trong 15 giây, đọc kết quả sau 5 phút.", "note": "Nên thử với nước tiểu đầu tiên vào buổi sáng để hàm lượng HCG cao nhất."
+  },
+  { 
+    "id": 47, "name": "Máy tạo oxy 5 lít chuyên dụng cho gia đình Hakawa HK-Oxy5L", "categoryid": 5, "price": 4500000, "unit": "máy", "imageKey": "sp47",
+    "brand": "Hakawa", "description": "Cung cấp dòng oxy tinh khiết lên đến 93%, dùng cho người suy hô hấp, viêm phổi.", "ingredients": "Hệ thống lọc khí zeolite nhập khẩu.", "usage": "Cắm điện, châm nước vào bình tạo ẩm, điều chỉnh lưu lượng oxy theo chỉ định.", "note": "Không hút thuốc lá hoặc để vật liệu dễ cháy gần khu vực đang sử dụng máy thở."
+  },
+  { 
+    "id": 48, "name": "Đai thắt lưng cột sống cao cấp Olumba hỗ trợ chỉnh hình", "categoryid": 5, "price": 450000, "unit": "cái", "imageKey": "sp48",
+    "brand": "Olumba", "description": "Hỗ trợ cố định cột sống thắt lưng, giảm đau cho người bị thoát vị đĩa đệm, thoái hóa cột sống.", "ingredients": "Vải chun co giãn, thanh nẹp hợp kim nhôm đàn hồi.", "usage": "Quấn đai quanh vùng thắt lưng, dán cố định sao cho ôm sát nhưng không quá chật.", "note": "Chọn đúng size theo số đo vòng bụng. Tháo đai khi ngủ."
+  },
+  { 
+    "id": 49, "name": "Nạng nhôm tập đi Lucass dành cho người phục hồi chức năng (Cặp)", "categoryid": 5, "price": 250000, "unit": "cặp", "imageKey": "sp49",
+    "brand": "Lucass", "description": "Chất liệu hợp kim nhôm nhẹ, siêu bền, có thể điều chỉnh độ cao linh hoạt.", "ingredients": "Nhôm hợp kim, đệm cao su chống trượt.", "usage": "Điều chỉnh chốt bấm sao cho phần tựa nách cách nách khoảng 2-3cm.", "note": "Đảm bảo đế cao su không bị mòn trước khi di chuyển để tránh trượt ngã."
+  },
+  { 
+    "id": 50, "name": "Máy massage xung điện trị liệu giảm đau cơ Omron HV-F021", "categoryid": 5, "price": 600000, "originalPrice": 750000, "unit": "máy", "imageKey": "sp50",
+    "brand": "Omron", "description": "Giảm nhức mỏi, căng cơ nhờ sóng xung điện, với 15 mức cường độ và 6 chế độ vùng cơ.", "ingredients": "Máy chính, cáp nối, 2 miếng dán điện cực.", "usage": "Dán miếng điện cực lên vùng cơ đau, chọn chế độ và điều chỉnh cường độ phù hợp.", "note": "Không dùng cho người đặt máy tạo nhịp tim hoặc phụ nữ có thai."
+  },
+  { 
+    "id": 51, "name": "Bông y tế thấm nước vô trùng Bạch Tuyết (Gói 100g)", "categoryid": 6, "price": 15000, "unit": "gói", "imageKey": "sp51",
+    "brand": "Bạch Tuyết", "description": "Bông 100% cotton tự nhiên, thấm hút tốt, an toàn cho da, dùng để sát trùng và vệ sinh vết thương.", "ingredients": "100% sợi bông tự nhiên đã qua tiệt trùng.", "usage": "Dùng kèm với dung dịch sát khuẩn để làm sạch vết thương.", "note": "Thay bông mới sau mỗi lần sử dụng để đảm bảo vô trùng."
+  },
+  { 
+    "id": 52, "name": "Băng gạc vô trùng đắp vết thương Young Wound Dressing (Miếng 10x10cm)", "categoryid": 6, "price": 5000, "unit": "miếng", "imageKey": "sp52",
+    "brand": "Young", "description": "Gạc y tế vô trùng, màng lưới không dính vết thương, giúp bảo vệ và thấm hút dịch tiết.", "ingredients": "Vải không dệt, bông thấm hút.", "usage": "Rửa sạch vết thương, lau khô rồi đắp gạc lên và cố định bằng băng keo lụa.", "note": "Bảo quản nơi khô ráo. Không sử dụng nếu bao bì bị hở."
+  },
+  { 
+    "id": 53, "name": "Băng keo cá nhân chống thấm nước Urgo Waterproof (Hộp 100 miếng)", "categoryid": 6, "price": 10000, "unit": "hộp", "imageKey": "sp53",
+    "brand": "Urgo", "description": "Băng keo chống nước vượt trội, thích hợp khi bơi lội, rửa tay mà không bong tróc.", "ingredients": "Nền trong suốt chống nước, gạc không dính.", "usage": "Làm sạch và khô vết thương, bóc lớp giấy và dán băng sát vào da.", "note": "Thay băng hàng ngày hoặc khi miếng gạc bị ướt."
+  },
+  { 
+    "id": 54, "name": "Cồn y tế 90 độ Vĩnh Phúc sát trùng vết thương ngoài da (Chai 500ml)", "categoryid": 6, "price": 12000, "unit": "chai", "imageKey": "sp54",
+    "brand": "Vĩnh Phúc", "description": "Dung dịch cồn 90 độ dùng để sát khuẩn dụng cụ y tế, khử trùng bề mặt hoặc da tay.", "ingredients": "Ethanol 90%.", "usage": "Dùng vải/bông tẩm cồn bôi lên bề mặt cần sát khuẩn.", "note": "Dễ cháy. Tránh xa tầm tay trẻ em và ngọn lửa. Không uống."
+  },
+  { 
+    "id": 55, "name": "Nước muối sinh lý Natri Clorid 0.9% Vĩnh Phúc súc miệng (Chai 500ml)", "categoryid": 6, "price": 15000, "unit": "chai", "imageKey": "sp55",
+    "brand": "Vĩnh Phúc", "description": "Dung dịch đẳng trương giúp làm sạch khoang miệng, rửa vết thương ngoài da nhẹ dịu.", "ingredients": "Natri clorid 0.9%, nước tinh khiết.", "usage": "Súc miệng 2-3 lần/ngày hoặc dùng rửa vết thương hở.", "note": "Không dùng để nhỏ mắt, nhỏ mũi hoặc tiêm truyền."
+  },
+  { 
+    "id": 56, "name": "Dung dịch sát trùng vết thương Povidine 10% (Chai 20ml)", "categoryid": 6, "price": 15000, "unit": "chai", "imageKey": "sp56",
+    "brand": "Pharmedic", "description": "Thuốc sát khuẩn phổ rộng dùng cho vết thương hở, vết trầy xước, nấm da.", "ingredients": "Povidon lod 10%.", "usage": "Tẩm thuốc vào bông sạch bôi lên vùng da bị tổn thương.", "note": "Không dùng cho phụ nữ có thai và người bị bướu cổ."
+  },
+  { 
+    "id": 57, "name": "Nước Oxy già 3% rửa vết thương cầm máu (Chai 60ml)", "categoryid": 6, "price": 5000, "unit": "chai", "imageKey": "sp57",
+    "brand": "Dược Vật Tư Y Tế", "description": "Dung dịch sát khuẩn sủi bọt, giúp đẩy chất bẩn và mủ ra khỏi vết thương sâu.", "ingredients": "Hydrogen peroxide 3%.", "usage": "Nhỏ trực tiếp hoặc dùng bông thấm bôi lên vết thương.", "note": "Chỉ dùng ngoài da. Tránh bôi vào vùng da mỏng nhạy cảm hoặc mắt."
+  },
+  { 
+    "id": 58, "name": "Găng tay y tế cao su không bột Vglove bảo vệ đôi tay (Hộp 100 chiếc)", "categoryid": 6, "price": 85000, "originalPrice": 100000, "unit": "hộp", "imageKey": "sp58",
+    "brand": "Vglove", "description": "Găng tay nitrile không bột, chống hóa chất, dùng trong y tế, thẩm mỹ, thực phẩm.", "ingredients": "100% cao su Nitrile.", "usage": "Đeo trực tiếp vào tay trước khi tiếp xúc với môi trường nguy cơ nhiễm khuẩn.", "note": "Sản phẩm dùng một lần. Bỏ đúng nơi quy định sau khi sử dụng."
+  },
+  { 
+    "id": 59, "name": "Băng keo lụa y tế dán rết thương Young Plaster (Cuộn 2.5cm x 5m)", "categoryid": 6, "price": 15000, "unit": "cuộn", "imageKey": "sp59",
+    "brand": "Young", "description": "Băng keo lụa siêu thoáng khí, độ dính cao nhưng không làm đau rát khi tháo dỡ.", "ingredients": "Nền vải lụa, keo dính Zinc Oxide.", "usage": "Dùng để cố định băng gạc hoặc kim luồn.", "note": "Làm sạch và khô vùng da trước khi dán để tăng độ bám dính."
+  },
+  { 
+    "id": 60, "name": "Băng thun y tế Quang Mậu hỗ trợ cố định khớp (Cuộn 3 móc)", "categoryid": 6, "price": 25000, "unit": "cuộn", "imageKey": "sp60",
+    "brand": "Quang Mậu", "description": "Băng thun co giãn, hỗ trợ cố định khớp khi bong gân, chấn thương thể thao.", "ingredients": "Sợi cotton và cao su thiên nhiên.", "usage": "Quấn chặt vừa phải quanh vùng khớp bị thương, cố định bằng móc.", "note": "Không quấn quá chặt làm cản trở lưu thông máu."
+  },
 
-  { "id": 51, "name": "Bông y tế thấm nước vô trùng Bạch Tuyết (Gói 100g)", "categoryid": 6, "price": 15000, "unit": "gói", "imageKey": "sp51" },
-  { "id": 52, "name": "Băng gạc vô trùng đắp vết thương Young Wound Dressing (Miếng 10x10cm)", "categoryid": 6, "price": 5000, "unit": "miếng", "imageKey": "sp52" },
-  { "id": 53, "name": "Băng keo cá nhân chống thấm nước Urgo Waterproof (Hộp 100 miếng)", "categoryid": 6, "price": 10000, "unit": "hộp", "imageKey": "sp53" },
-  { "id": 54, "name": "Cồn y tế 90 độ Vĩnh Phúc sát trùng vết thương ngoài da (Chai 500ml)", "categoryid": 6, "price": 12000, "unit": "chai", "imageKey": "sp54" },
-  { "id": 55, "name": "Nước muối sinh lý Natri Clorid 0.9% Vĩnh Phúc súc miệng (Chai 500ml)", "categoryid": 6, "price": 15000, "unit": "chai", "imageKey": "sp55" },
-  { "id": 56, "name": "Dung dịch sát trùng vết thương Povidine 10% (Chai 20ml)", "categoryid": 6, "price": 15000, "unit": "chai", "imageKey": "sp56" },
-  { "id": 57, "name": "Nước Oxy già 3% rửa vết thương cầm máu (Chai 60ml)", "categoryid": 6, "price": 5000, "unit": "chai", "imageKey": "sp57" },
-  { "id": 58, "name": "Găng tay y tế cao su không bột Vglove bảo vệ đôi tay (Hộp 100 chiếc)", "categoryid": 6, "price": 85000, "originalPrice": 100000, "unit": "hộp", "imageKey": "sp58" },
-  { "id": 59, "name": "Băng keo lụa y tế dán rết thương Young Plaster (Cuộn 2.5cm x 5m)", "categoryid": 6, "price": 15000, "unit": "cuộn", "imageKey": "sp59" },
-  { "id": 60, "name": "Băng thun y tế Quang Mậu hỗ trợ cố định khớp (Cuộn 3 móc)", "categoryid": 6, "price": 25000, "unit": "cuộn", "imageKey": "sp60" },
+  { 
+    "id": 61, "name": "Kem đánh răng giảm ê buốt bảo vệ nướu Sensodyne Repair & Protect (Tuýp 100g)", "categoryid": 7, "price": 65000, "unit": "tuýp", "imageKey": "sp61",
+    "brand": "Sensodyne", "description": "Công nghệ NovaMin giúp phục hồi sâu bên trong ngà răng, giảm ê buốt nhanh chóng.", "ingredients": "NovaMin, Sodium Fluoride.", "usage": "Đánh răng 2 lần/ngày. Không được nuốt.", "note": "Không dùng cho trẻ em dưới 12 tuổi."
+  },
+  { 
+    "id": 62, "name": "Nước súc miệng diệt khuẩn hơi thở thơm mát Listerine Cool Mint (Chai 750ml)", "categoryid": 7, "price": 85000, "unit": "chai", "imageKey": "sp62",
+    "brand": "Listerine", "description": "Tiêu diệt 99.9% vi khuẩn gây hôi miệng, mảng bám và viêm nướu.", "ingredients": "Tinh dầu Menthol, Thymol, Eucalyptol.", "usage": "Súc miệng với 20ml trong 30 giây, 2 lần/ngày sau khi đánh răng.", "note": "Không được nuốt. Cảm giác the rát nhẹ lúc mới dùng là bình thường."
+  },
+  { 
+    "id": 63, "name": "Dầu gội dược liệu trị nấm da đầu SnowClear (Tuýp 50ml)", "categoryid": 7, "price": 120000, "originalPrice": 150000, "unit": "tuýp", "imageKey": "sp63",
+    "brand": "Merap", "description": "Sạch gàu, hết ngứa, đặc trị nấm da đầu và viêm da tiết bã.", "ingredients": "Ketoconazole, Clobetasol Propionate.", "usage": "Dùng 1.5 - 2 ống gội đầu, mát xa 3-5 phút rồi xả sạch. Dùng 2 lần/tuần.", "note": "Tránh để bọt tiếp xúc với mắt."
+  },
+  { 
+    "id": 64, "name": "Sữa tắm bảo vệ khỏi vi khuẩn Lifebuoy Matcha Khổ Qua (Chai 800g)", "categoryid": 7, "price": 85000, "originalPrice": 95000, "unit": "chai", "imageKey": "sp64",
+    "brand": "Lifebuoy", "description": "Công thức Detox sạch khuẩn kết hợp Matcha và Khổ qua giúp ngừa mụn lưng, rôm sảy.", "ingredients": "Chiết xuất Trà xanh, Khổ qua, Ion Bạc.", "usage": "Thoa đều tạo bọt và tắm sạch với nước.", "note": "Phù hợp với mọi loại da, dùng được cho cả gia đình."
+  },
+  { 
+    "id": 65, "name": "Bàn chải đánh răng lông mềm P/S Than Hoạt Tính siêu sạch (Cây)", "categoryid": 7, "price": 25000, "unit": "cây", "imageKey": "sp65",
+    "brand": "P/S", "description": "Lông chải được phủ than hoạt tính giúp kháng khuẩn và làm trắng răng tự nhiên.", "ingredients": "Lông cước nhân tạo phủ than hoạt tính.", "usage": "Chải răng theo chiều dọc và thay bàn chải mỗi 3 tháng.", "note": "Để nơi khô thoáng sau khi sử dụng."
+  },
+  { 
+    "id": 66, "name": "Chỉ nha khoa làm sạch kẽ răng mảng bám Oral-B Essential Floss (Hộp 50m)", "categoryid": 7, "price": 45000, "unit": "hộp", "imageKey": "sp66",
+    "brand": "Oral-B", "description": "Lõi chỉ tơ siêu nhỏ dai chắc, trượt dễ dàng vào kẽ răng, cuốn trôi mảng bám.", "ingredients": "Sợi PTFE bọc sáp, hương bạc hà.", "usage": "Kéo một đoạn 40cm, quấn quanh ngón tay và trượt nhẹ vào kẽ răng.", "note": "Sử dụng nhẹ tay để không làm chảy máu nướu."
+  },
+  { 
+    "id": 67, "name": "Dung dịch vệ sinh phụ nữ Dạ Hương lô hội dịu nhẹ (Chai 100ml)", "categoryid": 7, "price": 35000, "unit": "chai", "imageKey": "sp67",
+    "brand": "Hoa Linh", "description": "Làm sạch dịu nhẹ, cân bằng độ pH và khử mùi hôi vùng kín hiệu quả.", "ingredients": "Chiết xuất Dâu tằm, Lô hội, Cúc la mã.", "usage": "Lấy 2-3ml thoa rửa nhẹ nhàng bên ngoài vùng kín, sau đó rửa lại bằng nước sạch.", "note": "Chỉ sử dụng ngoài da."
+  },
+  { 
+    "id": 68, "name": "Lăn khử mùi giảm tiết mồ hôi Nivea Men Black & White (Chai 50ml)", "categoryid": 7, "price": 55000, "unit": "chai", "imageKey": "sp68",
+    "brand": "Nivea", "description": "Công nghệ ngăn vệt ố vàng trên áo trắng và cặn trắng trên áo đen, lưu hương 48h.", "ingredients": "Aluminum Chlorohydrate, không chứa cồn.", "usage": "Lăn lên vùng da dưới cánh tay sau khi tắm.", "note": "Chờ sản phẩm khô hoàn toàn trước khi mặc áo."
+  },
+  { 
+    "id": 69, "name": "Bọt cạo râu làm mềm râu ngăn ngừa kích ứng Gillette Foamy chanh (Chai 175g)", "categoryid": 7, "price": 80000, "unit": "chai", "imageKey": "sp69",
+    "brand": "Gillette", "description": "Bọt dày, xốp giúp dao cạo lướt êm ái, hương chanh sảng khoái mát lạnh.", "ingredients": "Chất tạo bọt, chiết xuất hương chanh tự nhiên.", "usage": "Làm ướt mặt, xịt bọt ra tay rồi xoa đều lên vùng râu cần cạo.", "note": "Rửa sạch dao cạo bằng nước ấm sau khi dùng."
+  },
+  { 
+    "id": 70, "name": "Băng vệ sinh siêu mỏng cánh mát lạnh Diana Sensi Cool Fresh (Gói 8 miếng)", "categoryid": 7, "price": 45000, "unit": "gói", "imageKey": "sp70",
+    "brand": "Diana", "description": "Bề mặt vi sợi mềm mại, công nghệ Ice Cool siêu mát lạnh, kiểm soát mùi tuyệt đối.", "ingredients": "Bông lót, hạt siêu thấm, màng đáy PE.", "usage": "Bóc lớp giấy không dính và dán vào đáy quần lót.", "note": "Thay băng thường xuyên mỗi 3-4 tiếng để đảm bảo vệ sinh."
+  },
 
-  { "id": 61, "name": "Kem đánh răng giảm ê buốt bảo vệ nướu Sensodyne Repair & Protect (Tuýp 100g)", "categoryid": 7, "price": 65000, "unit": "tuýp", "imageKey": "sp61" },
-  { "id": 62, "name": "Nước súc miệng diệt khuẩn hơi thở thơm mát Listerine Cool Mint (Chai 750ml)", "categoryid": 7, "price": 85000, "unit": "chai", "imageKey": "sp62" },
-  { "id": 63, "name": "Dầu gội dược liệu trị nấm da đầu SnowClear (Tuýp 50ml)", "categoryid": 7, "price": 120000, "originalPrice": 150000, "unit": "tuýp", "imageKey": "sp63" },
-  { "id": 64, "name": "Sữa tắm bảo vệ khỏi vi khuẩn Lifebuoy Matcha Khổ Qua (Chai 800g)", "categoryid": 7, "price": 85000, "originalPrice": 95000, "unit": "chai", "imageKey": "sp64" },
-  { "id": 65, "name": "Bàn chải đánh răng lông mềm P/S Than Hoạt Tính siêu sạch (Cây)", "categoryid": 7, "price": 25000, "unit": "cây", "imageKey": "sp65" },
-  { "id": 66, "name": "Chỉ nha khoa làm sạch kẽ răng mảng bám Oral-B Essential Floss (Hộp 50m)", "categoryid": 7, "price": 45000, "unit": "hộp", "imageKey": "sp66" },
-  { "id": 67, "name": "Dung dịch vệ sinh phụ nữ Dạ Hương lô hội dịu nhẹ (Chai 100ml)", "categoryid": 7, "price": 35000, "unit": "chai", "imageKey": "sp67" },
-  { "id": 68, "name": "Lăn khử mùi giảm tiết mồ hôi Nivea Men Black & White (Chai 50ml)", "categoryid": 7, "price": 55000, "unit": "chai", "imageKey": "sp68" },
-  { "id": 69, "name": "Bọt cạo râu làm mềm râu ngăn ngừa kích ứng Gillette Foamy chanh (Chai 175g)", "categoryid": 7, "price": 80000, "unit": "chai", "imageKey": "sp69" },
-  { "id": 70, "name": "Băng vệ sinh siêu mỏng cánh mát lạnh Diana Sensi Cool Fresh (Gói 8 miếng)", "categoryid": 7, "price": 45000, "unit": "gói", "imageKey": "sp70" },
+  { 
+    "id": 71, "name": "Sữa bột cho mẹ bầu và cho con bú Enfamama A+ vị hương vani (Lon 400g)", "categoryid": 8, "price": 450000, "unit": "lon", "imageKey": "sp71",
+    "brand": "Mead Johnson", "description": "Cung cấp DHA, Acid Folic, Canxi giúp thai nhi phát triển não bộ và thể chất tối ưu.", "ingredients": "Sữa bột tách béo, DHA, Sắt, Canxi, Vitamin tổng hợp.", "usage": "Pha 6 muỗng sữa với 200ml nước ấm. Uống 2 ly/ngày.", "note": "Nên uống ngay sau khi pha. Đậy kín nắp hộp sau khi dùng."
+  },
+  { 
+    "id": 72, "name": "Sữa bột phát triển toàn diện Meiji số 0 nội địa Nhật (Lon 800g)", "categoryid": 8, "price": 550000, "originalPrice": 620000, "unit": "lon", "imageKey": "sp72",
+    "brand": "Meiji", "description": "Sữa công thức mát, vị nhạt như sữa mẹ, chống táo bón và tăng chiều cao cho trẻ 0-1 tuổi.", "ingredients": "Protein, FOS, DHA, ARA, Canxi.", "usage": "Pha 1 muỗng gạt ngang (2.7g) tương đương 20ml nước ở 70 độ C.", "note": "Làm nguội sữa đến nhiệt độ cơ thể (khoảng 37 độ C) trước khi cho bé bú."
+  },
+  { 
+    "id": 73, "name": "Tã bỉm quần dán sơ sinh Huggies Skin Perfect Tràm Trà (Bịch 72 miếng)", "categoryid": 8, "price": 150000, "unit": "bịch", "imageKey": "sp73",
+    "brand": "Huggies", "description": "Bề mặt tã có tinh chất tràm trà tự nhiên, kháng khuẩn, chống hăm da hoàn hảo.", "ingredients": "Bông siêu mỏng, hạt thấm hút, tinh chất tràm trà.", "usage": "Trải tã phẳng, luồn dưới mông bé và dán miếng dán hai bên vào mặt trước.", "note": "Size NB dành cho trẻ sơ sinh dưới 5kg."
+  },
+  { 
+    "id": 74, "name": "Phấn rôm ngừa rôm sảy thơm mát Johnson's Baby Blossom (Chai 200g)", "categoryid": 8, "price": 45000, "unit": "chai", "imageKey": "sp74",
+    "brand": "Johnson & Johnson", "description": "Hút ẩm mồ hôi, giữ cho da bé luôn khô ráo mịn màng, hương hoa anh đào dịu nhẹ.", "ingredients": "Talc, Fragrance.", "usage": "Cho phấn ra lòng bàn tay rồi thoa đều lên vùng da có mồ hôi (cổ, nách, bẹn).", "note": "Giữ xa tầm tay trẻ em. Không để phấn bay vào mũi hoặc miệng bé."
+  },
+  { 
+    "id": 75, "name": "Sữa tắm gội toàn thân em bé Pigeon chiết xuất hoa hướng dương (Chai 200ml)", "categoryid": 8, "price": 120000, "unit": "chai", "imageKey": "sp75",
+    "brand": "Pigeon", "description": "Tắm gội 2 trong 1, công thức không cay mắt, làm sạch và dưỡng ẩm da nhạy cảm của bé.", "ingredients": "Chiết xuất Jojoba và Hoa hướng dương tự nhiên.", "usage": "Lấy lượng vừa đủ, tạo bọt, thoa lên tóc và cơ thể bé, sau đó xả sạch với nước.", "note": "Chỉ sử dụng ngoài da, ngưng sử dụng nếu da bị kích ứng."
+  },
+  { 
+    "id": 76, "name": "Kem chống hăm tã làm dịu bảo vệ da bé Sudocrem Healing Cream (Hũ 60g)", "categoryid": 8, "price": 180000, "unit": "hũ", "imageKey": "sp76",
+    "brand": "Sudocrem", "description": "Tạo lớp màng bảo vệ chống thấm nước, làm dịu vết hăm tã, trầy xước, côn trùng cắn.", "ingredients": "Zinc Oxide, Lanolin (Mỡ cừu).", "usage": "Thoa một lớp rất mỏng lên vùng da sạch và khô khi thay tã.", "note": "Tránh để kem dính vào mắt hoặc niêm mạc."
+  },
+  { 
+    "id": 77, "name": "Bình sữa cổ rộng mô phỏng tự nhiên chống sặc Philips Avent Natural (Bình 260ml)", "categoryid": 8, "price": 250000, "unit": "bình", "imageKey": "sp77",
+    "brand": "Philips Avent", "description": "Núm ty siêu mềm mô phỏng bầu ngực mẹ, van chống sặc giúp bé không bị đầy hơi.", "ingredients": "Nhựa PP không chứa BPA, núm ty Silicone an toàn.", "usage": "Tiệt trùng bình trước và sau mỗi lần sử dụng bằng nước sôi hoặc máy tiệt trùng.", "note": "Nên thay núm ty sau mỗi 3 tháng sử dụng."
+  },
+  { 
+    "id": 78, "name": "Dụng cụ hút mũi dây silicon an toàn không đau cho bé Hito (Bộ)", "categoryid": 8, "price": 95000, "unit": "bộ", "imageKey": "sp78",
+    "brand": "Hito", "description": "Hỗ trợ hút dịch nhầy mũi, thông thoáng đường thở cho bé, lực hút điều chỉnh bằng miệng mẹ.", "ingredients": "Silicone y tế cao cấp mềm dẻo.", "usage": "Đặt một đầu vào mũi bé, đầu kia mẹ ngậm và hút nhẹ nhàng.", "note": "Nhỏ 1-2 giọt nước muối sinh lý vào mũi bé trước khi hút để làm loãng dịch."
+  },
+  { 
+    "id": 79, "name": "Miếng dán chườm lạnh giảm sốt nhanh chóng an toàn cho bé Aikido (Hộp 6 miếng)", "categoryid": 8, "price": 35000, "unit": "hộp", "imageKey": "sp79",
+    "brand": "Aikido", "description": "Hạ nhiệt độ nhanh chóng, độ dính chắc, hiệu quả làm mát kéo dài đến 10 giờ.", "ingredients": "Hydrogel polymer chứa nước và chiết xuất bạc hà.", "usage": "Bóc lớp màng trong suốt và dán trực tiếp lên trán hoặc nách bé.", "note": "Không dán lên vùng da tổn thương, mắt hoặc niêm mạc."
+  },
+  { 
+    "id": 80, "name": "Vitamin D3 hỗ trợ hấp thu canxi phát triển xương Baby Ddrops 400 IU (Lọ 2.5ml - 90 giọt)", "categoryid": 8, "price": 220000, "originalPrice": 260000, "unit": "lọ", "imageKey": "sp80",
+    "brand": "Ddrops", "description": "Cung cấp Vitamin D3 thuần khiết nguồn gốc thực vật, phòng ngừa còi xương ở trẻ sơ sinh.", "ingredients": "Vitamin D3 400 IU/giọt, dầu dừa phân đoạn.", "usage": "Nhỏ 1 giọt mỗi ngày lên núm vú mẹ hoặc núm bình sữa cho bé bú.", "note": "Lọ được thiết kế chỉ nhỏ ra 1 giọt/lần. Tránh để đầu nhỏ giọt chạm miệng bé."
+  },
 
-  { "id": 71, "name": "Sữa bột cho mẹ bầu và cho con bú Enfamama A+ vị hương vani (Lon 400g)", "categoryid": 8, "price": 450000, "unit": "lon", "imageKey": "sp71" },
-  { "id": 72, "name": "Sữa bột phát triển toàn diện Meiji số 0 nội địa Nhật (Lon 800g)", "categoryid": 8, "price": 550000, "originalPrice": 620000, "unit": "lon", "imageKey": "sp72" },
-  { "id": 73, "name": "Tã bỉm quần dán sơ sinh Huggies Skin Perfect Tràm Trà (Bịch 72 miếng)", "categoryid": 8, "price": 150000, "unit": "bịch", "imageKey": "sp73" },
-  { "id": 74, "name": "Phấn rôm ngừa rôm sảy thơm mát Johnson's Baby Blossom (Chai 200g)", "categoryid": 8, "price": 45000, "unit": "chai", "imageKey": "sp74" },
-  { "id": 75, "name": "Sữa tắm gội toàn thân em bé Pigeon chiết xuất hoa hướng dương (Chai 200ml)", "categoryid": 8, "price": 120000, "unit": "chai", "imageKey": "sp75" },
-  { "id": 76, "name": "Kem chống hăm tã làm dịu bảo vệ da bé Sudocrem Healing Cream (Hũ 60g)", "categoryid": 8, "price": 180000, "unit": "hũ", "imageKey": "sp76" },
-  { "id": 77, "name": "Bình sữa cổ rộng mô phỏng tự nhiên chống sặc Philips Avent Natural (Bình 260ml)", "categoryid": 8, "price": 250000, "unit": "bình", "imageKey": "sp77" },
-  { "id": 78, "name": "Dụng cụ hút mũi dây silicon an toàn không đau cho bé Hito (Bộ)", "categoryid": 8, "price": 95000, "unit": "bộ", "imageKey": "sp78" },
-  { "id": 79, "name": "Miếng dán chườm lạnh giảm sốt nhanh chóng an toàn cho bé Aikido (Hộp 6 miếng)", "categoryid": 8, "price": 35000, "unit": "hộp", "imageKey": "sp79" },
-  { "id": 80, "name": "Vitamin D3 hỗ trợ hấp thu canxi phát triển xương Baby Ddrops 400 IU (Lọ 2.5ml - 90 giọt)", "categoryid": 8, "price": 220000, "originalPrice": 260000, "unit": "lọ", "imageKey": "sp80" },
+  { 
+    "id": 81, "name": "Dung dịch nhỏ mũi giảm nghẹt mũi sổ mũi Iliadin 0.025% cho bé (Lọ 10ml)", "categoryid": 9, "price": 195000, "unit": "lọ", "imageKey": "sp81",
+    "brand": "Iliadin", "description": "Làm co mạch niêm mạc mũi, giảm nghẹt nhanh, dùng được cho trẻ từ 1 đến 6 tuổi.", "ingredients": "Oxymetazoline hydrochloride 0.025%.", "usage": "Nhỏ 1-2 giọt vào mỗi bên mũi, 2-3 lần/ngày.", "note": "Không dùng liên tục quá 3 ngày để tránh xung huyết mũi dội ngược."
+  },
+  { 
+    "id": 82, "name": "Nước muối sinh lý nhỏ mắt mũi vô trùng Natri Clorid 0.9% (Lọ 10ml)", "categoryid": 9, "price": 5000, "unit": "lọ", "imageKey": "sp82",
+    "brand": "Pharmedic", "description": "Rửa sạch bụi bẩn trong mắt, làm loãng dịch nhầy ở mũi an toàn cho mọi lứa tuổi.", "ingredients": "Natri clorid 0.9%.", "usage": "Nhỏ 1-3 giọt vào mỗi bên mắt hoặc mũi, có thể dùng nhiều lần trong ngày.", "note": "Chai đã mở nắp chỉ nên sử dụng trong vòng 15 ngày."
+  },
+  { 
+    "id": 83, "name": "Nước biển sâu xịt mũi thông thoáng giảm viêm Xisat (Chai 75ml)", "categoryid": 9, "price": 35000, "unit": "chai", "imageKey": "sp83",
+    "brand": "MerAP", "description": "Chiết xuất nước biển sâu tự nhiên chứa nhiều vi khoáng, xịt phun sương mịn làm sạch khoang mũi.", "ingredients": "Nước biển sâu chứa Đồng, Kẽm, Mangan.", "usage": "Xịt 2-3 nhát vào mỗi bên mũi, ngày 2-4 lần.", "note": "Thích hợp dùng hàng ngày để phòng ngừa viêm mũi dị ứng."
+  },
+  { 
+    "id": 84, "name": "Thuốc nhỏ tai giảm đau trị viêm tai giữa Otipax (Lọ 15ml)", "categoryid": 9, "price": 85000, "unit": "lọ", "imageKey": "sp84",
+    "brand": "Biocodex", "description": "Giảm đau nhức tai do viêm tai giữa cấp tính, sát khuẩn tại chỗ màng nhĩ.", "ingredients": "Phenazone, Lidocaine hydrochloride.", "usage": "Nhỏ 4 giọt vào tai bị đau, 2-3 lần/ngày.", "note": "Tuyệt đối không sử dụng nếu bệnh nhân bị thủng màng nhĩ."
+  },
+  { 
+    "id": 85, "name": "Thuốc xịt mũi trị viêm xoang nghẹt mũi cấp tính Coldi-B (Lọ 15ml)", "categoryid": 9, "price": 25000, "unit": "lọ", "imageKey": "sp85",
+    "brand": "Nam Hà", "description": "Trị chứng sổ mũi, nghẹt mũi do cảm cúm, viêm mũi dị ứng và viêm xoang.", "ingredients": "Oxymetazolin, Menthol, Camphor.", "usage": "Xịt 1-2 nhát/lần, 2-3 lần/ngày vào lỗ mũi.", "note": "Thuốc có tinh dầu the mát. Không dùng cho trẻ em dưới 8 tuổi."
+  },
+  { 
+    "id": 86, "name": "Thuốc xịt mũi giảm xung huyết giảm nghẹt mũi nhanh Otrivin 0.1% (Lọ 10ml)", "categoryid": 9, "price": 50000, "unit": "lọ", "imageKey": "sp86",
+    "brand": "GSK", "description": "Tác dụng cực nhanh chỉ sau 2 phút, giúp đường thở thông thoáng kéo dài 12 giờ.", "ingredients": "Xylometazoline hydrochloride 0.1%.", "usage": "Người lớn: Xịt 1 nhát/lần x 1-3 lần/ngày.", "note": "Tránh dùng thuốc này quá 7 ngày liên tục."
+  },
+  { 
+    "id": 87, "name": "Dung dịch xịt rửa tai làm sạch ráy tai RAY-C an toàn cho trẻ (Chai 50ml)", "categoryid": 9, "price": 120000, "originalPrice": 150000, "unit": "chai", "imageKey": "sp87",
+    "brand": "CZ Pharma", "description": "Làm mềm và tự động đào thải ráy tai mà không cần dùng tăm bông, ngăn ngừa nấm tai.", "ingredients": "Nước biển vô trùng, chiết xuất tự nhiên.", "usage": "Nghiêng đầu, xịt 2-3 nhát vào tai, chờ 1 phút rồi nghiêng tai lại để dịch chảy ra.", "note": "Dùng 1-2 lần/tuần để vệ sinh tai định kỳ."
+  },
+  { 
+    "id": 88, "name": "Dung dịch xịt họng sát khuẩn giảm ho viêm họng Betadine Throat Spray (Chai 50ml)", "categoryid": 9, "price": 75000, "unit": "chai", "imageKey": "sp88",
+    "brand": "Mundipharma", "description": "Sát khuẩn cổ họng, tiêu diệt vi khuẩn/virus gây viêm họng, giảm đau rát lập tức.", "ingredients": "Povidon lod 0.45%.", "usage": "Há miệng rộng, xịt trực tiếp vào vùng họng bị viêm cách mỗi 3-4 giờ.", "note": "Không được nuốt số lượng lớn dịch. Không dùng cho người bệnh tuyến giáp."
+  },
+  { 
+    "id": 89, "name": "Viên ngậm ho bổ phế giảm đờm rát họng Bảo Thanh (Vỉ 5 viên)", "categoryid": 9, "price": 35000, "unit": "vỉ", "imageKey": "sp89",
+    "brand": "Hoa Linh", "description": "Bài thuốc đông y kết hợp Ô mai, Tỳ bà diệp, Mật ong giúp trị ho gió, ho khan, khản tiếng.", "ingredients": "Xuyên bối mẫu, Tỳ bà diệp, Mật ong, Bạc hà.", "usage": "Người lớn: Ngậm 1 viên/lần, 4-6 lần/ngày.", "note": "Ngậm nguyên viên thuốc để thuốc tan từ từ trong miệng."
+  },
+  { 
+    "id": 90, "name": "Thuốc xịt mũi thảo dược thông mũi giảm tiết dịch Thái Dương (Chai 20ml)", "categoryid": 9, "price": 45000, "unit": "chai", "imageKey": "sp90",
+    "brand": "Sao Thái Dương", "description": "Xịt mũi từ thảo dược thiên nhiên, chuyên trị hắt hơi, sổ mũi, viêm mũi dị ứng thời tiết.", "ingredients": "Bạc hà, Đại bi, Nghệ, Tinh dầu long não.", "usage": "Xịt 1-2 lần mỗi bên mũi, 3-5 lần/ngày khi có triệu chứng.", "note": "Cảm giác xót nhẹ trong 1-2 giây đầu là phản ứng bình thường của thảo dược."
+  },
 
-  { "id": 81, "name": "Dung dịch nhỏ mũi giảm nghẹt mũi sổ mũi Iliadin 0.025% cho bé (Lọ 10ml)", "categoryid": 9, "price": 195000, "unit": "lọ", "imageKey": "sp81" },
-  { "id": 82, "name": "Nước muối sinh lý nhỏ mắt mũi vô trùng Natri Clorid 0.9% (Lọ 10ml)", "categoryid": 9, "price": 5000, "unit": "lọ", "imageKey": "sp82" },
-  { "id": 83, "name": "Nước biển sâu xịt mũi thông thoáng giảm viêm Xisat (Chai 75ml)", "categoryid": 9, "price": 35000, "unit": "chai", "imageKey": "sp83" },
-  { "id": 84, "name": "Thuốc nhỏ tai giảm đau trị viêm tai giữa Otipax (Lọ 15ml)", "categoryid": 9, "price": 85000, "unit": "lọ", "imageKey": "sp84" },
-  { "id": 85, "name": "Thuốc xịt mũi trị viêm xoang nghẹt mũi cấp tính Coldi-B (Lọ 15ml)", "categoryid": 9, "price": 25000, "unit": "lọ", "imageKey": "sp85" },
-  { "id": 86, "name": "Thuốc xịt mũi giảm xung huyết giảm nghẹt mũi nhanh Otrivin 0.1% (Lọ 10ml)", "categoryid": 9, "price": 50000, "unit": "lọ", "imageKey": "sp86" },
-  { "id": 87, "name": "Dung dịch xịt rửa tai làm sạch ráy tai RAY-C an toàn cho trẻ (Chai 50ml)", "categoryid": 9, "price": 120000, "originalPrice": 150000, "unit": "chai", "imageKey": "sp87" },
-  { "id": 88, "name": "Dung dịch xịt họng sát khuẩn giảm ho viêm họng Betadine Throat Spray (Chai 50ml)", "categoryid": 9, "price": 75000, "unit": "chai", "imageKey": "sp88" },
-  { "id": 89, "name": "Viên ngậm ho bổ phế giảm đờm rát họng Bảo Thanh (Vỉ 5 viên)", "categoryid": 9, "price": 35000, "unit": "vỉ", "imageKey": "sp89" },
-  { "id": 90, "name": "Thuốc xịt mũi thảo dược thông mũi giảm tiết dịch Thái Dương (Chai 20ml)", "categoryid": 9, "price": 45000, "unit": "chai", "imageKey": "sp90" },
-
-  { "id": 91, "name": "Dầu gió xanh trị cảm mạo đau nhức chướng bụng Thiên Thảo (Chai 12ml)", "categoryid": 10, "price": 25000, "unit": "chai", "imageKey": "sp91" },
-  { "id": 92, "name": "Dầu tràm nguyên chất phòng cảm lạnh giữ ấm cơ thể Cung Đình (Chai 50ml)", "categoryid": 10, "price": 85000, "unit": "chai", "imageKey": "sp92" },
-  { "id": 93, "name": "Trà gừng hòa tan làm ấm cơ thể giảm buồn nôn Thái Dương (Hộp 10 gói)", "categoryid": 10, "price": 35000, "unit": "hộp", "imageKey": "sp93" },
-  { "id": 94, "name": "Cao xoa bóp Sao Vàng trị nhức đầu sổ mũi côn trùng đốt (Hộp 3g)", "categoryid": 10, "price": 10000, "unit": "hộp", "imageKey": "sp94" },
-  { "id": 95, "name": "Thuốc bổ não Hoạt huyết dưỡng não tăng tuần hoàn máu Traphaco (Hộp 5 vỉ x 20 viên)", "categoryid": 10, "price": 95000, "originalPrice": 120000, "unit": "hộp", "imageKey": "sp95" },
-  { "id": 96, "name": "Viên uống sáng mắt giảm khô mắt nhức mỏi mắt Traphaco (Hộp 3 vỉ x 10 viên)", "categoryid": 10, "price": 80000, "unit": "hộp", "imageKey": "sp96" },
-  { "id": 97, "name": "Siro ho thảo dược Bổ phế Nam Hà chỉ khái lộ (Chai 125ml)", "categoryid": 10, "price": 35000, "unit": "chai", "imageKey": "sp97" },
-  { "id": 98, "name": "Viên uống tăng cường sinh lý nữ làm đẹp da Sâm Angela Gold (Lọ 60 viên)", "categoryid": 10, "price": 750000, "originalPrice": 850000, "unit": "lọ", "imageKey": "sp98" },
-  { "id": 99, "name": "Trà thanh nhiệt giải độc gan giảm mụn Actiso túi lọc (Hộp 100 túi)", "categoryid": 10, "price": 45000, "unit": "hộp", "imageKey": "sp99" },
-  { "id": 100, "name": "Miếng dán ngải cứu giảm đau nhức xương khớp thảo dược tự nhiên (Hộp 12 miếng)", "categoryid": 10, "price": 55000, "unit": "hộp", "imageKey": "sp100" }
+  { 
+    "id": 91, "name": "Dầu gió xanh trị cảm mạo đau nhức chướng bụng Thiên Thảo (Chai 12ml)", "categoryid": 10, "price": 25000, "unit": "chai", "imageKey": "sp91",
+    "brand": "Thiên Thảo", "description": "Trị các chứng cảm cúm, nhức đầu, sổ mũi, đau bụng, buồn nôn, say tàu xe và côn trùng đốt.", "ingredients": "Menthol, Methyl salicylate, tinh dầu Bạc hà.", "usage": "Thoa lên mũi, trán, ngực, bụng hoặc xoa bóp vùng đau nhức.", "note": "Chỉ dùng ngoài da. Không thoa lên vết thương hở và tránh xa vùng mắt."
+  },
+  { 
+    "id": 92, "name": "Dầu tràm nguyên chất phòng cảm lạnh giữ ấm cơ thể Cung Đình (Chai 50ml)", "categoryid": 10, "price": 85000, "unit": "chai", "imageKey": "sp92",
+    "brand": "Cung Đình Vỹ Dạ", "description": "Dầu tràm Huế tự nhiên, an toàn cho mẹ bầu và em bé, giúp giữ ấm, chống cảm lạnh, giảm sưng ngứa do muỗi.", "ingredients": "100% tinh dầu tràm nguyên chất.", "usage": "Thoa trực tiếp lên da bé, gan bàn chân, hoặc pha vài giọt vào nước tắm.", "note": "Làn da siêu nhạy cảm nên thử một lượng nhỏ trên tay trước khi dùng."
+  },
+  { 
+    "id": 93, "name": "Trà gừng hòa tan làm ấm cơ thể giảm buồn nôn Thái Dương (Hộp 10 gói)", "categoryid": 10, "price": 35000, "unit": "hộp", "imageKey": "sp93",
+    "brand": "Sao Thái Dương", "description": "Giảm nhanh chứng khó tiêu, đầy hơi, lạnh bụng, hỗ trợ tụt huyết áp và say tàu xe.", "ingredients": "Chiết xuất gừng tươi tự nhiên, đường.", "usage": "Pha 1 gói với 100ml nước nóng, khuấy đều và uống khi còn ấm.", "note": "Người bị loét dạ dày tá tràng nên thận trọng khi uống nhiều."
+  },
+  { 
+    "id": 94, "name": "Cao xoa bóp Sao Vàng trị nhức đầu sổ mũi côn trùng đốt (Hộp 3g)", "categoryid": 10, "price": 10000, "unit": "hộp", "imageKey": "sp94",
+    "brand": "OPC", "description": "Sản phẩm truyền thống nổi tiếng, chuyên trị nhức đầu, chóng mặt, cảm cúm và vết muỗi đốt.", "ingredients": "Long não, Menthol, Tinh dầu tràm, Hương nhu.", "usage": "Bôi lượng nhỏ cao lên thái dương, cổ, sau gáy, hoặc vùng da bị ngứa.", "note": "Không bôi trực tiếp vào lỗ mũi trẻ em dưới 2 tuổi."
+  },
+  { 
+    "id": 95, "name": "Thuốc bổ não Hoạt huyết dưỡng não tăng tuần hoàn máu Traphaco (Hộp 5 vỉ x 20 viên)", "categoryid": 10, "price": 95000, "originalPrice": 120000, "unit": "hộp", "imageKey": "sp95",
+    "brand": "Traphaco", "description": "Tăng cường chức năng hệ thần kinh, giảm đau đầu, chóng mặt, mất ngủ và suy giảm trí nhớ.", "ingredients": "Cao đặc rễ Đinh lăng, Cao đặc lá Bạch quả.", "usage": "Người lớn: 2-3 viên/lần, 2-3 lần/ngày.", "note": "Phụ nữ có thai và người đang chảy máu không được dùng."
+  },
+  { 
+    "id": 96, "name": "Viên uống sáng mắt giảm khô mắt nhức mỏi mắt Traphaco (Hộp 3 vỉ x 10 viên)", "categoryid": 10, "price": 80000, "unit": "hộp", "imageKey": "sp96",
+    "brand": "Traphaco", "description": "Bổ sung Vitamin A và Lutein, phục hồi thị lực, giảm triệu chứng mỏi, mờ và khô mắt.", "ingredients": "Dầu gấc, Chondroitin, Lutein, Zeaxanthin.", "usage": "Uống 1-2 viên/ngày sau bữa ăn.", "note": "Thích hợp cho học sinh và người làm việc với máy tính nhiều."
+  },
+  { 
+    "id": 97, "name": "Siro ho thảo dược Bổ phế Nam Hà chỉ khái lộ (Chai 125ml)", "categoryid": 10, "price": 35000, "unit": "chai", "imageKey": "sp97",
+    "brand": "Dược Nam Hà", "description": "Thuốc ho cổ truyền trị ho khan, ho có đờm, ho do viêm họng, viêm phế quản.", "ingredients": "Cát cánh, Tỳ bà diệp, Tang bạch bì, Bạc hà.", "usage": "Người lớn: 15ml/lần x 3 lần/ngày. Trẻ em uống liều nhỏ hơn theo tờ hướng dẫn.", "note": "Không dùng cho bệnh nhân tiểu đường (chứa đường saccharose)."
+  },
+  { 
+    "id": 98, "name": "Viên uống tăng cường sinh lý nữ làm đẹp da Sâm Angela Gold (Lọ 60 viên)", "categoryid": 10, "price": 750000, "originalPrice": 850000, "unit": "lọ", "imageKey": "sp98",
+    "brand": "EcoGreen", "description": "Hỗ trợ cân bằng nội tiết tố nữ, giảm bốc hỏa tiền mãn kinh, bảo vệ cấu trúc nền của da.", "ingredients": "Lepidium Meyenii, P. Leucotomos.", "usage": "Uống 1 viên x 2 lần/ngày, sáng và chiều sau ăn.", "note": "Khuyên dùng liên tục 1-3 tháng để đạt kết quả tốt nhất."
+  },
+  { 
+    "id": 99, "name": "Trà thanh nhiệt giải độc gan giảm mụn Actiso túi lọc (Hộp 100 túi)", "categoryid": 10, "price": 45000, "unit": "hộp", "imageKey": "sp99",
+    "brand": "Ladophar", "description": "Giải độc, làm mát gan, thông mật, lợi tiểu, cải thiện tiêu hóa và giảm mụn nhọt.", "ingredients": "100% lá và hoa Actiso nguyên chất.", "usage": "Nhúng 1-2 túi lọc vào 150ml nước sôi, đợi 3-5 phút và thưởng thức.", "note": "Có thể dùng thay nước uống hàng ngày, ngon hơn khi thêm ít đường phèn/đá."
+  },
+  { 
+    "id": 100, "name": "Miếng dán ngải cứu giảm đau nhức xương khớp thảo dược tự nhiên (Hộp 12 miếng)", "categoryid": 10, "price": 55000, "unit": "hộp", "imageKey": "sp100",
+    "brand": "Thảo dược y học", "description": "Giảm đau mỏi vai gáy, đốt sống cổ, khớp gối nhờ sức nóng tự nhiên thẩm thấu của tinh dầu ngải cứu.", "ingredients": "Chiết xuất ngải cứu, gừng, bạc hà.", "usage": "Dán trực tiếp lên vùng đau nhức, bóc ra sau 8-10 tiếng.", "note": "Nóng ấm rất dễ chịu, tuyệt đối không dán lên vết thương hở."
+  }
 ]

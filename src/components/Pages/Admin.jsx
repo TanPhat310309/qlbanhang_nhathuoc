@@ -352,25 +352,25 @@ const Admin = () => {
             )
           ) : adminSection === 'products' ? (
             // <AdminProduct embedded />
-            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Sản phẩm đang được xây dựng!</h2></div>
+            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Sản phẩm chưa làm nha</h2></div>
           ) : adminSection === 'category' ? (
             // <AdminCategory embedded />
-            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Danh mục đang được xây dựng!</h2></div>
+            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Danh mục chưa làm nha</h2></div>
           ) : adminSection === 'customer' ? (
             // <AdminCustomer embedded />
-            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Khách hàng đang được xây dựng!</h2></div>
+            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Khách hàng chưa làm nha</h2></div>
           ) : adminSection === 'employee' ? (
             // <AdminEmployee embedded />
-            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Nhân viên đang được xây dựng!</h2></div>
+            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Nhân viên chưa làm nha</h2></div>
           ) : adminSection === 'bill' ? (
             // <AdminBill embedded />
-            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Hóa đơn đang được xây dựng!</h2></div>
+            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Hóa đơn chưa làm nha</h2></div>
           ) : adminSection === 'invoiceDetails' ? (
             // <AdminInvoiceDetails embedded />
-            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Chi tiết Hóa đơn đang được xây dựng!</h2></div>
+            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Chi tiết Hóa đơn chưa làm nha</h2></div>
           ) : (
             <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}>
-              <h2>Chức năng {adminSection} đang được xây dựng!</h2>
+              <h2>Chức năng {adminSection} chưa làm nha</h2>
             </div>
           )}
         </main>
