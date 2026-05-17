@@ -5,14 +5,15 @@ import ProductList from './components/Body/ProductList';
 import DetailProduct from './components/Body/DetailProduct';
 import ChatBubble from './components/Body/ChatBubble';
 import Cart from './components/Pages/Cart';
+import LogIn from './components/Pages/LogIn';
+import SignUp from './components/Pages/SignUp';
+import Profile from './components/Pages/Profile';
+import Admin from './components/Pages/Admin';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
   const location = useLocation();
-  const hideChrome = 
-    location.pathname === '/login' ||
-    location.pathname === '/signup' ||
-    location.pathname === '/admin';
+  const hideChrome = location.pathname === '/admin';
    
   return (
     <>
@@ -29,6 +30,10 @@ function App() {
         />
         <Route path="/product/:id" element={<DetailProduct/>} />
         <Route path="/cart" element={<Cart/>} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       {!hideChrome && <Footer />}
     </>

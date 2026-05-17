@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "user": "admin",
+    "pass": "123456",
+    "role": "admin",
+    "name": "Quản trị viên",
+    "email": "admin@example.com"
+  },
+  {
+    "id": 2,
+    "user": "izumi",
+    "pass": "123",
+    "role": "staff",
+    "name": "IVEzumiXiao",
+    "email": "izumi@example.com"
+  },
+  {
+    "id": 3,
+    "user": "khachhang",
+    "pass": "khach123",
+    "role": "customer",
+    "name": "Khách Hàng A"
+  }
+]
