@@ -9,6 +9,7 @@ import LogIn from './components/Pages/LogIn';
 import SignUp from './components/Pages/SignUp';
 import Profile from './components/Pages/Profile';
 import Admin from './components/Pages/Admin';
+import Banner from './components/Body/Banner';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           path="/"
           element={
             <>
+              <Banner />
               <ProductList />
               <ChatBubble />
             </>

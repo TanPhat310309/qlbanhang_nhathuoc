@@ -6,7 +6,7 @@ import logoImage from '../../img/logo.png';
 // import AdminCategory from './Admincategory';
 // import AdminCustomer from './Admincustomer';
 // import AdminEmployee from './Adminemployee';
-// import AdminBill from './Adminbill';
+import AdminBill from './Adminbill';
 // import AdminInvoiceDetails from './Admininvoicedetails';
 
 const jsonBase = import.meta.env.BASE_URL || '/';
@@ -244,7 +244,7 @@ const Admin = () => {
               {userMenuOpen && (
                 <div className="ruang-user_menu">
                   <button onClick={() => navigate('/')}>
-                    <i className="fa-solid fa-house" /> Quay về Trang khách
+                    <i className="fa-solid fa-house" /> Quay về trang chủ
                   </button>
                   <button onClick={() => { setUserMenuOpen(false); setLogoutModalOpen(true); }}>
                     <i className="fa-solid fa-right-from-bracket" /> Đăng xuất
@@ -353,8 +353,7 @@ const Admin = () => {
             // <AdminEmployee embedded />
             <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Nhân viên chưa làm nha</h2></div>
           ) : adminSection === 'bill' ? (
-            // <AdminBill embedded />
-            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Hóa đơn chưa làm nha</h2></div>
+             <AdminBill embedded />
           ) : adminSection === 'invoiceDetails' ? (
             // <AdminInvoiceDetails embedded />
             <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Chi tiết Hóa đơn chưa làm nha</h2></div>
