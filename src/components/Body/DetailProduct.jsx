@@ -11,10 +11,6 @@ const DetailProduct = () => {
   const [product, setProduct] = useState(location.state?.product || null);
   const [isLoading, setIsLoading] = useState(!location.state?.product);
   const [error, setError] = useState(null);
-  
-  // State mới cho số lượng và Tab hiển thị
-  const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState('description');
 
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description');
@@ -77,7 +73,6 @@ const DetailProduct = () => {
         <i className="fas fa-arrow-left"></i> Quay lại
       </button>
 
-      {/* THÔNG TIN CHÍNH */}
       <div className="detail-card">
         <div className="detail-image">
           <img src={product.image || 'https://via.placeholder.com/500x350'} alt={product.name} />

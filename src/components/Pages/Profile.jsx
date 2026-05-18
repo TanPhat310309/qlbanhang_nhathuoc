@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from 'react';
-<<<<<<< HEAD
-=======
-import axios from 'axios';
->>>>>>> f2d2b54cf9bad3606c09b00a3d7cf934428cefd9
 import { useNavigate } from 'react-router-dom';
 import './Profile.css';
 
