@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "user": "izumi",
+    "pass": "123",
+    "role": "admin",
+    "name": "IVEzumiXiao",
+    "email": "duckydaily044@gmail.com"
+  },
+  {
+    "id": 2,
+    "user": "yoshiko0109",
+    "pass": "1234",
+    "role": "customer",
+    "name": "Thanh Nhật"
+  },
+  {
+    "id": 3,
+    "user": "hinayeu",
+    "pass": "1234",
+    "role": "customer",
+    "name": "Cát Tường"
+  },
+  {
+    "id": 4,
+    "user": "dukkiru",
+    "pass": "1234",
+    "role": "customer",
+    "name": "Minh Tân"
+  }
+]

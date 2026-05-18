@@ -1,86 +1,250 @@
-import React, { useState } from 'react';
-import { FaLock, FaEye, FaEyeSlash, FaRegKeyboard } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 import './LogIn.css';
 
-const LogIn = ({ onSwitchTo }) => {
+const LogIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [errors, setErrors] = useState({}); 
+  const [error, setError] = useState('');
+  const [forgotMode, setForgotMode] = useState(false);
+  const [fpUser, setFpUser] = useState('');
+  const [fpNew, setFpNew] = useState('');
+  const [fpConfirm, setFpConfirm] = useState('');
+  const [fpError, setFpError] = useState('');
+  const [fpSuccess, setFpSuccess] = useState('');
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    let newErrors = {};
+    setError('');
 
-    // Kiểm tra dữ liệu trống
-    if (!username.trim()) newErrors.username = 'Vui lòng nhập SĐT hoặc Email *';
-    if (!password) newErrors.password = 'Vui lòng nhập mật khẩu *';
+    const trimmedUser = username.trim();
+    const trimmedPass = password.trim();
 
-    setErrors(newErrors);
+    if (!trimmedUser && !trimmedPass) {
+      setError('Không được để trống tên đăng nhập và mật khẩu');
+      return;
+    }
+    if (!trimmedUser) {
+      setError('Không được để trống tên đăng nhập');
+      return;
+    }
+    if (!trimmedPass) {
+      setError('Không được để trống mật khẩu');
+      return;
+    }
 
-    // Nếu không có lỗi thì mới cho đăng nhập
-    if (Object.keys(newErrors).length === 0) {
-      console.log("Đang đăng nhập với:", username, password);
-      alert("Đăng nhập thành công!");
+    try {
+      const normalizedUsername = trimmedUser.toLowerCase();
+      const normalizedPassword = trimmedPass;
+      const response = await fetch(`/account.json?t=${new Date().getTime()}`, {
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Không thể tải dữ liệu tài khoản');
+      }
+
+      const accounts = await response.json();
+
+      const matchedAccount = accounts.find((acc) => {
+        const accUser = String(acc.user || '').trim().toLowerCase();
+        const accPass = String(acc.pass || '').trim();
+        return accUser === normalizedUsername && accPass === normalizedPassword;
+      });
+
+      if (!matchedAccount) {
+        setError('Sai tài khoản hoặc mật khẩu');
+        return;
+      }
+
+      const publicInfo = { ...matchedAccount };
+      delete publicInfo.pass;
+      localStorage.setItem('currentUser', JSON.stringify(publicInfo));
+
+      window.dispatchEvent(new Event('userUpdated'));
+
+      if (matchedAccount.role === 'admin' || matchedAccount.role === 'staff') {
+          navigate('/admin');
+        } else if (matchedAccount.role === 'customer') {
+          navigate('/');
+        } else {
+          navigate('/'); 
+        }
+    } catch (err) {
+      console.error(err);
+      setError('Đã xảy ra lỗi, vui lòng thử lại sau');
+    }
+  };
+
+  useEffect(() => {
+    setUsername('');
+    setPassword('');
+    setError('');
+  }, []);
+
+  const openForgot = () => {
+    setForgotMode(true);
+    setFpError('');
+    setFpSuccess('');
+    setFpUser(username.trim());
+    setFpNew('');
+    setFpConfirm('');
+  };
+
+  const closeForgot = () => {
+    setForgotMode(false);
+    setFpError('');
+    setFpSuccess('');
+  };
+
+  const handleForgotSubmit = async (e) => {
+    e.preventDefault();
+    setFpError('');
+    setFpSuccess('');
+
+    const u = fpUser.trim();
+    const p1 = fpNew.trim();
+    const p2 = fpConfirm.trim();
+
+    if (!u || !p1) {
+      setFpError('Vui lòng nhập tên đăng nhập và mật khẩu mới');
+      return;
+    }
+    if (p1 !== p2) {
+      setFpError('Mật khẩu xác nhận không khớp');
+      return;
+    }
+    if (p1.length < 3) {
+      setFpError('Mật khẩu mới tối thiểu 3 ký tự');
+      return;
+    }
+
+    try {
+      const { data } = await axios.post('/api/reset-password', {
+        user: u,
+        newPass: p1,
+      });
+      setFpSuccess(data.message || 'Đã đổi mật khẩu. Bạn có thể đăng nhập.');
+      setFpNew('');
+      setFpConfirm('');
+    } catch (err) {
+      const msg = err.response?.data?.error ||
+        (err.code === 'ERR_NETWORK' ||
+          err.response?.status === 404
+          ? 'Chỉ hoạt động khi chạy npm run dev hoặc npm run preview (API ghi file trên server).'
+          : null) ||
+        'Đã xảy ra lỗi, vui lòng thử lại sau';
+      setFpError(msg);
     }
   };
 
   return (
-    <div className="login-wrapper">
+    <div className="login-page">
       <div className="login-card">
-        <h2 className="login-title">Đăng nhập</h2>
+        {forgotMode ? (
+          <>
+            <h2 className="login-title">Quên mật khẩu</h2>
+            <form className="login-form" onSubmit={handleForgotSubmit}>
+              <div className="form-group">
+                <input type="text"
+                  className="form-input"
+                  placeholder="Tên đăng nhập"
+                  value={fpUser}
+                  onChange={(e) => setFpUser(e.target.value)}
+                  autoComplete="username"
+                />
+              </div>
+              <div className="form-group">
+                <input type="password"
+                  className="form-input"
+                  placeholder="Mật khẩu mới"
+                  value={fpNew}
+                  onChange={(e) => setFpNew(e.target.value)}
+                  autoComplete="new-password"
+                />
+              </div>
+              <div className="form-group">
+                <input type="password"
+                  className="form-input"
+                  placeholder="Xác nhận mật khẩu mới"
+                  value={fpConfirm}
+                  onChange={(e) => setFpConfirm(e.target.value)}
+                  autoComplete="new-password"
+                />
+              </div>
+              {fpError && <div className="login-error">{fpError}</div>}
+              {fpSuccess && <div className="login-success">{fpSuccess}</div>}
+              <button type="submit" className="login-button">
+                Đổi mật khẩu
+              </button>
+            </form>
+            <div className="login-footer login-footer--spaced">
+              <button type="button" className="link-button" onClick={closeForgot}>
+                Quay lại đăng nhập
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <h2 className="login-title">Đăng nhập</h2>
 
-        <form onSubmit={handleLogin}>
-          <div className="input-container" style={{ borderColor: errors.username ? 'red' : '' }}>
-            <FaRegKeyboard className="input-icon-left text-blue" />
-            <input
-              type="text"
-              placeholder="Nhập SĐT hoặc Email *"
-              value={username}
-              onChange={(e) => {
-                setUsername(e.target.value);
-                setErrors({ ...errors, username: '' }); // Tự xóa lỗi khi gõ
-              }}
-            />
-          </div>
-          {errors.username && <span className="error-text">{errors.username}</span>}
+            <form className="login-form" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <input type="text"
+                  className="form-input"
+                  placeholder="Tên đăng nhập hoặc Email"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </div>
 
-          <div className="input-container" style={{ borderColor: errors.password ? 'red' : '' }}>
-            <FaLock className="input-icon-left text-blue" />
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Nhập mật khẩu *"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                setErrors({ ...errors, password: '' });
-              }}
-            />
-            <button type="button" className="eye-btn text-blue" onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </button>
-          </div>
-          {errors.password && <span className="error-text">{errors.password}</span>}
+              <div className="form-group">
+                <input type="password"
+                  className="form-input"
+                  placeholder="Mật khẩu"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)} />
+              </div>
 
-          <div className="links-group">
-            <span onClick={() => onSwitchTo('register')} className="link-register" style={{cursor: 'pointer'}}>Chưa có tài khoản?</span>
-            <span onClick={() => onSwitchTo('forgot')} className="link-forgot" style={{cursor: 'pointer'}}>Quên mật khẩu?</span>
-          </div>
+              <div className="forgot-row">
+                <button type="button" className="forgot-link" onClick={openForgot}>
+                  Quên mật khẩu?
+                </button>
+              </div>
 
-          <button type="submit" className="btn-main-login">Đăng nhập</button>
-        </form>
+              {error && <div className="login-error">{error}</div>}
 
-        <div className="divider"><span>Hoặc</span></div>
+              <button type="submit" className="login-button">
+                ĐĂNG NHẬP
+              </button>
+            </form>
 
-        <button type="button" className="btn-social btn-google">
-          <img src="/icons8-google-48.png" alt="Google" className="social-icon-left" />
-          Tiếp tục với Google
-        </button>
+            <div className="login-divider">Hoặc đăng nhập bằng</div>
 
-        <button type="button" className="btn-social btn-facebook">
-          <img src="/icons8-facebook-48.png" alt="Facebook" className="social-icon-left" />
-          Tiếp tục với Facebook
-        </button>
+            <div className="social-login">
+              <button type="button" className="social-btn facebook">
+                <i className="fab fa-facebook"></i>
+                <span>Facebook</span>
+              </button>
+              <button type="button" className="social-btn google">
+                <i className="fab fa-google"></i>
+                <span>Google</span>
+              </button>
+            </div>
+
+            <div className="login-footer">
+              <span>Chưa có tài khoản?</span>
+              <Link to="/signup" className="signup-link">
+                Đăng ký ngay
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

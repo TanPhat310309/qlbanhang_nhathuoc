@@ -1,81 +1,79 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ProductCard.css';
 
 const productsUrl = `${import.meta.env.BASE_URL}products.json`;
 
 const ProductCard = ({ product }) => {
-    const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    const handleBuy = async () => {
-        setIsLoading(true);
-        setError(null);
-        try {
-            const response = await fetch(productsUrl);
-            if (!response.ok) {
-                throw new Error('Không thể tải thông tin sản phẩm');
-            }
+  const handleBuy = async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(productsUrl);
+      if (!response.ok) {
+        throw new Error('Không thể tải thông tin sản phẩm');
+      }
+      const data = await response.json();
+      const matchedProduct = data.find((item) => item.id === product.id);
 
-            const data = await response.json();
-            const matchedProduct = data.find((item) => item.id === product.id);
-            if (!matchedProduct) {
-                throw new Error('Sản phẩm không tồn tại');
-            }
-            
-            navigate(`/product/${product.id}`, {
-                state: { product: { ...matchedProduct, image: product.image } }
-            });
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setIsLoading(false);
-        }
-    };
+      if (!matchedProduct) {
+        throw new Error('Sản phẩm không tồn tại');
+      }
 
-    return (
-        <div className="product-card" onClick={handleBuy} style={{ cursor: 'pointer' }}>
-            <div className="product-image-container">
-                <img 
-                    className="product-image"
-                    src={product.image || 'https://via.placeholder.com/150'} 
-                    alt={product.name} 
-                />
-            </div>
-            
-            <div className="product-badge-section">
-                <span className="product-badge">Khuyên dùng</span>
-            </div>
+      navigate(`/product/${product.id}`, {
+        state: { product: { ...matchedProduct, image: product.image } }
+      });
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-            <h3 className="product-name">{product.name}</h3>
-            
-            <div className="product-pricing">
-                <span style={{ color: '#d35400', fontWeight: 'bold', fontSize: '18px' }}>
-                    {product.price.toLocaleString('vi-VN')} đ
-                </span>
-            </div>
-            
-            <div style={{ padding: '0 15px 15px' }}>
-                <button 
-                    style={{ width: '100%', padding: '10px', backgroundColor: '#0066cc', color: 'white', border: 'none', borderRadius: '5px', fontWeight: 'bold' }}
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        handleBuy();
-                    }}
-                    disabled={isLoading}
-                >
-                    {isLoading ? 'Đang tải...' : 'Xem chi tiết'}
-                </button>
-            </div>
+  return (
+    <div className="product-card">
+      <div className="product-image-container">
+        <img
+          src={product.image || 'https://via.placeholder.com/300x200'}
+          alt={product.name}
+          className="product-image"
+        />
+      </div>
+      <h3 className="product-name">{product.name}</h3>
 
-            {error && (
-                <div style={{ color: 'red', fontSize: '12px', padding: '0 15px 10px', textAlign: 'center' }}>
-                    {error}
-                </div>
-            )}
+      <div className="product-pricing">
+        <div className="original-price-section">
+          {product.originalPrice ? (
+            <>
+              <span className="original-price">{product.originalPrice.toLocaleString('vi-VN')} ₫</span>
+              <span className="discount">
+                -{Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
+              </span>
+            </>
+          ) : (
+            <span>&nbsp;</span>
+          )}
         </div>
-    );
+        <div className="current-price">
+          {product.price ? product.price.toLocaleString('vi-VN') : 0} đ{product.unit ? `/${product.unit}` : ''}
+        </div>
+      </div>
+
+      <button
+        className="compare-button"
+        onClick={handleBuy}
+        disabled={isLoading}
+      >
+        {isLoading ? 'Đang mở...' : 'Mua'}
+      </button>
+
+      {error && <div className="error-text">{error}</div>}
+    </div>
+  );
 };
 
 export default ProductCard;
