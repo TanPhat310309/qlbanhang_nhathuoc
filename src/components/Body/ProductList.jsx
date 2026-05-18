@@ -25,7 +25,7 @@ const ProductList = () => {
         if (!productsRes.ok) {
           throw new Error('Không thể tải dữ liệu sản phẩm');
         }
-        
+
         const data = await productsRes.json();
         const mappedProducts = data.map((item) => ({
           ...item,
@@ -77,7 +77,7 @@ const ProductList = () => {
     return <div className="product-list-container">Lỗi: {error}</div>;
   }
 
- return (
+  return (
     <div className="product-list-container">
       <div className="product-list-layout">
 

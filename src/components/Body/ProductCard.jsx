@@ -70,7 +70,6 @@ const ProductCard = ({ product }) => {
       >
         {isLoading ? 'Đang mở...' : 'Mua'}
       </button>
-
       {error && <div className="error-text">{error}</div>}
     </div>
   );
