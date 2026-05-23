@@ -11,7 +11,6 @@ const STATUS_OPTIONS = [
   { value: 'processing', label: 'Xử lý' },
 ];
 
-// Khởi tạo form trống 
 const emptyForm = () => ({
   id: '',
   customer_id: '',
@@ -72,23 +71,25 @@ function AdminBill({ embedded = false }) {
     return rows.filter((r) => String(r.id) === q);
   }, [rows, appliedSearchId]);
 
-  const persist = useCallback(async (nextList) => {
+const persist = useCallback(async (nextList) => {
     setSaving(true);
     setSaveError('');
     try {
-      await axios.put('/api/bill', nextList, {
-        headers: { 'Content-Type': 'application/json' },
-      });
+      localStorage.setItem('billsDB', JSON.stringify(nextList));
       setRows(nextList);
       setView('list');
       setForm(emptyForm());
       setIsNew(false);
+      const response = await fetch('/api/save/bill', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nextList)
+      });
+
+      if (!response.ok) throw new Error('Không thể lưu vào file bill.json');
+
     } catch (err) {
-      const msg = err.response?.data?.error || 
-        (err.code === 'ERR_NETWORK' || err.response?.status === 404
-          ? 'Chỉ lưu được khi chạy npm run dev hoặc npm run preview (API Vite).'
-          : 'Không lưu được dữ liệu.');
-      setSaveError(msg);
+      setSaveError('Lỗi khi lưu dữ liệu: ' + err.message);
     } finally {
       setSaving(false);
     }
@@ -106,7 +107,7 @@ function AdminBill({ embedded = false }) {
     }
     try {
       const u = JSON.parse(raw);
-      if (u.role !== 'staff') {
+      if (u.role !== 'staff' && u.role !== 'admin') {
         navigate('/');
         return;
       }
@@ -122,9 +123,13 @@ function AdminBill({ embedded = false }) {
       setLoading(true);
       setLoadError('');
       try {
-        const res = await fetch(`${jsonBase}bill.json`);
-        if (!res.ok) throw new Error('Không tải được bill.json');
-        const data = await res.json();
+        let data = JSON.parse(localStorage.getItem('billsDB'));
+        if (!data) {
+          const res = await fetch(`${jsonBase}bill.json?t=${Date.now()}`);
+          if (!res.ok) throw new Error('Không tải được bill.json');
+          data = await res.json();
+          localStorage.setItem('billsDB', JSON.stringify(data));
+        }
         setRows(Array.isArray(data) ? data : []);
       } catch (e) {
         setLoadError(e.message || 'Lỗi tải dữ liệu');
@@ -188,12 +193,12 @@ function AdminBill({ embedded = false }) {
       }
       nextList = rows.map((r) => (String(r.id) === String(form.id) ? built : r));
     }
-    persist(nextList);
+    persist(nextList); // Gọi hàm lưu
   };
 
   const handleDelete = (id) => {
     if (!window.confirm('Xóa hóa đơn này?')) return;
-    persist(rows.filter((r) => String(r.id) !== String(id)));
+    persist(rows.filter((r) => String(r.id) !== String(id))); // Gọi hàm xóa
   };
 
   const applyIdSearch = () => setAppliedSearchId(searchIdInput.trim());

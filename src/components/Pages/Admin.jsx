@@ -2,12 +2,12 @@ import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Admin.css';
 import logoImage from '../../img/logo.png';
-// import AdminProduct from './Adminproduct';
-// import AdminCategory from './Admincategory';
-// import AdminCustomer from './Admincustomer';
-// import AdminEmployee from './Adminemployee';
-import AdminBill from './Adminbill';
-// import AdminInvoiceDetails from './Admininvoicedetails';
+import AdminProduct from './AdminProduct';
+import AdminCategory from './AdminCategory';
+import AdminCustomer from './AdminCustomer';
+import AdminEmployee from './AdminEmployee';
+import AdminBill from './AdminBill';
+import AdminInvoiceDetails from './AdminInvoiceDetails';
 
 const jsonBase = import.meta.env.BASE_URL || '/';
 
@@ -341,22 +341,18 @@ const Admin = () => {
               </>
             )
           ) : adminSection === 'products' ? (
-            // <AdminProduct embedded />
-            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Sản phẩm chưa làm nha</h2></div>
+            <AdminProduct embedded />
           ) : adminSection === 'category' ? (
-            // <AdminCategory embedded />
-            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Danh mục chưa làm nha</h2></div>
+            <AdminCategory embedded />
           ) : adminSection === 'customer' ? (
-            // <AdminCustomer embedded />
-            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Khách hàng chưa làm nha</h2></div>
+            <AdminCustomer embedded />
           ) : adminSection === 'employee' ? (
-            // <AdminEmployee embedded />
-            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Bảng Quản lý Nhân viên chưa làm nha</h2></div>
+            <AdminEmployee embedded />
           ) : adminSection === 'bill' ? (
              <AdminBill embedded />
           ) : adminSection === 'invoiceDetails' ? (
-            // <AdminInvoiceDetails embedded />
-            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}><h2>Chi tiết Hóa đơn chưa làm nha</h2></div>
+            <AdminInvoiceDetails embedded />
+  
           ) : (
             <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}>
               <h2>Chức năng {adminSection} chưa làm nha</h2>
