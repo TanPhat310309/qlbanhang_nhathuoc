@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
-import HeaderGPT_4 from './components/Header/HeaderGPT_4';
+import Header from './components/Header/Header';
 import ProductList from './components/Body/ProductList';
 import DetailProduct from './components/Body/DetailProduct';
 import ChatBubble from './components/Body/ChatBubble';
@@ -18,20 +18,23 @@ function App() {
    
   return (
     <>
-      {!hideChrome && <HeaderGPT_4 />}
+      {!hideChrome && <Header />}
       <Routes>
         <Route
           path="/"
           element={
             <>
               <Banner />
-              <ProductList />
-              <ChatBubble />
+              <main className="site-container">
+                <ProductList />
+                <ChatBubble />
+              </main>
             </>
           }
         />
-        <Route path="/product/:id" element={<DetailProduct/>} />
-        <Route path="/cart" element={<Cart/>} />
+        <Route path="/products" element={<main className="site-container"><ProductList /></main>} />
+        <Route path="/product/:id" element={<DetailProduct />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/profile" element={<Profile />} />
