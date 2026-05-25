@@ -431,7 +431,8 @@
     transform: translateY(0);
   }
 }
-/ .admin-toolbar {
+
+.admin-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
