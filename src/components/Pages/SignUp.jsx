@@ -11,44 +11,47 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError('');
+    e.preventDefault();
+    setError('');
 
-        const trimmedUser = username.trim();
-        const trimmedPass = password.trim();
-        const trimmedConfirm = confirm.trim();
+    const trimmedUser = username.trim();
+    const trimmedPass = password.trim();
+    if (!trimmedUser || !trimmedPass) {
+      setError('Vui lòng nhập đủ tên đăng nhập và mật khẩu');
+      return;
+    }
+    if (trimmedPass !== confirm.trim()) {
+      setError('Mật khẩu xác nhận không khớp');
+      return;
+    }
 
-        if (!trimmedUser || !trimmedPass) {
-            setError('Vui lòng nhập đủ tên đăng nhập và mật khẩu');
-            return;
-        }
+    try {
+      const res = await fetch(`/account.json?t=${Date.now()}`);
+      let accounts = await res.json();
+      if (accounts.find(a => a.user === trimmedUser)) {
+        setError('Tên đăng nhập đã tồn tại!');
+        return;
+      }
+      const newUser = {
+        id: accounts.length + 1,
+        user: trimmedUser,
+        pass: trimmedPass,
+        role: 'customer',
+        name: trimmedUser
+      };
+      accounts.push(newUser);
+      await fetch('/api/save/account', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(accounts)
+      });
 
-        if (trimmedPass !== trimmedConfirm) {
-            setError('Mật khẩu xác nhận không khớp');
-            return;
-        }
-
-        if (trimmedPass.length < 3) {
-            setError('Mật khẩu tối thiểu 3 ký tự');
-            return;
-        }
-
-        try {
-            await axios.post('/api/register', {
-                user: trimmedUser,
-                pass: trimmedPass,
-            });
-            navigate('/login');
-        } catch (err) {
-            const msg =
-                err.response?.data?.error ||
-                (err.response?.status === 404
-                    ? 'Chỉ hoạt động khi chạy npm run dev hoặc npm run preview (API ghi file trên server).'
-                    : null) ||
-                'Đã xảy ra lỗi, vui lòng thử lại sau';
-            setError(msg);
-        }
-    };
+      alert('Đăng ký thành công!');
+      navigate('/login');
+    } catch (err) {
+      setError('Lỗi kết nối server.');
+    }
+  };
 
     return (
         <div className="login-page">

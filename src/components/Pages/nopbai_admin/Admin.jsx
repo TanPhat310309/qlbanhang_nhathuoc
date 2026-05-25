@@ -224,14 +224,6 @@ const Admin = () => {
               <i className="fa-solid fa-id-card" /> Nhân viên
             </button>
           </li>
-          <li>
-            <button
-              className={`ruang-sidebar_link ${adminSection === 'invoiceDetails' ? 'is-active' : ''}`}
-              onClick={() => { setAdminSection('invoiceDetails'); closeMobileNav(); }}
-            >
-              <i className="fa-solid fa-id-card" /> HĐ Chi Tiết
-            </button>
-          </li>
         </ul>
       </aside>
 

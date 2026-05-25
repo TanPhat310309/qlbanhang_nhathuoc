@@ -56,53 +56,42 @@ const Profile = () => {
       return;
     }
 
-    try {
-      const response = await fetch(`/account.json?t=${new Date().getTime()}`);
-      const accounts = await response.json();
-      const matchedAccount = accounts.find(acc => acc.id === user.id);
-      if (!matchedAccount || matchedAccount.pass !== c) {
+     try {
+      const res = await fetch(`/account.json?t=${Date.now()}`);
+      let accounts = await res.json();
+      const idx = accounts.findIndex(acc => acc.id === user.id);
+
+      if (idx === -1 || accounts[idx].pass !== curPass.trim()) {
         setPwErr('Mật khẩu hiện tại không chính xác!');
         return;
       }
-      await new Promise(resolve => setTimeout(resolve, 500));
-
-      setPwMsg('Đã đổi mật khẩu thành công');
+      accounts[idx].pass = newPass.trim();
+      await fetch('/api/save/account', {
+        method: 'POST',
+        body: JSON.stringify(accounts)
+      });
+      setPwMsg('Đổi mật khẩu thành công!');
       clearPasswordForm();
-    } catch (err) {
-      setPwErr('Lỗi kết nối dữ liệu. Vui lòng thử lại sau.');
-    }
-  };
+    } catch (err) { setPwErr('Lỗi!'); }
+  };  
 
-  const handleDeleteAccount = async (e) => {
+const handleDeleteAccount = async (e) => {
     e.preventDefault();
-    setDelErr('');
-    const p = delPass.trim();
-    
-    if (!p) {
-      setDelErr('Vui lòng nhập mật khẩu để xác nhận xóa');
-      return;
-    }
-    if (!window.confirm('Xóa vĩnh viễn tài khoản này? Thao tác không thể hoàn tác.')) {
-      return;
-    }
+    if (!window.confirm('Xóa vĩnh viễn tài khoản?')) return;
 
     try {
-      const response = await fetch(`/account.json?t=${new Date().getTime()}`);
-      const accounts = await response.json();
-      
-      const matchedAccount = accounts.find(acc => acc.id === user.id);
-      if (!matchedAccount || matchedAccount.pass !== p) {
-        setDelErr('Mật khẩu xác nhận không chính xác!');
-        return;
-      }
+      const res = await fetch(`/account.json?t=${Date.now()}`);
+      let accounts = await res.json();
+      const nextList = accounts.filter(acc => acc.id !== user.id);
+      await fetch('/api/save/account', {
+        method: 'POST',
+        body: JSON.stringify(nextList)
+      });
 
-      alert('Tài khoản đã được xóa thành công!');
       localStorage.removeItem('currentUser');
       window.dispatchEvent(new Event('userUpdated'));
       navigate('/', { replace: true });
-    } catch (err) {
-      setDelErr('Lỗi kết nối dữ liệu. Vui lòng thử lại sau.');
-    }
+    } catch (err) { setDelErr('Lỗi!'); }
   };
 
   if (!user) {

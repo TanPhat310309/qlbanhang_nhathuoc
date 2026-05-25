@@ -4,20 +4,25 @@ import './Admin.css';
 
 const jsonBase = import.meta.env.BASE_URL || '/';
 
-const emptyForm = () => ({ id: '', name: '' });
+const emptyForm = () => ({ id: '', name: '', phone: '' });
 
 function rowToForm(c) {
-  return { id: String(c.id), name: c.name ?? '' };
+  return {
+    id: String(c.id),
+    name: c.name ?? '',
+    phone: c.phone ?? '',
+  };
 }
 
 function formToRow(form, nextId) {
   return {
     id: form.id ? Number(form.id) : nextId,
     name: form.name.trim(),
+    phone: form.phone.trim(),
   };
 }
 
-function AdminCategory({ embedded = false }) {
+function AdminCustomer({ embedded = false }) {
   const navigate = useNavigate();
   const [allowed, setAllowed] = useState(embedded);
   const [rows, setRows] = useState([]);
@@ -42,8 +47,8 @@ const persist = useCallback(async (nextList) => {
     setSaveError('');
     try {
       setRows(nextList); 
-      localStorage.setItem('categoriesDB', JSON.stringify(nextList));
-      const response = await fetch('/api/save/category', {
+      localStorage.setItem('customersDB', JSON.stringify(nextList));
+      const response = await fetch('/api/save/customer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(nextList)
@@ -88,12 +93,12 @@ const persist = useCallback(async (nextList) => {
       setLoading(true);
       setLoadError('');
       try {
-        let data = JSON.parse(localStorage.getItem('categoriesDB'));
+        let data = JSON.parse(localStorage.getItem('customersDB'));
         if (!data) {
-          const res = await fetch(`${jsonBase}category.json?t=${Date.now()}`);
-          if (!res.ok) throw new Error('Không tải được category.json');
+          const res = await fetch(`${jsonBase}customer.json?t=${Date.now()}`);
+          if (!res.ok) throw new Error('Không tải được customer.json');
           data = await res.json();
-          localStorage.setItem('categoriesDB', JSON.stringify(data));
+          localStorage.setItem('customersDB', JSON.stringify(data));
         }
         setRows(Array.isArray(data) ? data : []);
       } catch (e) {
@@ -140,7 +145,7 @@ const persist = useCallback(async (nextList) => {
   const handleSubmitForm = (e) => {
     e.preventDefault();
     if (!form.name.trim()) {
-      setSaveError('Vui lòng nhập tên danh mục');
+      setSaveError('Vui lòng nhập tên khách hàng');
       return;
     }
     const nextId = rows.reduce((m, r) => Math.max(m, Number(r.id) || 0), 0) + 1;
@@ -160,7 +165,7 @@ const persist = useCallback(async (nextList) => {
   };
 
   const handleDelete = (id) => {
-    if (!window.confirm('Xóa danh mục này?')) return;
+    if (!window.confirm('Xóa khách hàng này?')) return;
     persist(rows.filter((r) => String(r.id) !== String(id)));
   };
 
@@ -180,12 +185,12 @@ const persist = useCallback(async (nextList) => {
         <>
           <div className="admin-toolbar admin-toolbar--row">
             <button type="button" className="admin-btn" onClick={openCreate} disabled={saving}>
-              + Thêm danh mục
+              + Thêm khách hàng
             </button>
             <div className="admin-toolbar-search">
-              <label htmlFor="admin-category-search-id">Tìm kiếm: </label>
+              <label htmlFor="admin-customer-search-id">Tìm kiếm: </label>
               <input
-                id="admin-category-search-id"
+                id="admin-customer-search-id"
                 type="text"
                 inputMode="numeric"
                 value={searchIdInput}
@@ -212,15 +217,16 @@ const persist = useCallback(async (nextList) => {
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Tên danh mục</th>
+                  <th>Tên</th>
+                  <th>Điện thoại</th>
                   <th />
                 </tr>
               </thead>
               <tbody>
                 {displayedRows.length === 0 ? (
                   <tr>
-                    <td colSpan={3} className="admin-table_empty">
-                      {appliedSearchId.trim() ? `Không có danh mục với ID "${appliedSearchId.trim()}".` : 'Chưa có danh mục.'}
+                    <td colSpan={4} className="admin-table_empty">
+                      {appliedSearchId.trim() ? `Không có khách hàng với ID "${appliedSearchId.trim()}".` : 'Chưa có khách hàng.'}
                     </td>
                   </tr>
                 ) : (
@@ -228,6 +234,7 @@ const persist = useCallback(async (nextList) => {
                     <tr key={r.id}>
                       <td>{r.id}</td>
                       <td>{r.name}</td>
+                      <td>{r.phone}</td>
                       <td>
                         <div className="admin-table_actions">
                           <button type="button" className="admin-table_link" onClick={() => openEdit(r)} disabled={saving}>
@@ -247,7 +254,7 @@ const persist = useCallback(async (nextList) => {
         </>
       ) : (
         <form className="admin-form-card" onSubmit={handleSubmitForm}>
-          <h2>{isNew ? 'Thêm danh mục' : 'Sửa danh mục'}</h2>
+          <h2>{isNew ? 'Thêm khách hàng' : 'Sửa khách hàng'}</h2>
           <div className="admin-form-grid">
             {!isNew && (
               <label>
@@ -256,11 +263,19 @@ const persist = useCallback(async (nextList) => {
               </label>
             )}
             <label className="admin-form-grid_full">
-              Tên danh mục
+              Tên
               <input
                 value={form.name}
                 onChange={(e) => handleFormChange('name', e.target.value)}
                 required
+              />
+            </label>
+            <label className="admin-form-grid_full">
+              Điện thoại
+              <input
+                value={form.phone}
+                onChange={(e) => handleFormChange('phone', e.target.value)}
+                placeholder="09000000"
               />
             </label>
           </div>
@@ -283,7 +298,7 @@ const persist = useCallback(async (nextList) => {
   return (
     <div className="admin-page">
       <header className="admin-topbar">
-        <h1 className="admin-topbar_title">Quản trị danh mục</h1>
+        <h1 className="admin-topbar_title">Quản trị khách hàng</h1>
         <div className="admin-topbar_actions">
           <button type="button" className="admin-topbar_btn" onClick={goHome}>
             Trang chủ
@@ -298,4 +313,4 @@ const persist = useCallback(async (nextList) => {
   );
 }
 
-export default AdminCategory;
+export default AdminCustomer;
