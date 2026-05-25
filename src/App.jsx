@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import ProductList from './components/Body/ProductList';
 import DetailProduct from './components/Body/DetailProduct';
 import ChatBubble from './components/Body/ChatBubble';
+import SnowEffect from './components/Body/SnowEffect';
 import Cart from './components/Pages/Cart';
 import LogIn from './components/Pages/LogIn';
 import SignUp from './components/Pages/SignUp';
@@ -28,6 +29,7 @@ function App() {
               <main className="site-container">
                 <ProductList />
                 <ChatBubble />
+                <SnowEffect />
               </main>
             </>
           }

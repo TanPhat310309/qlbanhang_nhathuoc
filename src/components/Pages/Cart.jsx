@@ -214,7 +214,6 @@ const Cart = () => {
       <h1 className="cart-title">Giỏ hàng của bạn</h1>
 
       <div className="cart-layout">
-        {/* Danh sách sản phẩm */}
         <div className="cart-items-section">
           {cartItems.map(item => (
             <div key={item.id} className="cart-item-card">
@@ -254,7 +253,6 @@ const Cart = () => {
           ))}
         </div>
 
-        {/* Summary */}
         <div className="cart-summary-section">
           <div className="summary-card">
             <h3>Tóm tắt đơn hàng</h3>
@@ -274,14 +272,12 @@ const Cart = () => {
               </span>
             </div>
 
-            {/* ---- VOUCHER SECTION ---- */}
             <div className="voucher-section">
               <div className="voucher-section-title">
                 <i className="fas fa-ticket-alt"></i>
                 <span>Mã giảm giá</span>
               </div>
 
-              {/* Dropdown chọn voucher */}
               {!selectedVoucher && (
                 <div className="voucher-dropdown-wrap" ref={dropdownRef}>
                   <button
@@ -339,7 +335,6 @@ const Cart = () => {
                 </div>
               )}
 
-              {/* Voucher đã chọn */}
               {selectedVoucher && (
                 <div
                   className="voucher-selected"
@@ -361,7 +356,6 @@ const Cart = () => {
                 </div>
               )}
 
-              {/* Nhập mã thủ công */}
               {!selectedVoucher && (
                 <div className="voucher-manual">
                   <div className="voucher-manual-row">
@@ -392,7 +386,6 @@ const Cart = () => {
                 </div>
               )}
             </div>
-            {/* ---- END VOUCHER ---- */}
 
             <div className="summary-divider"></div>
 
