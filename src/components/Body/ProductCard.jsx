@@ -18,14 +18,14 @@ const ProductCard = ({ product }) => {
         throw new Error('Không thể tải thông tin sản phẩm');
       }
       const data = await response.json();
-      const matchedProduct = data.find((item) => item.id === product.id);
+      const matchedProduct = data.find(item => item.id === product.id);
 
       if (!matchedProduct) {
         throw new Error('Sản phẩm không tồn tại');
       }
 
       navigate(`/product/${product.id}`, {
-        state: { product: { ...matchedProduct, image: product.image } }
+        state: { product: { ...matchedProduct, image: product.image } },
       });
     } catch (err) {
       setError(err.message);
@@ -49,9 +49,17 @@ const ProductCard = ({ product }) => {
         <div className="original-price-section">
           {product.originalPrice ? (
             <>
-              <span className="original-price">{product.originalPrice.toLocaleString('vi-VN')} ₫</span>
+              <span className="original-price">
+                {product.originalPrice.toLocaleString('vi-VN')} ₫
+              </span>
               <span className="discount">
-                -{Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
+                -
+                {Math.round(
+                  ((product.originalPrice - product.price) /
+                    product.originalPrice) *
+                    100
+                )}
+                %
               </span>
             </>
           ) : (
@@ -59,7 +67,8 @@ const ProductCard = ({ product }) => {
           )}
         </div>
         <div className="current-price">
-          {product.price ? product.price.toLocaleString('vi-VN') : 0} đ{product.unit ? `/${product.unit}` : ''}
+          {product.price ? product.price.toLocaleString('vi-VN') : 0} đ
+          {product.unit ? `/${product.unit}` : ''}
         </div>
       </div>
 

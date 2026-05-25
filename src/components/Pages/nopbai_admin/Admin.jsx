@@ -27,7 +27,9 @@ const BILL_STATUS_MAP = {
 };
 
 function billStatusFromJson(statusRaw) {
-  const key = String(statusRaw || '').trim().toLowerCase();
+  const key = String(statusRaw || '')
+    .trim()
+    .toLowerCase();
   if (BILL_STATUS_MAP[key]) return { key, ...BILL_STATUS_MAP[key] };
   return {
     key: 'unknown',
@@ -63,10 +65,10 @@ const Admin = () => {
       const u = JSON.parse(raw);
       if (u.role !== 'staff' && u.role !== 'admin') {
         alert('Bạn không có quyền truy cập vào trang quản trị');
-        navigate('/'); 
+        navigate('/');
         return;
       }
-      
+
       setAllowed(true);
     } catch {
       navigate('/login');
@@ -94,7 +96,6 @@ const Admin = () => {
         if (cuRes.ok) setCustomers(await cuRes.json());
         if (eRes.ok) setEmployees(await eRes.json());
         if (iRes.ok) setInvoiceDetails(await iRes.json());
-        
       } catch (e) {
         setLoadError('Lỗi tải dữ liệu. Vui lòng kiểm tra lại các file JSON.');
       } finally {
@@ -106,7 +107,7 @@ const Admin = () => {
 
   useEffect(() => {
     if (!userMenuOpen) return;
-    const handler = (e) => {
+    const handler = e => {
       if (userMenuRef.current && !userMenuRef.current.contains(e.target)) {
         setUserMenuOpen(false);
       }
@@ -128,9 +129,15 @@ const Admin = () => {
 
   const stats = useMemo(() => {
     const total = products.length || 0;
-    const soldSum = invoiceDetails.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
+    const soldSum = invoiceDetails.reduce(
+      (sum, item) => sum + Number(item.quantity || 0),
+      0
+    );
     const catCount = categories.length || 0;
-    const revenue = bills.reduce((sum, bill) => sum + Number(bill.total || 0), 0);
+    const revenue = bills.reduce(
+      (sum, bill) => sum + Number(bill.total || 0),
+      0
+    );
     const avgBill = bills.length ? revenue / bills.length : 0;
     return { total, soldSum, catCount, revenue, avgBill };
   }, [products, categories, invoiceDetails, bills]);
@@ -156,19 +163,22 @@ const Admin = () => {
       />
 
       <aside className={`ruang-sidebar ${mobileSidebarOpen ? 'is-open' : ''}`}>
-        <div className="ruang-sidebar_brand" style={{ justifyContent: 'center', padding: '10px 0' }}>
-          <img 
-            src={logoImage} 
-            alt="IzumiPharmacy Logo" 
-            style={{ 
+        <div
+          className="ruang-sidebar_brand"
+          style={{ justifyContent: 'center', padding: '10px 0' }}
+        >
+          <img
+            src={logoImage}
+            alt="IzumiPharmacy Logo"
+            style={{
               width: '90%',
               maxHeight: '60px',
               objectFit: 'contain',
               filter: 'brightness(0) invert(1)',
               cursor: 'pointer',
               display: 'block',
-              margin: '0 auto'
-            }} 
+              margin: '0 auto',
+            }}
             title="Về Trang Chủ"
             onClick={() => navigate('/')}
           />
@@ -179,7 +189,10 @@ const Admin = () => {
           <li>
             <button
               className={`ruang-sidebar_link ${adminSection === 'dashboard' ? 'is-active' : ''}`}
-              onClick={() => { setAdminSection('dashboard'); closeMobileNav(); }}
+              onClick={() => {
+                setAdminSection('dashboard');
+                closeMobileNav();
+              }}
             >
               <i className="fa-solid fa-chart-pie" /> Tổng quan
             </button>
@@ -187,7 +200,10 @@ const Admin = () => {
           <li>
             <button
               className={`ruang-sidebar_link ${adminSection === 'products' ? 'is-active' : ''}`}
-              onClick={() => { setAdminSection('products'); closeMobileNav(); }}
+              onClick={() => {
+                setAdminSection('products');
+                closeMobileNav();
+              }}
             >
               <i className="fa-solid fa-pills" /> Sản phẩm
             </button>
@@ -195,7 +211,10 @@ const Admin = () => {
           <li>
             <button
               className={`ruang-sidebar_link ${adminSection === 'category' ? 'is-active' : ''}`}
-              onClick={() => { setAdminSection('category'); closeMobileNav(); }}
+              onClick={() => {
+                setAdminSection('category');
+                closeMobileNav();
+              }}
             >
               <i className="fa-solid fa-tags" /> Danh mục
             </button>
@@ -203,7 +222,10 @@ const Admin = () => {
           <li>
             <button
               className={`ruang-sidebar_link ${adminSection === 'bill' ? 'is-active' : ''}`}
-              onClick={() => { setAdminSection('bill'); closeMobileNav(); }}
+              onClick={() => {
+                setAdminSection('bill');
+                closeMobileNav();
+              }}
             >
               <i className="fa-solid fa-file-invoice-dollar" /> Hóa đơn
             </button>
@@ -211,7 +233,10 @@ const Admin = () => {
           <li>
             <button
               className={`ruang-sidebar_link ${adminSection === 'customer' ? 'is-active' : ''}`}
-              onClick={() => { setAdminSection('customer'); closeMobileNav(); }}
+              onClick={() => {
+                setAdminSection('customer');
+                closeMobileNav();
+              }}
             >
               <i className="fa-solid fa-users" /> Khách hàng
             </button>
@@ -219,7 +244,10 @@ const Admin = () => {
           <li>
             <button
               className={`ruang-sidebar_link ${adminSection === 'employee' ? 'is-active' : ''}`}
-              onClick={() => { setAdminSection('employee'); closeMobileNav(); }}
+              onClick={() => {
+                setAdminSection('employee');
+                closeMobileNav();
+              }}
             >
               <i className="fa-solid fa-id-card" /> Nhân viên
             </button>
@@ -229,24 +257,40 @@ const Admin = () => {
 
       <div className="ruang-shell">
         <header className="ruang-topbar">
-          <button className="ruang-topbar_toggle" onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}>
+          <button
+            className="ruang-topbar_toggle"
+            onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
+          >
             <i className="fa-solid fa-bars" />
           </button>
           <div className="ruang-topbar_right">
             <div className="ruang-user" ref={userMenuRef}>
-              <button className="ruang-user_toggle" onClick={() => setUserMenuOpen(!userMenuOpen)}>
+              <button
+                className="ruang-user_toggle"
+                onClick={() => setUserMenuOpen(!userMenuOpen)}
+              >
                 <span className="ruang-user_avatar">
                   <i className="fas fa-user-md"></i>
                 </span>
-                <span className="ruang-user_name">Xin chào, {staffDisplayName}</span>
-                <i className="fa-solid fa-chevron-down" style={{ fontSize: '0.65rem', opacity: 0.6 }} />
+                <span className="ruang-user_name">
+                  Xin chào, {staffDisplayName}
+                </span>
+                <i
+                  className="fa-solid fa-chevron-down"
+                  style={{ fontSize: '0.65rem', opacity: 0.6 }}
+                />
               </button>
               {userMenuOpen && (
                 <div className="ruang-user_menu">
                   <button onClick={() => navigate('/')}>
                     <i className="fa-solid fa-house" /> Quay về trang chủ
                   </button>
-                  <button onClick={() => { setUserMenuOpen(false); setLogoutModalOpen(true); }}>
+                  <button
+                    onClick={() => {
+                      setUserMenuOpen(false);
+                      setLogoutModalOpen(true);
+                    }}
+                  >
                     <i className="fa-solid fa-right-from-bracket" /> Đăng xuất
                   </button>
                 </div>
@@ -265,8 +309,12 @@ const Admin = () => {
                   <div className="ruang-stat-card">
                     <div className="ruang-stat-card_body">
                       <div className="ruang-stat-card_label">Doanh thu</div>
-                      <div className="ruang-stat-card_value">{fmtCurrency(stats.revenue)}</div>
-                      <div className="ruang-stat-card_badge">{bills.length} hóa đơn</div>
+                      <div className="ruang-stat-card_value">
+                        {fmtCurrency(stats.revenue)}
+                      </div>
+                      <div className="ruang-stat-card_badge">
+                        {bills.length} hóa đơn
+                      </div>
                     </div>
                     <div className="ruang-stat-card_icon">
                       <i className="fa-solid fa-wallet" />
@@ -274,8 +322,12 @@ const Admin = () => {
                   </div>
                   <div className="ruang-stat-card ruang-stat-card--green">
                     <div className="ruang-stat-card_body">
-                      <div className="ruang-stat-card_label">Sản phẩm hiện có</div>
-                      <div className="ruang-stat-card_value">{fmtNumber(stats.total)}</div>
+                      <div className="ruang-stat-card_label">
+                        Sản phẩm hiện có
+                      </div>
+                      <div className="ruang-stat-card_value">
+                        {fmtNumber(stats.total)}
+                      </div>
                       <div className="ruang-stat-card_badge">Mặt hàng</div>
                     </div>
                     <div className="ruang-stat-card_icon">
@@ -285,7 +337,9 @@ const Admin = () => {
                   <div className="ruang-stat-card ruang-stat-card--cyan">
                     <div className="ruang-stat-card_body">
                       <div className="ruang-stat-card_label">Khách hàng</div>
-                      <div className="ruang-stat-card_value">{fmtNumber(customers.length)}</div>
+                      <div className="ruang-stat-card_value">
+                        {fmtNumber(customers.length)}
+                      </div>
                       <div className="ruang-stat-card_badge">Đã đăng ký</div>
                     </div>
                     <div className="ruang-stat-card_icon">
@@ -294,8 +348,12 @@ const Admin = () => {
                   </div>
                   <div className="ruang-stat-card ruang-stat-card--amber">
                     <div className="ruang-stat-card_body">
-                      <div className="ruang-stat-card_label">Sản phẩm đã bán</div>
-                      <div className="ruang-stat-card_value">{fmtNumber(stats.soldSum)}</div>
+                      <div className="ruang-stat-card_label">
+                        Sản phẩm đã bán
+                      </div>
+                      <div className="ruang-stat-card_value">
+                        {fmtNumber(stats.soldSum)}
+                      </div>
                       <div className="ruang-stat-card_badge">Đơn vị</div>
                     </div>
                     <div className="ruang-stat-card_icon">
@@ -320,19 +378,27 @@ const Admin = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {bills.slice(0, 5).map((row) => (
+                          {bills.slice(0, 5).map(row => (
                             <tr key={row.id}>
                               <td>#{row.id}</td>
                               <td>{row.date}</td>
                               <td>{fmtCurrency(row.total)}</td>
                               <td>
-                                <span className={`ruang-status ruang-status--${billStatusFromJson(row.status).cls}`}>
+                                <span
+                                  className={`ruang-status ruang-status--${billStatusFromJson(row.status).cls}`}
+                                >
                                   {billStatusFromJson(row.status).label}
                                 </span>
                               </td>
                             </tr>
                           ))}
-                          {bills.length === 0 && <tr><td colSpan="4" style={{textAlign: 'center'}}>Chưa có dữ liệu hóa đơn</td></tr>}
+                          {bills.length === 0 && (
+                            <tr>
+                              <td colSpan="4" style={{ textAlign: 'center' }}>
+                                Chưa có dữ liệu hóa đơn
+                              </td>
+                            </tr>
+                          )}
                         </tbody>
                       </table>
                     </div>
@@ -349,12 +415,14 @@ const Admin = () => {
           ) : adminSection === 'employee' ? (
             <AdminEmployee embedded />
           ) : adminSection === 'bill' ? (
-             <AdminBill embedded />
+            <AdminBill embedded />
           ) : adminSection === 'invoiceDetails' ? (
             <AdminInvoiceDetails embedded />
-  
           ) : (
-            <div className="ruang-card" style={{ padding: '20px', textAlign: 'center' }}>
+            <div
+              className="ruang-card"
+              style={{ padding: '20px', textAlign: 'center' }}
+            >
               <h2>Chức năng {adminSection} chưa làm nha</h2>
             </div>
           )}
@@ -370,12 +438,29 @@ const Admin = () => {
           <div className="ruang-modal">
             <div className="ruang-modal_header">
               <h5>Xác nhận đăng xuất</h5>
-              <button className="ruang-modal_close" onClick={() => setLogoutModalOpen(false)}>X</button>
+              <button
+                className="ruang-modal_close"
+                onClick={() => setLogoutModalOpen(false)}
+              >
+                X
+              </button>
             </div>
-            <div className="ruang-modal_body">Bạn có chắc chắn muốn đăng xuất khỏi hệ thống quản trị?</div>
+            <div className="ruang-modal_body">
+              Bạn có chắc chắn muốn đăng xuất khỏi hệ thống quản trị?
+            </div>
             <div className="ruang-modal_footer">
-              <button className="ruang-modal_btn" onClick={() => setLogoutModalOpen(false)}>Hủy</button>
-              <button className="ruang-modal_btn ruang-modal_btn--danger" onClick={logout}>Đăng xuất</button>
+              <button
+                className="ruang-modal_btn"
+                onClick={() => setLogoutModalOpen(false)}
+              >
+                Hủy
+              </button>
+              <button
+                className="ruang-modal_btn ruang-modal_btn--danger"
+                onClick={logout}
+              >
+                Đăng xuất
+              </button>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ const Banner = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
+      setCurrentIndex(prevIndex => (prevIndex + 1) % banners.length);
     }, 5000);
     return () => clearInterval(interval);
   }, [banners.length]);

@@ -4,7 +4,6 @@ import './Admin.css';
 
 const jsonBase = import.meta.env.BASE_URL || '/';
 
-// Khởi tạo form trống chuẩn cho sản phẩm nhà thuốc
 const emptyForm = () => ({
   id: '',
   name: '',
@@ -17,7 +16,7 @@ const emptyForm = () => ({
   description: '',
   ingredients: '',
   usage: '',
-  note: ''
+  note: '',
 });
 
 function productToForm(p) {
@@ -33,7 +32,7 @@ function productToForm(p) {
     description: p.description ?? '',
     ingredients: p.ingredients ?? '',
     usage: p.usage ?? '',
-    note: p.note ?? ''
+    note: p.note ?? '',
   };
 }
 
@@ -48,12 +47,12 @@ function formToProduct(form, nextId) {
     description: form.description.trim(),
     ingredients: form.ingredients.trim(),
     usage: form.usage.trim(),
-    note: form.note.trim()
+    note: form.note.trim(),
   };
-  
+
   if (form.categoryid !== '') o.categoryid = Number(form.categoryid);
   if (form.originalPrice !== '') o.originalPrice = Number(form.originalPrice);
-  
+
   return o;
 }
 
@@ -74,11 +73,11 @@ function AdminProduct({ embedded = false }) {
 
   const displayedProducts = useMemo(() => {
     const q = appliedSearchId.trim();
-    if (!q) return products; 
-    return products.filter((p) => String(p.id) === q);
+    if (!q) return products;
+    return products.filter(p => String(p.id) === q);
   }, [products, appliedSearchId]);
 
-const persistProducts = useCallback(async (nextList) => {
+  const persistProducts = useCallback(async nextList => {
     setSaving(true);
     setSaveError('');
     try {
@@ -87,7 +86,7 @@ const persistProducts = useCallback(async (nextList) => {
       await fetch('/api/save/products', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(nextList) 
+        body: JSON.stringify(nextList),
       });
       setView('list');
       setForm(emptyForm());
@@ -140,8 +139,8 @@ const persistProducts = useCallback(async (nextList) => {
         if (!cdata) {
           const cRes = await fetch(`${jsonBase}category.json?t=${Date.now()}`);
           if (cRes.ok) {
-             cdata = await cRes.json();
-             localStorage.setItem('categoriesDB', JSON.stringify(cdata));
+            cdata = await cRes.json();
+            localStorage.setItem('categoriesDB', JSON.stringify(cdata));
           }
         }
         setCategories(Array.isArray(cdata) ? cdata : []);
@@ -168,7 +167,7 @@ const persistProducts = useCallback(async (nextList) => {
     setSaveError('');
   };
 
-  const openEdit = (p) => {
+  const openEdit = p => {
     setIsNew(false);
     setForm(productToForm(p));
     setView('form');
@@ -183,34 +182,37 @@ const persistProducts = useCallback(async (nextList) => {
   };
 
   const handleFormChange = (field, value) => {
-    setForm((f) => ({ ...f, [field]: value }));
+    setForm(f => ({ ...f, [field]: value }));
   };
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = e => {
     e.preventDefault();
     if (!form.name.trim()) {
       setSaveError('Vui lòng nhập tên sản phẩm');
       return;
     }
-    const nextId = products.reduce((m, p) => Math.max(m, Number(p.id) || 0), 0) + 1;
+    const nextId =
+      products.reduce((m, p) => Math.max(m, Number(p.id) || 0), 0) + 1;
     const built = formToProduct(form, nextId);
     let nextList;
     if (isNew) {
       nextList = [...products, built];
     } else {
-      const idx = products.findIndex((p) => String(p.id) === String(form.id));
+      const idx = products.findIndex(p => String(p.id) === String(form.id));
       if (idx === -1) {
         setSaveError('Không tìm thấy sản phẩm để cập nhật');
         return;
       }
-      nextList = products.map((p) => (String(p.id) === String(form.id) ? built : p));
+      nextList = products.map(p =>
+        String(p.id) === String(form.id) ? built : p
+      );
     }
     persistProducts(nextList);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = id => {
     if (!window.confirm('Xóa sản phẩm này?')) return;
-    const nextList = products.filter((p) => String(p.id) !== String(id));
+    const nextList = products.filter(p => String(p.id) !== String(id));
     persistProducts(nextList);
   };
 
@@ -222,14 +224,23 @@ const persistProducts = useCallback(async (nextList) => {
 
   const bodyContent = (
     <>
-      {loadError && <div className="admin-msg admin-msg--error">{loadError}</div>}
-      {saveError && <div className="admin-msg admin-msg--error">{saveError}</div>}
+      {loadError && (
+        <div className="admin-msg admin-msg--error">{loadError}</div>
+      )}
+      {saveError && (
+        <div className="admin-msg admin-msg--error">{saveError}</div>
+      )}
       {loading ? (
         <p>Đang tải...</p>
       ) : view === 'list' ? (
         <>
           <div className="admin-toolbar admin-toolbar--row">
-            <button type="button" className="admin-btn" onClick={openCreate} disabled={saving}>
+            <button
+              type="button"
+              className="admin-btn"
+              onClick={openCreate}
+              disabled={saving}
+            >
               + Thêm sản phẩm
             </button>
             <div className="admin-toolbar-search">
@@ -239,19 +250,29 @@ const persistProducts = useCallback(async (nextList) => {
                 type="text"
                 inputMode="numeric"
                 value={searchIdInput}
-                onChange={(e) => setSearchIdInput(e.target.value)}
-                onKeyDown={(e) => {
+                onChange={e => setSearchIdInput(e.target.value)}
+                onKeyDown={e => {
                   if (e.key === 'Enter') {
                     e.preventDefault();
                     applyIdSearch();
                   }
                 }}
               />
-              <button type="button" className="admin-btn" onClick={applyIdSearch} disabled={saving}>
+              <button
+                type="button"
+                className="admin-btn"
+                onClick={applyIdSearch}
+                disabled={saving}
+              >
                 Tìm
               </button>
               {appliedSearchId.trim() !== '' && (
-                <button type="button" className="admin-btn admin-btn--ghost" onClick={clearIdSearch} disabled={saving}>
+                <button
+                  type="button"
+                  className="admin-btn admin-btn--ghost"
+                  onClick={clearIdSearch}
+                  disabled={saving}
+                >
                   Hiện tất cả
                 </button>
               )}
@@ -280,15 +301,24 @@ const persistProducts = useCallback(async (nextList) => {
                     </td>
                   </tr>
                 ) : (
-                  displayedProducts.map((p) => (
+                  displayedProducts.map(p => (
                     <tr key={p.id}>
                       <td>{p.id}</td>
-                      <td style={{ maxWidth: '300px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      <td
+                        style={{
+                          maxWidth: '300px',
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                        }}
+                      >
                         {p.name}
                       </td>
                       <td>
                         {p.categoryid != null
-                          ? categories.find((c) => Number(c.id) === Number(p.categoryid))?.name ?? p.categoryid
+                          ? (categories.find(
+                              c => Number(c.id) === Number(p.categoryid)
+                            )?.name ?? p.categoryid)
                           : ''}
                       </td>
                       <td>{p.brand}</td>
@@ -296,10 +326,20 @@ const persistProducts = useCallback(async (nextList) => {
                       <td>{p.unit}</td>
                       <td>
                         <div className="admin-table_actions">
-                          <button type="button" className="admin-table_link" onClick={() => openEdit(p)} disabled={saving}>
+                          <button
+                            type="button"
+                            className="admin-table_link"
+                            onClick={() => openEdit(p)}
+                            disabled={saving}
+                          >
                             Sửa
                           </button>
-                          <button type="button" className="admin-table_link admin-table_link--danger" onClick={() => handleDelete(p.id)} disabled={saving}>
+                          <button
+                            type="button"
+                            className="admin-table_link admin-table_link--danger"
+                            onClick={() => handleDelete(p.id)}
+                            disabled={saving}
+                          >
                             Xóa
                           </button>
                         </div>
@@ -312,7 +352,11 @@ const persistProducts = useCallback(async (nextList) => {
           </div>
         </>
       ) : (
-        <form className="admin-form-card" onSubmit={handleSubmitForm} style={{ maxWidth: '900px' }}>
+        <form
+          className="admin-form-card"
+          onSubmit={handleSubmitForm}
+          style={{ maxWidth: '900px' }}
+        >
           <h2>{isNew ? 'Thêm sản phẩm' : 'Sửa sản phẩm'}</h2>
           <div className="admin-form-grid">
             {!isNew && (
@@ -321,17 +365,25 @@ const persistProducts = useCallback(async (nextList) => {
                 <input value={form.id} readOnly />
               </label>
             )}
-            
+
             <label className="admin-form-grid_full">
               Tên thuốc / Sản phẩm
-              <input value={form.name} onChange={(e) => handleFormChange('name', e.target.value)} required />
+              <input
+                value={form.name}
+                onChange={e => handleFormChange('name', e.target.value)}
+                required
+              />
             </label>
 
             <label>
               Danh mục
-              <select value={form.categoryid} onChange={(e) => handleFormChange('categoryid', e.target.value)} required>
+              <select
+                value={form.categoryid}
+                onChange={e => handleFormChange('categoryid', e.target.value)}
+                required
+              >
                 <option value="">- Chọn danh mục -</option>
-                {categories.map((c) => (
+                {categories.map(c => (
                   <option key={c.id} value={String(c.id)}>
                     {c.name}
                   </option>
@@ -341,75 +393,125 @@ const persistProducts = useCallback(async (nextList) => {
 
             <label>
               Thương hiệu (Brand)
-              <input value={form.brand} onChange={(e) => handleFormChange('brand', e.target.value)} />
+              <input
+                value={form.brand}
+                onChange={e => handleFormChange('brand', e.target.value)}
+              />
             </label>
 
             <label>
               Giá bán (VNĐ)
-              <input type="number" value={form.price} onChange={(e) => handleFormChange('price', e.target.value)} required />
+              <input
+                type="number"
+                value={form.price}
+                onChange={e => handleFormChange('price', e.target.value)}
+                required
+              />
             </label>
 
             <label>
               Giá gốc (Tùy chọn)
-              <input type="number" value={form.originalPrice} onChange={(e) => handleFormChange('originalPrice', e.target.value)} />
+              <input
+                type="number"
+                value={form.originalPrice}
+                onChange={e =>
+                  handleFormChange('originalPrice', e.target.value)
+                }
+              />
             </label>
 
             <label>
               Đơn vị (Hộp, vỉ, chai...)
-              <input value={form.unit} onChange={(e) => handleFormChange('unit', e.target.value)} required />
+              <input
+                value={form.unit}
+                onChange={e => handleFormChange('unit', e.target.value)}
+                required
+              />
             </label>
 
             <label>
               Mã hình ảnh (imageKey)
-              <input value={form.imageKey} onChange={(e) => handleFormChange('imageKey', e.target.value)} />
+              <input
+                value={form.imageKey}
+                onChange={e => handleFormChange('imageKey', e.target.value)}
+              />
             </label>
 
             <label className="admin-form-grid_full">
               Mô tả đặc điểm
-              <textarea 
-                value={form.description} 
-                onChange={(e) => handleFormChange('description', e.target.value)} 
-                rows="3" 
-                style={{ padding: '0.6rem 0.8rem', border: '1px solid #d1d3e2', borderRadius: '4px', fontFamily: 'inherit', resize: 'vertical' }}
+              <textarea
+                value={form.description}
+                onChange={e => handleFormChange('description', e.target.value)}
+                rows="3"
+                style={{
+                  padding: '0.6rem 0.8rem',
+                  border: '1px solid #d1d3e2',
+                  borderRadius: '4px',
+                  fontFamily: 'inherit',
+                  resize: 'vertical',
+                }}
               />
             </label>
 
             <label className="admin-form-grid_full">
               Thành phần
-              <textarea 
-                value={form.ingredients} 
-                onChange={(e) => handleFormChange('ingredients', e.target.value)} 
-                rows="2" 
-                style={{ padding: '0.6rem 0.8rem', border: '1px solid #d1d3e2', borderRadius: '4px', fontFamily: 'inherit', resize: 'vertical' }}
+              <textarea
+                value={form.ingredients}
+                onChange={e => handleFormChange('ingredients', e.target.value)}
+                rows="2"
+                style={{
+                  padding: '0.6rem 0.8rem',
+                  border: '1px solid #d1d3e2',
+                  borderRadius: '4px',
+                  fontFamily: 'inherit',
+                  resize: 'vertical',
+                }}
               />
             </label>
 
             <label className="admin-form-grid_full">
               Cách dùng
-              <textarea 
-                value={form.usage} 
-                onChange={(e) => handleFormChange('usage', e.target.value)} 
-                rows="2" 
-                style={{ padding: '0.6rem 0.8rem', border: '1px solid #d1d3e2', borderRadius: '4px', fontFamily: 'inherit', resize: 'vertical' }}
+              <textarea
+                value={form.usage}
+                onChange={e => handleFormChange('usage', e.target.value)}
+                rows="2"
+                style={{
+                  padding: '0.6rem 0.8rem',
+                  border: '1px solid #d1d3e2',
+                  borderRadius: '4px',
+                  fontFamily: 'inherit',
+                  resize: 'vertical',
+                }}
               />
             </label>
 
             <label className="admin-form-grid_full">
               Lưu ý / Tác dụng phụ
-              <textarea 
-                value={form.note} 
-                onChange={(e) => handleFormChange('note', e.target.value)} 
-                rows="2" 
-                style={{ padding: '0.6rem 0.8rem', border: '1px solid #d1d3e2', borderRadius: '4px', fontFamily: 'inherit', resize: 'vertical' }}
+              <textarea
+                value={form.note}
+                onChange={e => handleFormChange('note', e.target.value)}
+                rows="2"
+                style={{
+                  padding: '0.6rem 0.8rem',
+                  border: '1px solid #d1d3e2',
+                  borderRadius: '4px',
+                  fontFamily: 'inherit',
+                  resize: 'vertical',
+                }}
               />
             </label>
           </div>
-          
+
           <div className="admin-form-actions">
             <button type="submit" className="admin-btn" disabled={saving}>
               {saving ? 'Đang lưu...' : 'Lưu'}
             </button>
-            <button type="button" className="admin-btn admin-btn--ghost" onClick={cancelForm} disabled={saving}>
+            <button
+              type="button"
+              className="admin-btn admin-btn--ghost"
+              onClick={cancelForm}
+              disabled={saving}
+            >
               Hủy
             </button>
           </div>
@@ -430,8 +532,16 @@ const persistProducts = useCallback(async (nextList) => {
       <header className="admin-topbar">
         <h1 className="admin-topbar_title">Quản trị sản phẩm</h1>
         <div className="admin-topbar_actions">
-          <button type="button" className="admin-topbar_btn" onClick={goHome}>Trang chủ</button>
-          <button type="button" className="admin-topbar_btn admin-topbar_btn--primary" onClick={logout}>Đăng xuất</button>
+          <button type="button" className="admin-topbar_btn" onClick={goHome}>
+            Trang chủ
+          </button>
+          <button
+            type="button"
+            className="admin-topbar_btn admin-topbar_btn--primary"
+            onClick={logout}
+          >
+            Đăng xuất
+          </button>
         </div>
       </header>
       <div className="admin-body">{bodyContent}</div>

@@ -52,19 +52,19 @@ function AdminEmployee({ embedded = false }) {
   const displayedRows = useMemo(() => {
     const q = appliedSearchId.trim();
     if (!q) return rows;
-    return rows.filter((r) => String(r.id) === q);
+    return rows.filter(r => String(r.id) === q);
   }, [rows, appliedSearchId]);
 
-const persist = useCallback(async (nextList) => {
+  const persist = useCallback(async nextList => {
     setSaving(true);
     setSaveError('');
     try {
-      setRows(nextList); 
+      setRows(nextList);
       localStorage.setItem('employeesDB', JSON.stringify(nextList));
       const response = await fetch('/api/save/employee', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(nextList)
+        body: JSON.stringify(nextList),
       });
 
       if (!response.ok) throw new Error('Không thể lưu vào file JSON');
@@ -137,7 +137,7 @@ const persist = useCallback(async (nextList) => {
     setSaveError('');
   };
 
-  const openEdit = (e) => {
+  const openEdit = e => {
     setIsNew(false);
     setForm(rowToForm(e));
     setView('form');
@@ -152,10 +152,10 @@ const persist = useCallback(async (nextList) => {
   };
 
   const handleFormChange = (field, value) => {
-    setForm((f) => ({ ...f, [field]: value }));
+    setForm(f => ({ ...f, [field]: value }));
   };
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = e => {
     e.preventDefault();
     if (!form.name.trim()) {
       setSaveError('Vui lòng nhập tên nhân viên');
@@ -167,19 +167,19 @@ const persist = useCallback(async (nextList) => {
     if (isNew) {
       nextList = [...rows, built];
     } else {
-      const idx = rows.findIndex((r) => String(r.id) === String(form.id));
+      const idx = rows.findIndex(r => String(r.id) === String(form.id));
       if (idx === -1) {
         setSaveError('Không tìm thấy bản ghi để cập nhật');
         return;
       }
-      nextList = rows.map((r) => (String(r.id) === String(form.id) ? built : r));
+      nextList = rows.map(r => (String(r.id) === String(form.id) ? built : r));
     }
     persist(nextList);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = id => {
     if (!window.confirm('Xóa nhân viên này?')) return;
-    persist(rows.filter((r) => String(r.id) !== String(id)));
+    persist(rows.filter(r => String(r.id) !== String(id)));
   };
 
   const applyIdSearch = () => setAppliedSearchId(searchIdInput.trim());
@@ -190,14 +190,23 @@ const persist = useCallback(async (nextList) => {
 
   const bodyContent = (
     <>
-      {loadError && <div className="admin-msg admin-msg--error">{loadError}</div>}
-      {saveError && <div className="admin-msg admin-msg--error">{saveError}</div>}
+      {loadError && (
+        <div className="admin-msg admin-msg--error">{loadError}</div>
+      )}
+      {saveError && (
+        <div className="admin-msg admin-msg--error">{saveError}</div>
+      )}
       {loading ? (
         <p>Đang tải...</p>
       ) : view === 'list' ? (
         <>
           <div className="admin-toolbar admin-toolbar--row">
-            <button type="button" className="admin-btn" onClick={openCreate} disabled={saving}>
+            <button
+              type="button"
+              className="admin-btn"
+              onClick={openCreate}
+              disabled={saving}
+            >
               + Thêm nhân viên
             </button>
             <div className="admin-toolbar-search">
@@ -207,19 +216,29 @@ const persist = useCallback(async (nextList) => {
                 type="text"
                 inputMode="numeric"
                 value={searchIdInput}
-                onChange={(e) => setSearchIdInput(e.target.value)}
-                onKeyDown={(e) => {
+                onChange={e => setSearchIdInput(e.target.value)}
+                onKeyDown={e => {
                   if (e.key === 'Enter') {
                     e.preventDefault();
                     applyIdSearch();
                   }
                 }}
               />
-              <button type="button" className="admin-btn" onClick={applyIdSearch} disabled={saving}>
+              <button
+                type="button"
+                className="admin-btn"
+                onClick={applyIdSearch}
+                disabled={saving}
+              >
                 Tìm
               </button>
               {appliedSearchId.trim() !== '' && (
-                <button type="button" className="admin-btn admin-btn--ghost" onClick={clearIdSearch} disabled={saving}>
+                <button
+                  type="button"
+                  className="admin-btn admin-btn--ghost"
+                  onClick={clearIdSearch}
+                  disabled={saving}
+                >
                   Hiện tất cả
                 </button>
               )}
@@ -242,11 +261,13 @@ const persist = useCallback(async (nextList) => {
                 {displayedRows.length === 0 ? (
                   <tr>
                     <td colSpan={7} className="admin-table_empty">
-                      {appliedSearchId.trim() ? `Không có nhân viên với ID "${appliedSearchId.trim()}".` : 'Chưa có nhân viên.'}
+                      {appliedSearchId.trim()
+                        ? `Không có nhân viên với ID "${appliedSearchId.trim()}".`
+                        : 'Chưa có nhân viên.'}
                     </td>
                   </tr>
                 ) : (
-                  displayedRows.map((r) => (
+                  displayedRows.map(r => (
                     <tr key={r.id}>
                       <td>{r.id}</td>
                       <td>{r.role}</td>
@@ -256,10 +277,20 @@ const persist = useCallback(async (nextList) => {
                       <td>{r.phone}</td>
                       <td>
                         <div className="admin-table_actions">
-                          <button type="button" className="admin-table_link" onClick={() => openEdit(r)} disabled={saving}>
+                          <button
+                            type="button"
+                            className="admin-table_link"
+                            onClick={() => openEdit(r)}
+                            disabled={saving}
+                          >
                             Sửa
                           </button>
-                          <button type="button" className="admin-table_link admin-table_link--danger" onClick={() => handleDelete(r.id)} disabled={saving}>
+                          <button
+                            type="button"
+                            className="admin-table_link admin-table_link--danger"
+                            onClick={() => handleDelete(r.id)}
+                            disabled={saving}
+                          >
                             Xóa
                           </button>
                         </div>
@@ -274,23 +305,30 @@ const persist = useCallback(async (nextList) => {
       ) : (
         <form className="admin-form-card" onSubmit={handleSubmitForm}>
           <h2>{isNew ? 'Thêm nhân viên' : 'Sửa nhân viên'}</h2>
-<div className="admin-form-grid">
+          <div className="admin-form-grid">
             {!isNew && (
               <label>
                 ID
                 <input value={form.id} readOnly />
               </label>
             )}
-            
+
             <label className="admin-form-grid_full">
               Tên nhân viên
-              <input value={form.name} onChange={(e) => handleFormChange('name', e.target.value)} required />
+              <input
+                value={form.name}
+                onChange={e => handleFormChange('name', e.target.value)}
+                required
+              />
             </label>
 
-            {/* ĐÃ NÂNG CẤP: Chuyển thành Menu Dropdown */}
             <label>
               Vai trò
-              <select value={form.role} onChange={(e) => handleFormChange('role', e.target.value)} required>
+              <select
+                value={form.role}
+                onChange={e => handleFormChange('role', e.target.value)}
+                required
+              >
                 <option value="">- Chọn vai trò -</option>
                 <option value="Quản lý">Quản lý</option>
                 <option value="Dược sĩ">Dược sĩ</option>
@@ -300,7 +338,11 @@ const persist = useCallback(async (nextList) => {
 
             <label>
               Giới tính
-              <select value={form.gender} onChange={(e) => handleFormChange('gender', e.target.value)} required>
+              <select
+                value={form.gender}
+                onChange={e => handleFormChange('gender', e.target.value)}
+                required
+              >
                 <option value="">- Chọn giới tính -</option>
                 <option value="Nam">Nam</option>
                 <option value="Nữ">Nữ</option>
@@ -309,19 +351,35 @@ const persist = useCallback(async (nextList) => {
 
             <label>
               Ngày sinh
-              <input type="date" value={form.birthdate} onChange={(e) => handleFormChange('birthdate', e.target.value)} required />
+              <input
+                type="date"
+                value={form.birthdate}
+                onChange={e => handleFormChange('birthdate', e.target.value)}
+                required
+              />
             </label>
 
             <label>
               Điện thoại
-              <input type="tel" value={form.phone} onChange={(e) => handleFormChange('phone', e.target.value)} required placeholder="VD: 0912345678" />
+              <input
+                type="tel"
+                value={form.phone}
+                onChange={e => handleFormChange('phone', e.target.value)}
+                required
+                placeholder="VD: 0912345678"
+              />
             </label>
           </div>
           <div className="admin-form-actions">
             <button type="submit" className="admin-btn" disabled={saving}>
               {saving ? 'Đang lưu...' : 'Lưu'}
             </button>
-            <button type="button" className="admin-btn admin-btn--ghost" onClick={cancelForm} disabled={saving}>
+            <button
+              type="button"
+              className="admin-btn admin-btn--ghost"
+              onClick={cancelForm}
+              disabled={saving}
+            >
               Hủy
             </button>
           </div>
@@ -341,7 +399,11 @@ const persist = useCallback(async (nextList) => {
           <button type="button" className="admin-topbar_btn" onClick={goHome}>
             Trang chủ
           </button>
-          <button type="button" className="admin-topbar_btn admin-topbar_btn--primary" onClick={logout}>
+          <button
+            type="button"
+            className="admin-topbar_btn admin-topbar_btn--primary"
+            onClick={logout}
+          >
             Đăng xuất
           </button>
         </div>

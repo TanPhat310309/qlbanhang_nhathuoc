@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import './LogIn.css';
@@ -15,7 +15,7 @@ const LogIn = () => {
   const [fpSuccess, setFpSuccess] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setError('');
 
@@ -41,8 +41,8 @@ const LogIn = () => {
       const response = await fetch(`/account.json?t=${new Date().getTime()}`, {
         headers: {
           'Cache-Control': 'no-cache',
-          'Pragma': 'no-cache'
-        }
+          Pragma: 'no-cache',
+        },
       });
 
       if (!response.ok) {
@@ -51,8 +51,10 @@ const LogIn = () => {
 
       const accounts = await response.json();
 
-      const matchedAccount = accounts.find((acc) => {
-        const accUser = String(acc.user || '').trim().toLowerCase();
+      const matchedAccount = accounts.find(acc => {
+        const accUser = String(acc.user || '')
+          .trim()
+          .toLowerCase();
         const accPass = String(acc.pass || '').trim();
         return accUser === normalizedUsername && accPass === normalizedPassword;
       });
@@ -69,12 +71,12 @@ const LogIn = () => {
       window.dispatchEvent(new Event('userUpdated'));
 
       if (matchedAccount.role === 'admin' || matchedAccount.role === 'staff') {
-          navigate('/admin');
-        } else if (matchedAccount.role === 'customer') {
-          navigate('/');
-        } else {
-          navigate('/'); 
-        }
+        navigate('/admin');
+      } else if (matchedAccount.role === 'customer') {
+        navigate('/');
+      } else {
+        navigate('/');
+      }
     } catch (err) {
       console.error(err);
       setError('Đã xảy ra lỗi, vui lòng thử lại sau');
@@ -102,7 +104,7 @@ const LogIn = () => {
     setFpSuccess('');
   };
 
-  const handleForgotSubmit = async (e) => {
+  const handleForgotSubmit = async e => {
     e.preventDefault();
     setFpError('');
     setFpSuccess('');
@@ -133,9 +135,9 @@ const LogIn = () => {
       setFpNew('');
       setFpConfirm('');
     } catch (err) {
-      const msg = err.response?.data?.error ||
-        (err.code === 'ERR_NETWORK' ||
-          err.response?.status === 404
+      const msg =
+        err.response?.data?.error ||
+        (err.code === 'ERR_NETWORK' || err.response?.status === 404
           ? 'Chỉ hoạt động khi chạy npm run dev hoặc npm run preview (API ghi file trên server).'
           : null) ||
         'Đã xảy ra lỗi, vui lòng thử lại sau';
@@ -151,29 +153,32 @@ const LogIn = () => {
             <h2 className="login-title">Quên mật khẩu</h2>
             <form className="login-form" onSubmit={handleForgotSubmit}>
               <div className="form-group">
-                <input type="text"
+                <input
+                  type="text"
                   className="form-input"
                   placeholder="Tên đăng nhập"
                   value={fpUser}
-                  onChange={(e) => setFpUser(e.target.value)}
+                  onChange={e => setFpUser(e.target.value)}
                   autoComplete="username"
                 />
               </div>
               <div className="form-group">
-                <input type="password"
+                <input
+                  type="password"
                   className="form-input"
                   placeholder="Mật khẩu mới"
                   value={fpNew}
-                  onChange={(e) => setFpNew(e.target.value)}
+                  onChange={e => setFpNew(e.target.value)}
                   autoComplete="new-password"
                 />
               </div>
               <div className="form-group">
-                <input type="password"
+                <input
+                  type="password"
                   className="form-input"
                   placeholder="Xác nhận mật khẩu mới"
                   value={fpConfirm}
-                  onChange={(e) => setFpConfirm(e.target.value)}
+                  onChange={e => setFpConfirm(e.target.value)}
                   autoComplete="new-password"
                 />
               </div>
@@ -184,7 +189,11 @@ const LogIn = () => {
               </button>
             </form>
             <div className="login-footer login-footer--spaced">
-              <button type="button" className="link-button" onClick={closeForgot}>
+              <button
+                type="button"
+                className="link-button"
+                onClick={closeForgot}
+              >
                 Quay lại đăng nhập
               </button>
             </div>
@@ -195,24 +204,31 @@ const LogIn = () => {
 
             <form className="login-form" onSubmit={handleSubmit}>
               <div className="form-group">
-                <input type="text"
+                <input
+                  type="text"
                   className="form-input"
                   placeholder="Tên đăng nhập hoặc Email"
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={e => setUsername(e.target.value)}
                 />
               </div>
 
               <div className="form-group">
-                <input type="password"
+                <input
+                  type="password"
                   className="form-input"
                   placeholder="Mật khẩu"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)} />
+                  onChange={e => setPassword(e.target.value)}
+                />
               </div>
 
               <div className="forgot-row">
-                <button type="button" className="forgot-link" onClick={openForgot}>
+                <button
+                  type="button"
+                  className="forgot-link"
+                  onClick={openForgot}
+                >
                   Quên mật khẩu?
                 </button>
               </div>

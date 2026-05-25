@@ -35,7 +35,7 @@ const Profile = () => {
     setConfirmPass('');
   };
 
-  const handleChangePassword = async (e) => {
+  const handleChangePassword = async e => {
     e.preventDefault();
     setPwErr('');
     setPwMsg('');
@@ -56,7 +56,7 @@ const Profile = () => {
       return;
     }
 
-     try {
+    try {
       const res = await fetch(`/account.json?t=${Date.now()}`);
       let accounts = await res.json();
       const idx = accounts.findIndex(acc => acc.id === user.id);
@@ -68,14 +68,16 @@ const Profile = () => {
       accounts[idx].pass = newPass.trim();
       await fetch('/api/save/account', {
         method: 'POST',
-        body: JSON.stringify(accounts)
+        body: JSON.stringify(accounts),
       });
       setPwMsg('Đổi mật khẩu thành công!');
       clearPasswordForm();
-    } catch (err) { setPwErr('Lỗi!'); }
-  };  
+    } catch (err) {
+      setPwErr('Lỗi!');
+    }
+  };
 
-const handleDeleteAccount = async (e) => {
+  const handleDeleteAccount = async e => {
     e.preventDefault();
     if (!window.confirm('Xóa vĩnh viễn tài khoản?')) return;
 
@@ -85,13 +87,15 @@ const handleDeleteAccount = async (e) => {
       const nextList = accounts.filter(acc => acc.id !== user.id);
       await fetch('/api/save/account', {
         method: 'POST',
-        body: JSON.stringify(nextList)
+        body: JSON.stringify(nextList),
       });
 
       localStorage.removeItem('currentUser');
       window.dispatchEvent(new Event('userUpdated'));
       navigate('/', { replace: true });
-    } catch (err) { setDelErr('Lỗi!'); }
+    } catch (err) {
+      setDelErr('Lỗi!');
+    }
   };
 
   if (!user) {
@@ -140,7 +144,7 @@ const handleDeleteAccount = async (e) => {
                 type="password"
                 className="profile-input"
                 value={curPass}
-                onChange={(e) => setCurPass(e.target.value)}
+                onChange={e => setCurPass(e.target.value)}
                 autoComplete="current-password"
               />
             </label>
@@ -150,7 +154,7 @@ const handleDeleteAccount = async (e) => {
                 type="password"
                 className="profile-input"
                 value={newPass}
-                onChange={(e) => setNewPass(e.target.value)}
+                onChange={e => setNewPass(e.target.value)}
                 autoComplete="new-password"
               />
             </label>
@@ -160,7 +164,7 @@ const handleDeleteAccount = async (e) => {
                 type="password"
                 className="profile-input"
                 value={confirmPass}
-                onChange={(e) => setConfirmPass(e.target.value)}
+                onChange={e => setConfirmPass(e.target.value)}
                 autoComplete="new-password"
               />
             </label>
@@ -175,7 +179,8 @@ const handleDeleteAccount = async (e) => {
         <section className="profile-section profile-section--danger">
           <h2 className="profile-section-title">Xóa tài khoản</h2>
           <p className="profile-danger-hint">
-            Xóa khỏi hệ thống dữ liệu và đăng xuất ngay lập tức. Thao tác này yêu cầu nhập mật khẩu xác nhận.
+            Xóa khỏi hệ thống dữ liệu và đăng xuất ngay lập tức. Thao tác này
+            yêu cầu nhập mật khẩu xác nhận.
           </p>
           <form className="profile-form" onSubmit={handleDeleteAccount}>
             <label className="profile-label">
@@ -184,18 +189,23 @@ const handleDeleteAccount = async (e) => {
                 type="password"
                 className="profile-input"
                 value={delPass}
-                onChange={(e) => setDelPass(e.target.value)}
+                onChange={e => setDelPass(e.target.value)}
                 autoComplete="current-password"
               />
             </label>
-            {delErr && <p className="profile-msg profile-msg--error">{delErr}</p>}
+            {delErr && (
+              <p className="profile-msg profile-msg--error">{delErr}</p>
+            )}
             <button type="submit" className="profile-btn profile-btn--danger">
               Xóa tài khoản vĩnh viễn
             </button>
           </form>
         </section>
       </div>
-      <div className="profile-actions" style={{ marginTop: '20px', textAlign: 'center' }}>
+      <div
+        className="profile-actions"
+        style={{ marginTop: '20px', textAlign: 'center' }}
+      >
         <button onClick={handleLogout} className="btn-logout-large">
           <i className="fas fa-sign-out-alt"></i> Đăng xuất khỏi tài khoản
         </button>

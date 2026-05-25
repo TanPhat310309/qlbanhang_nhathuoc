@@ -62,19 +62,19 @@ function AdminInvoiceDetails({ embedded = false }) {
   const displayedRows = useMemo(() => {
     const q = appliedSearchId.trim();
     if (!q) return rows;
-    return rows.filter((r) => String(r.id) === q);
+    return rows.filter(r => String(r.id) === q);
   }, [rows, appliedSearchId]);
 
-const persist = useCallback(async (nextList) => {
+  const persist = useCallback(async nextList => {
     setSaving(true);
     setSaveError('');
     try {
-      setRows(nextList); 
+      setRows(nextList);
       localStorage.setItem('invoiceDetailsDB', JSON.stringify(nextList));
       const response = await fetch('/api/save/invoicedetails', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(nextList)
+        body: JSON.stringify(nextList),
       });
 
       if (!response.ok) throw new Error('Không thể lưu vào file JSON');
@@ -118,7 +118,9 @@ const persist = useCallback(async (nextList) => {
       try {
         let data = JSON.parse(localStorage.getItem('invoiceDetailsDB'));
         if (!data) {
-          const res = await fetch(`${jsonBase}invoicedetails.json?t=${Date.now()}`);
+          const res = await fetch(
+            `${jsonBase}invoicedetails.json?t=${Date.now()}`
+          );
           if (!res.ok) throw new Error('Không tải được invoicedetails.json');
           data = await res.json();
           localStorage.setItem('invoiceDetailsDB', JSON.stringify(data));
@@ -147,7 +149,7 @@ const persist = useCallback(async (nextList) => {
     setSaveError('');
   };
 
-  const openEdit = (r) => {
+  const openEdit = r => {
     setIsNew(false);
     setForm(rowToForm(r));
     setView('form');
@@ -162,10 +164,10 @@ const persist = useCallback(async (nextList) => {
   };
 
   const handleFormChange = (field, value) => {
-    setForm((f) => ({ ...f, [field]: value }));
+    setForm(f => ({ ...f, [field]: value }));
   };
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = e => {
     e.preventDefault();
     const nextId = rows.reduce((m, r) => Math.max(m, Number(r.id) || 0), 0) + 1;
     const built = formToRow(form, nextId);
@@ -179,19 +181,19 @@ const persist = useCallback(async (nextList) => {
     if (isNew) {
       nextList = [...rows, built];
     } else {
-      const idx = rows.findIndex((r) => String(r.id) === String(form.id));
+      const idx = rows.findIndex(r => String(r.id) === String(form.id));
       if (idx === -1) {
         setSaveError('Không tìm thấy bản ghi để cập nhật');
         return;
       }
-      nextList = rows.map((r) => (String(r.id) === String(form.id) ? built : r));
+      nextList = rows.map(r => (String(r.id) === String(form.id) ? built : r));
     }
     persist(nextList);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = id => {
     if (!window.confirm('Xóa dòng chi tiết này?')) return;
-    persist(rows.filter((r) => String(r.id) !== String(id)));
+    persist(rows.filter(r => String(r.id) !== String(id)));
   };
 
   const applyIdSearch = () => setAppliedSearchId(searchIdInput.trim());
@@ -202,14 +204,23 @@ const persist = useCallback(async (nextList) => {
 
   const bodyContent = (
     <>
-      {loadError && <div className="admin-msg admin-msg--error">{loadError}</div>}
-      {saveError && <div className="admin-msg admin-msg--error">{saveError}</div>}
+      {loadError && (
+        <div className="admin-msg admin-msg--error">{loadError}</div>
+      )}
+      {saveError && (
+        <div className="admin-msg admin-msg--error">{saveError}</div>
+      )}
       {loading ? (
         <p>Đang tải...</p>
       ) : view === 'list' ? (
         <>
           <div className="admin-toolbar admin-toolbar--row">
-            <button type="button" className="admin-btn" onClick={openCreate} disabled={saving}>
+            <button
+              type="button"
+              className="admin-btn"
+              onClick={openCreate}
+              disabled={saving}
+            >
               + Thêm dòng
             </button>
             <div className="admin-toolbar-search">
@@ -219,19 +230,29 @@ const persist = useCallback(async (nextList) => {
                 type="text"
                 inputMode="numeric"
                 value={searchIdInput}
-                onChange={(e) => setSearchIdInput(e.target.value)}
-                onKeyDown={(e) => {
+                onChange={e => setSearchIdInput(e.target.value)}
+                onKeyDown={e => {
                   if (e.key === 'Enter') {
                     e.preventDefault();
                     applyIdSearch();
                   }
                 }}
               />
-              <button type="button" className="admin-btn" onClick={applyIdSearch} disabled={saving}>
+              <button
+                type="button"
+                className="admin-btn"
+                onClick={applyIdSearch}
+                disabled={saving}
+              >
                 Tìm
               </button>
               {appliedSearchId.trim() !== '' && (
-                <button type="button" className="admin-btn admin-btn--ghost" onClick={clearIdSearch} disabled={saving}>
+                <button
+                  type="button"
+                  className="admin-btn admin-btn--ghost"
+                  onClick={clearIdSearch}
+                  disabled={saving}
+                >
                   Hiện tất cả
                 </button>
               )}
@@ -260,7 +281,7 @@ const persist = useCallback(async (nextList) => {
                     </td>
                   </tr>
                 ) : (
-                  displayedRows.map((r) => (
+                  displayedRows.map(r => (
                     <tr key={r.id}>
                       <td>{r.id}</td>
                       <td>{r.bill_id}</td>
@@ -296,7 +317,10 @@ const persist = useCallback(async (nextList) => {
           </div>
         </>
       ) : (
-        <form className="admin-form-card admin-form-card--wide" onSubmit={handleSubmitForm}>
+        <form
+          className="admin-form-card admin-form-card--wide"
+          onSubmit={handleSubmitForm}
+        >
           <h2>{isNew ? 'Thêm chi tiết hóa đơn' : 'Sửa chi tiết hóa đơn'}</h2>
           <div className="admin-form-grid">
             {!isNew && (
@@ -310,7 +334,7 @@ const persist = useCallback(async (nextList) => {
               <input
                 type="number"
                 value={form.bill_id}
-                onChange={(e) => handleFormChange('bill_id', e.target.value)}
+                onChange={e => handleFormChange('bill_id', e.target.value)}
                 required
               />
             </label>
@@ -319,7 +343,7 @@ const persist = useCallback(async (nextList) => {
               <input
                 type="number"
                 value={form.product_id}
-                onChange={(e) => handleFormChange('product_id', e.target.value)}
+                onChange={e => handleFormChange('product_id', e.target.value)}
                 required
               />
             </label>
@@ -329,7 +353,7 @@ const persist = useCallback(async (nextList) => {
                 type="number"
                 min="1"
                 value={form.quantity}
-                onChange={(e) => handleFormChange('quantity', e.target.value)}
+                onChange={e => handleFormChange('quantity', e.target.value)}
                 required
               />
             </label>
@@ -339,7 +363,7 @@ const persist = useCallback(async (nextList) => {
                 type="number"
                 min="0"
                 value={form.unit_price}
-                onChange={(e) => handleFormChange('unit_price', e.target.value)}
+                onChange={e => handleFormChange('unit_price', e.target.value)}
                 required
               />
             </label>
@@ -349,7 +373,7 @@ const persist = useCallback(async (nextList) => {
                 type="number"
                 min="0"
                 value={form.price}
-                onChange={(e) => handleFormChange('price', e.target.value)}
+                onChange={e => handleFormChange('price', e.target.value)}
                 required
               />
             </label>
@@ -358,7 +382,12 @@ const persist = useCallback(async (nextList) => {
             <button type="submit" className="admin-btn" disabled={saving}>
               {saving ? 'Đang lưu...' : 'Lưu'}
             </button>
-            <button type="button" className="admin-btn admin-btn--ghost" onClick={cancelForm} disabled={saving}>
+            <button
+              type="button"
+              className="admin-btn admin-btn--ghost"
+              onClick={cancelForm}
+              disabled={saving}
+            >
               Hủy
             </button>
           </div>
@@ -378,7 +407,11 @@ const persist = useCallback(async (nextList) => {
           <button type="button" className="admin-topbar_btn" onClick={goHome}>
             Trang chủ
           </button>
-          <button type="button" className="admin-topbar_btn admin-topbar_btn--primary" onClick={logout}>
+          <button
+            type="button"
+            className="admin-topbar_btn admin-topbar_btn--primary"
+            onClick={logout}
+          >
             Đăng xuất
           </button>
         </div>

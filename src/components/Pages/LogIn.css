@@ -1,5 +1,5 @@
 .login-page {
-  min-height: calc(100vh - 180px); 
+  min-height: calc(100vh - 180px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -145,7 +145,8 @@
   margin-top: -6px;
 }
 
-.forgot-link, .link-button {
+.forgot-link,
+.link-button {
   padding: 0;
   border: none;
   background: none;
@@ -155,7 +156,8 @@
   cursor: pointer;
 }
 
-.forgot-link:hover, .link-button:hover {
+.forgot-link:hover,
+.link-button:hover {
   text-decoration: underline;
 }
 

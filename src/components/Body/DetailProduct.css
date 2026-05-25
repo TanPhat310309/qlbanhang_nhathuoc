@@ -202,7 +202,7 @@
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   background: #fff;
-  height: 44px; 
+  height: 44px;
   overflow: hidden;
 }
 
@@ -245,7 +245,7 @@
   -webkit-appearance: none;
   margin: 0;
 }
-.qty-controls input[type=number] {
+.qty-controls input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -303,8 +303,8 @@
   cursor: pointer;
   white-space: nowrap;
   transition: 0.2s;
-  outline: none !important; 
-  -webkit-tap-highlight-color: transparent; 
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .tabs-header button:hover {
@@ -334,7 +334,8 @@
   font-size: 15px;
 }
 
-.detail-loading, .detail-error {
+.detail-loading,
+.detail-error {
   text-align: center;
   padding: 100px 20px;
   font-size: 18px;

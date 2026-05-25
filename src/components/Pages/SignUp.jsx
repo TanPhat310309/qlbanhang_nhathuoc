@@ -4,13 +4,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import './LogIn.css';
 
 const SignUp = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirm, setConfirm] = useState('');
-    const [error, setError] = useState('');
-    const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirm, setConfirm] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setError('');
 
@@ -37,13 +37,13 @@ const SignUp = () => {
         user: trimmedUser,
         pass: trimmedPass,
         role: 'customer',
-        name: trimmedUser
+        name: trimmedUser,
       };
       accounts.push(newUser);
       await fetch('/api/save/account', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(accounts)
+        body: JSON.stringify(accounts),
       });
 
       alert('Đăng ký thành công!');
@@ -53,55 +53,55 @@ const SignUp = () => {
     }
   };
 
-    return (
-        <div className="login-page">
-            <div className="login-card">
-                <h2 className="login-title">Đăng ký tài khoản</h2>
-                <form className="login-form" onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <input
-                            type="text"
-                            className="form-input"
-                            placeholder="Tên đăng nhập"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            autoComplete="username"
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="password"
-                            className="form-input"
-                            placeholder="Mật khẩu"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            autoComplete="new-password"
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="password"
-                            className="form-input"
-                            placeholder="Xác nhận mật khẩu"
-                            value={confirm}
-                            onChange={(e) => setConfirm(e.target.value)}
-                            autoComplete="new-password"
-                        />
-                    </div>
-                    {error && <div className="login-error">{error}</div>}
-                    <button type="submit" className="login-button">
-                        ĐĂNG KÝ
-                    </button>
-                </form>
-                <div className="login-footer login-footer--spaced">
-                    <span>Đã có tài khoản?</span>
-                    <Link to="/login" className="signup-link">
-                        Đăng nhập
-                    </Link>
-                </div>
-            </div>
+  return (
+    <div className="login-page">
+      <div className="login-card">
+        <h2 className="login-title">Đăng ký tài khoản</h2>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-input"
+              placeholder="Tên đăng nhập"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+              autoComplete="username"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              className="form-input"
+              placeholder="Mật khẩu"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              autoComplete="new-password"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              className="form-input"
+              placeholder="Xác nhận mật khẩu"
+              value={confirm}
+              onChange={e => setConfirm(e.target.value)}
+              autoComplete="new-password"
+            />
+          </div>
+          {error && <div className="login-error">{error}</div>}
+          <button type="submit" className="login-button">
+            ĐĂNG KÝ
+          </button>
+        </form>
+        <div className="login-footer login-footer--spaced">
+          <span>Đã có tài khoản?</span>
+          <Link to="/login" className="signup-link">
+            Đăng nhập
+          </Link>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default SignUp;

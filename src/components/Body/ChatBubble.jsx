@@ -4,7 +4,10 @@ import './ChatBubble.css';
 
 const ChatBubble = () => {
   return (
-    <div className="global-chat-bubble" onClick={() => alert('Chưa làm chat đâu nha')}>
+    <div
+      className="global-chat-bubble"
+      onClick={() => alert('Chưa làm chat đâu nha')}
+    >
       <i className="fas fa-comment-dots"></i>
     </div>
   );

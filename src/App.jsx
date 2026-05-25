@@ -15,7 +15,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 function App() {
   const location = useLocation();
   const hideChrome = location.pathname === '/admin';
-   
+
   return (
     <>
       {!hideChrome && <Header />}
@@ -32,7 +32,14 @@ function App() {
             </>
           }
         />
-        <Route path="/products" element={<main className="site-container"><ProductList /></main>} />
+        <Route
+          path="/products"
+          element={
+            <main className="site-container">
+              <ProductList />
+            </main>
+          }
+        />
         <Route path="/product/:id" element={<DetailProduct />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<LogIn />} />

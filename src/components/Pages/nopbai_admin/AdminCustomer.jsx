@@ -39,19 +39,19 @@ function AdminCustomer({ embedded = false }) {
   const displayedRows = useMemo(() => {
     const q = appliedSearchId.trim();
     if (!q) return rows;
-    return rows.filter((r) => String(r.id) === q);
+    return rows.filter(r => String(r.id) === q);
   }, [rows, appliedSearchId]);
 
-const persist = useCallback(async (nextList) => {
+  const persist = useCallback(async nextList => {
     setSaving(true);
     setSaveError('');
     try {
-      setRows(nextList); 
+      setRows(nextList);
       localStorage.setItem('customersDB', JSON.stringify(nextList));
       const response = await fetch('/api/save/customer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(nextList)
+        body: JSON.stringify(nextList),
       });
 
       if (!response.ok) throw new Error('Không thể lưu vào file JSON');
@@ -124,7 +124,7 @@ const persist = useCallback(async (nextList) => {
     setSaveError('');
   };
 
-  const openEdit = (c) => {
+  const openEdit = c => {
     setIsNew(false);
     setForm(rowToForm(c));
     setView('form');
@@ -139,10 +139,10 @@ const persist = useCallback(async (nextList) => {
   };
 
   const handleFormChange = (field, value) => {
-    setForm((f) => ({ ...f, [field]: value }));
+    setForm(f => ({ ...f, [field]: value }));
   };
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = e => {
     e.preventDefault();
     if (!form.name.trim()) {
       setSaveError('Vui lòng nhập tên khách hàng');
@@ -154,19 +154,19 @@ const persist = useCallback(async (nextList) => {
     if (isNew) {
       nextList = [...rows, built];
     } else {
-      const idx = rows.findIndex((r) => String(r.id) === String(form.id));
+      const idx = rows.findIndex(r => String(r.id) === String(form.id));
       if (idx === -1) {
         setSaveError('Không tìm thấy bản ghi để cập nhật');
         return;
       }
-      nextList = rows.map((r) => (String(r.id) === String(form.id) ? built : r));
+      nextList = rows.map(r => (String(r.id) === String(form.id) ? built : r));
     }
     persist(nextList);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = id => {
     if (!window.confirm('Xóa khách hàng này?')) return;
-    persist(rows.filter((r) => String(r.id) !== String(id)));
+    persist(rows.filter(r => String(r.id) !== String(id)));
   };
 
   const applyIdSearch = () => setAppliedSearchId(searchIdInput.trim());
@@ -177,14 +177,23 @@ const persist = useCallback(async (nextList) => {
 
   const bodyContent = (
     <>
-      {loadError && <div className="admin-msg admin-msg--error">{loadError}</div>}
-      {saveError && <div className="admin-msg admin-msg--error">{saveError}</div>}
+      {loadError && (
+        <div className="admin-msg admin-msg--error">{loadError}</div>
+      )}
+      {saveError && (
+        <div className="admin-msg admin-msg--error">{saveError}</div>
+      )}
       {loading ? (
         <p>Đang tải...</p>
       ) : view === 'list' ? (
         <>
           <div className="admin-toolbar admin-toolbar--row">
-            <button type="button" className="admin-btn" onClick={openCreate} disabled={saving}>
+            <button
+              type="button"
+              className="admin-btn"
+              onClick={openCreate}
+              disabled={saving}
+            >
               + Thêm khách hàng
             </button>
             <div className="admin-toolbar-search">
@@ -194,19 +203,29 @@ const persist = useCallback(async (nextList) => {
                 type="text"
                 inputMode="numeric"
                 value={searchIdInput}
-                onChange={(e) => setSearchIdInput(e.target.value)}
-                onKeyDown={(e) => {
+                onChange={e => setSearchIdInput(e.target.value)}
+                onKeyDown={e => {
                   if (e.key === 'Enter') {
                     e.preventDefault();
                     applyIdSearch();
                   }
                 }}
               />
-              <button type="button" className="admin-btn" onClick={applyIdSearch} disabled={saving}>
+              <button
+                type="button"
+                className="admin-btn"
+                onClick={applyIdSearch}
+                disabled={saving}
+              >
                 Tìm
               </button>
               {appliedSearchId.trim() !== '' && (
-                <button type="button" className="admin-btn admin-btn--ghost" onClick={clearIdSearch} disabled={saving}>
+                <button
+                  type="button"
+                  className="admin-btn admin-btn--ghost"
+                  onClick={clearIdSearch}
+                  disabled={saving}
+                >
                   Hiện tất cả
                 </button>
               )}
@@ -226,21 +245,33 @@ const persist = useCallback(async (nextList) => {
                 {displayedRows.length === 0 ? (
                   <tr>
                     <td colSpan={4} className="admin-table_empty">
-                      {appliedSearchId.trim() ? `Không có khách hàng với ID "${appliedSearchId.trim()}".` : 'Chưa có khách hàng.'}
+                      {appliedSearchId.trim()
+                        ? `Không có khách hàng với ID "${appliedSearchId.trim()}".`
+                        : 'Chưa có khách hàng.'}
                     </td>
                   </tr>
                 ) : (
-                  displayedRows.map((r) => (
+                  displayedRows.map(r => (
                     <tr key={r.id}>
                       <td>{r.id}</td>
                       <td>{r.name}</td>
                       <td>{r.phone}</td>
                       <td>
                         <div className="admin-table_actions">
-                          <button type="button" className="admin-table_link" onClick={() => openEdit(r)} disabled={saving}>
+                          <button
+                            type="button"
+                            className="admin-table_link"
+                            onClick={() => openEdit(r)}
+                            disabled={saving}
+                          >
                             Sửa
                           </button>
-                          <button type="button" className="admin-table_link admin-table_link--danger" onClick={() => handleDelete(r.id)} disabled={saving}>
+                          <button
+                            type="button"
+                            className="admin-table_link admin-table_link--danger"
+                            onClick={() => handleDelete(r.id)}
+                            disabled={saving}
+                          >
                             Xóa
                           </button>
                         </div>
@@ -266,7 +297,7 @@ const persist = useCallback(async (nextList) => {
               Tên
               <input
                 value={form.name}
-                onChange={(e) => handleFormChange('name', e.target.value)}
+                onChange={e => handleFormChange('name', e.target.value)}
                 required
               />
             </label>
@@ -274,7 +305,7 @@ const persist = useCallback(async (nextList) => {
               Điện thoại
               <input
                 value={form.phone}
-                onChange={(e) => handleFormChange('phone', e.target.value)}
+                onChange={e => handleFormChange('phone', e.target.value)}
                 placeholder="09000000"
               />
             </label>
@@ -283,7 +314,12 @@ const persist = useCallback(async (nextList) => {
             <button type="submit" className="admin-btn" disabled={saving}>
               {saving ? 'Đang lưu...' : 'Lưu'}
             </button>
-            <button type="button" className="admin-btn admin-btn--ghost" onClick={cancelForm} disabled={saving}>
+            <button
+              type="button"
+              className="admin-btn admin-btn--ghost"
+              onClick={cancelForm}
+              disabled={saving}
+            >
               Hủy
             </button>
           </div>
@@ -303,7 +339,11 @@ const persist = useCallback(async (nextList) => {
           <button type="button" className="admin-topbar_btn" onClick={goHome}>
             Trang chủ
           </button>
-          <button type="button" className="admin-topbar_btn admin-topbar_btn--primary" onClick={logout}>
+          <button
+            type="button"
+            className="admin-topbar_btn admin-topbar_btn--primary"
+            onClick={logout}
+          >
             Đăng xuất
           </button>
         </div>
