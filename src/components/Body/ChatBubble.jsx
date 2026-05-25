@@ -6,7 +6,7 @@ const ChatBubble = () => {
   return (
     <div
       className="global-chat-bubble"
-      onClick={() => alert('Chưa làm chat đâu nha')}
+      onClick={() => alert('Xin chào khách hàng')}
     >
       <i className="fas fa-comment-dots"></i>
     </div>
