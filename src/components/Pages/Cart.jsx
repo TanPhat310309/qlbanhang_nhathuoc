@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { imageMap } from '../../utils/productImages';
+import ProductCarousel from '../Body/ProductCarousel';
 import './Cart.css';
 
 const VOUCHERS = [
@@ -84,6 +86,7 @@ const getDiscount = (voucher, total) => {
 const Cart = () => {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
   const [selectedVoucher, setSelectedVoucher] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [manualCode, setManualCode] = useState('');
@@ -93,6 +96,24 @@ const Cart = () => {
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
     if (savedCart) setCartItems(JSON.parse(savedCart));
+
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('/products.json');
+        if (response.ok) {
+          const data = await response.json();
+          setAllProducts(
+            data.map(item => ({
+              ...item,
+              image: imageMap[item.imageKey] || item.image,
+            }))
+          );
+        }
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+    fetchProducts();
   }, []);
 
   useEffect(() => {
@@ -162,6 +183,17 @@ const Cart = () => {
   const discount = getDiscount(selectedVoucher, total);
   const finalTotal = Math.max(0, total - discount);
 
+  const suggestedProducts = allProducts
+    .filter(p => !cartItems.some(item => item.id === p.id) && (p.featured || p.isFeatured))
+    .slice(0, 10);
+
+  if (suggestedProducts.length < 5) {
+    const moreProducts = allProducts
+      .filter(p => !cartItems.some(item => item.id === p.id) && !suggestedProducts.find(s => s.id === p.id))
+      .slice(0, 10 - suggestedProducts.length);
+    suggestedProducts.push(...moreProducts);
+  }
+
   const handleSelectVoucher = voucher => {
     if (total < voucher.minOrder) return;
     setSelectedVoucher(voucher);
@@ -205,6 +237,15 @@ const Cart = () => {
             Tiếp tục mua sắm
           </button>
         </div>
+        
+        {suggestedProducts.length > 0 && (
+          <div className="suggested-products-section" style={{ marginTop: '60px', width: '100%', maxWidth: '1200px' }}>
+            <h3 style={{ fontSize: '1.25rem', color: '#1a2332', marginBottom: '20px' }}>
+              Có thể bạn sẽ thích
+            </h3>
+            <ProductCarousel products={suggestedProducts} />
+          </div>
+        )}
       </div>
     );
   }
@@ -416,6 +457,15 @@ const Cart = () => {
           </div>
         </div>
       </div>
+
+      {suggestedProducts.length > 0 && (
+        <div className="suggested-products-section" style={{ marginTop: '60px' }}>
+          <h3 style={{ fontSize: '1.25rem', color: '#1a2332', marginBottom: '20px' }}>
+            Sản phẩm mua kèm
+          </h3>
+          <ProductCarousel products={suggestedProducts} />
+        </div>
+      )}
     </div>
   );
 };

@@ -1,0 +1,61 @@
+.product-carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.product-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 10px 0;
+}
+
+.product-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.product-carousel > * {
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #c8d8e4;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  color: #0082b5;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.carousel-arrow:hover {
+  background: #f0f7fb;
+  border-color: #0082b5;
+}
+
+.carousel-arrow--left {
+  left: -20px;
+}
+
+.carousel-arrow--right {
+  right: -20px;
+}
+
+@media (max-width: 768px) {
+  .carousel-arrow {
+    display: none; /* Hide arrows on mobile, users can swipe */
+  }
+}

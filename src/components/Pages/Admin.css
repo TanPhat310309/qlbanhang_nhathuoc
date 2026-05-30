@@ -25,6 +25,7 @@
 .ruang-overlay.is-visible {
   display: block;
 }
+
 @media (min-width: 769px) {
   .ruang-overlay {
     display: none !important;
@@ -120,6 +121,7 @@
   .ruang-sidebar {
     transform: translateX(-100%);
   }
+
   .ruang-sidebar.is-open {
     transform: translateX(0);
   }
@@ -172,6 +174,7 @@
 .ruang-user {
   position: relative;
 }
+
 .ruang-user_toggle {
   display: flex;
   align-items: center;
@@ -181,6 +184,7 @@
   background: transparent;
   cursor: pointer;
 }
+
 .ruang-user_avatar {
   width: 2.25rem;
   height: 2.25rem;
@@ -191,6 +195,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .ruang-user_name {
   font-weight: 700;
   font-size: 0.85rem;
@@ -209,6 +214,7 @@
   padding: 0.5rem 0;
   z-index: 1000;
 }
+
 .ruang-user_menu button {
   display: flex;
   width: 100%;
@@ -222,6 +228,7 @@
   cursor: pointer;
   text-align: left;
 }
+
 .ruang-user_menu button:hover {
   background: #f8f9fc;
   color: #0066cc;
@@ -252,9 +259,11 @@
 .ruang-stat-card--green {
   border-left-color: #1cc88a;
 }
+
 .ruang-stat-card--cyan {
   border-left-color: #36b9cc;
 }
+
 .ruang-stat-card--amber {
   border-left-color: #f6c23e;
 }
@@ -262,6 +271,7 @@
 .ruang-stat-card_body {
   flex: 1;
 }
+
 .ruang-stat-card_label {
   font-size: 0.7rem;
   font-weight: 800;
@@ -269,16 +279,19 @@
   text-transform: uppercase;
   margin-bottom: 0.3rem;
 }
+
 .ruang-stat-card_value {
   font-size: 1.5rem;
   font-weight: 800;
   color: #5a5c69;
 }
+
 .ruang-stat-card_badge {
   font-size: 0.75rem;
   color: #1cc88a;
   font-weight: 700;
 }
+
 .ruang-stat-card_icon {
   font-size: 2rem;
   color: #dddfeb;
@@ -297,6 +310,7 @@
   border-bottom: 1px solid #e3e6f0;
   background: #f8f9fc;
 }
+
 .ruang-card_title-bar h6 {
   margin: 0;
   font-size: 1rem;
@@ -308,6 +322,7 @@
   width: 100%;
   border-collapse: collapse;
 }
+
 .admin-table th,
 .admin-table td {
   padding: 0.8rem 1.2rem;
@@ -315,6 +330,7 @@
   border-bottom: 1px solid #e3e6f0;
   font-size: 0.85rem;
 }
+
 .admin-table th {
   background: #f8f9fc;
   color: #858796;
@@ -329,18 +345,23 @@
   font-weight: 700;
   font-size: 0.75rem;
 }
+
 .ruang-status--done {
   background: #1cc88a;
 }
+
 .ruang-status--shipping {
   background: #f6c23e;
 }
+
 .ruang-status--pending {
   background: #e74a3b;
 }
+
 .ruang-status--processing {
   background: #36b9cc;
 }
+
 .ruang-status--unknown {
   background: #858796;
 }
@@ -353,6 +374,7 @@
   border-top: 1px solid #e3e6f0;
   font-weight: 600;
 }
+
 .ruang-footer a {
   color: #0066cc;
   text-decoration: none;
@@ -367,33 +389,39 @@
   align-items: center;
   justify-content: center;
 }
+
 .ruang-modal {
   background: #fff;
   width: 400px;
   border-radius: 8px;
   overflow: hidden;
 }
+
 .ruang-modal_header {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
   border-bottom: 1px solid #eee;
 }
+
 .ruang-modal_header h5 {
   margin: 0;
   font-size: 1.1rem;
   color: #333;
 }
+
 .ruang-modal_close {
   border: none;
   background: none;
   font-size: 1.2rem;
   cursor: pointer;
 }
+
 .ruang-modal_body {
   padding: 1.5rem;
   color: #555;
 }
+
 .ruang-modal_footer {
   padding: 1rem;
   background: #f8f9fc;
@@ -401,6 +429,7 @@
   justify-content: flex-end;
   gap: 10px;
 }
+
 .ruang-modal_btn {
   padding: 8px 16px;
   border: 1px solid #ccc;
@@ -409,6 +438,7 @@
   cursor: pointer;
   font-weight: bold;
 }
+
 .ruang-modal_btn--danger {
   background: #e74a3b;
   color: white;
@@ -426,6 +456,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -652,10 +683,12 @@
     flex-direction: column;
     align-items: stretch;
   }
+
   .admin-toolbar-search {
     flex-direction: column;
     align-items: stretch;
   }
+
   .admin-form-card {
     padding: 1.2rem;
   }

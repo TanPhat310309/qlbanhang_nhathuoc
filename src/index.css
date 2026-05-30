@@ -74,9 +74,14 @@ a:hover {
   border-color: #646cff;
 }
 
-button:focus,
+button:focus {
+  outline: none;
+}
+
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 2px solid #0082b5;
+  outline-offset: 2px;
+  transition: outline 0.2s ease;
 }
 
 @media (prefers-color-scheme: light) {

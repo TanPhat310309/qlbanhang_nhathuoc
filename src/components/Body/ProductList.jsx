@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import ProductCard from './ProductCard';
+import ProductCarousel from './ProductCarousel';
 import { imageMap } from '../../utils/productImages';
 import './ProductList.css';
 
@@ -81,17 +82,17 @@ const ProductList = () => {
     () =>
       products
         .filter(p => p.originalPrice && p.originalPrice > p.price)
-        .slice(0, 5),
+        .slice(0, 12),
     [products]
   );
 
   const featuredProducts = useMemo(
-    () => products.filter(p => p.featured || p.isFeatured).slice(0, 5),
+    () => products.filter(p => p.featured || p.isFeatured).slice(0, 12),
     [products]
   );
 
   const displayFeatured =
-    featuredProducts.length > 0 ? featuredProducts : products.slice(0, 5);
+    featuredProducts.length > 0 ? featuredProducts : products.slice(0, 12);
 
   const selectedCategory = categories.find(c => c.id === selectedCategoryId);
 
@@ -247,7 +248,7 @@ const ProductList = () => {
               </button>
             </div>
             <div className="product-list">
-              {saleProducts.map(product => (
+              {saleProducts.slice(0, 5).map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
@@ -270,7 +271,7 @@ const ProductList = () => {
             </button>
           </div>
           <div className="product-list">
-            {displayFeatured.map(product => (
+            {displayFeatured.slice(0, 5).map(product => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -280,7 +281,7 @@ const ProductList = () => {
       {categories.map(cat => {
         const catProducts = products
           .filter(p => p.categoryid === cat.id)
-          .slice(0, 5);
+          .slice(0, 12);
         if (catProducts.length === 0) return null;
         return (
           <section key={cat.id} className="pl-section">
@@ -296,11 +297,7 @@ const ProductList = () => {
                 Xem tất cả <i className="fas fa-arrow-right"></i>
               </button>
             </div>
-            <div className="product-list">
-              {catProducts.map(product => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
+            <ProductCarousel products={catProducts} />
           </section>
         );
       })}

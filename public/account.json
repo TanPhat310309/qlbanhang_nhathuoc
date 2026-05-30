@@ -12,20 +12,23 @@
     "user": "yoshiko0109",
     "pass": "1234",
     "role": "customer",
-    "name": "Thanh Nhật"
+    "name": "Thanh Nhật",
+    "email": "yoshiko123@gmail.com"
   },
   {
     "id": 3,
     "user": "hinayeu",
     "pass": "1234",
     "role": "customer",
-    "name": "Cát Tường"
+    "name": "Cát Tường",
+    "email": "hinayeu123@gmail.com"
   },
   {
     "id": 4,
     "user": "dukkiru",
     "pass": "1234",
     "role": "customer",
-    "name": "Minh Tân"
+    "name": "Minh Tân",
+    "email": "minhtan123@gmail.com"
   }
 ]

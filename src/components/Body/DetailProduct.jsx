@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { imageMap } from '../../utils/productImages';
+import ProductCarousel from './ProductCarousel';
 import './DetailProduct.css';
 
 const DetailProduct = () => {
@@ -9,6 +10,7 @@ const DetailProduct = () => {
   const location = useLocation();
 
   const [product, setProduct] = useState(location.state?.product || null);
+  const [allProducts, setAllProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(!location.state?.product);
   const [error, setError] = useState(null);
 
@@ -16,21 +18,28 @@ const DetailProduct = () => {
   const [activeTab, setActiveTab] = useState('description');
 
   useEffect(() => {
-    if (product) return;
     const fetchProduct = async () => {
       try {
         const response = await fetch('/products.json');
         if (!response.ok) throw new Error('Không thể tải thông tin sản phẩm');
 
         const data = await response.json();
-        const found = data.find(item => String(item.id) === String(id));
 
-        if (!found) throw new Error('Sản phẩm không tồn tại');
+        setAllProducts(
+          data.map(item => ({
+            ...item,
+            image: imageMap[item.imageKey] || item.image,
+          }))
+        );
 
-        setProduct({
-          ...found,
-          image: imageMap[found.imageKey] || found.image,
-        });
+        if (!product) {
+          const found = data.find(item => String(item.id) === String(id));
+          if (!found) throw new Error('Sản phẩm không tồn tại');
+          setProduct({
+            ...found,
+            image: imageMap[found.imageKey] || found.image,
+          });
+        }
       } catch (err) {
         setError(err.message);
       } finally {
@@ -83,6 +92,17 @@ const DetailProduct = () => {
     return <div className="detail-loading">Đang tải chi tiết sản phẩm...</div>;
   if (error) return <div className="detail-error">Lỗi: {error}</div>;
   if (!product) return null;
+
+  const similarProducts = allProducts
+    .filter(p => p.categoryid === product.categoryid && p.id !== product.id)
+    .slice(0, 10);
+
+  if (similarProducts.length < 5) {
+    const moreProducts = allProducts
+      .filter(p => p.id !== product.id && !similarProducts.find(s => s.id === p.id))
+      .slice(0, 10 - similarProducts.length);
+    similarProducts.push(...moreProducts);
+  }
 
   return (
     <div className="detail-container">
@@ -249,6 +269,15 @@ const DetailProduct = () => {
           )}
         </div>
       </div>
+
+      {similarProducts.length > 0 && (
+        <div className="similar-products-section" style={{ marginTop: '40px' }}>
+          <h3 style={{ fontSize: '1.25rem', color: '#1a2332', marginBottom: '20px' }}>
+            Sản phẩm tương tự
+          </h3>
+          <ProductCarousel products={similarProducts} />
+        </div>
+      )}
     </div>
   );
 };
