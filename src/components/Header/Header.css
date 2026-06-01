@@ -1,4 +1,3 @@
-/* ─── DESIGN TOKENS ──────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
 
 :root {
@@ -46,7 +45,6 @@
   box-shadow: var(--shadow-lg);
 }
 
-/* ─── TOP STRIP ──────────────────────────────────────────────────────── */
 .top-strip {
   background: linear-gradient(
     90deg,
@@ -97,7 +95,6 @@
   opacity: 0.8;
 }
 
-/* ─── MAIN BAR ───────────────────────────────────────────────────────── */
 .main-bar {
   background: var(--white);
   border-bottom: 1px solid var(--border);
@@ -117,7 +114,6 @@
   gap: 24px;
 }
 
-/* LOGO */
 .logo-zone {
   flex-shrink: 0;
   cursor: pointer;
@@ -147,7 +143,6 @@
   margin: -8px 0;
 }
 
-/* SEARCH */
 .search-zone {
   flex: 1;
   position: relative;
@@ -245,7 +240,6 @@
   box-shadow: none;
 }
 
-/* Search dropdown */
 .search-dropdown {
   position: absolute;
   top: calc(100% + 8px);
@@ -354,7 +348,6 @@
   transform: translateX(3px);
 }
 
-/* ACTIONS */
 .actions-zone {
   display: flex;
   align-items: center;
@@ -362,7 +355,6 @@
   flex-shrink: 0;
 }
 
-/* Language */
 .lang-toggle {
   display: flex;
   align-items: center;
@@ -398,7 +390,6 @@
   color: var(--border);
 }
 
-/* Action buttons shared */
 .action-btn {
   display: flex;
   align-items: center;
@@ -471,7 +462,6 @@
   white-space: nowrap;
 }
 
-/* Cart specific */
 .cart-icon-wrap {
   background: var(--orange-soft);
   color: var(--orange);
@@ -511,7 +501,6 @@
   }
 }
 
-/* User dropdown */
 .user-wrapper {
   position: relative;
 }
@@ -605,7 +594,6 @@
   margin: 5px 0;
 }
 
-/* ─── NAVIGATION ─────────────────────────────────────────────────────── */
 .nav-bar {
   background: var(--blue-dark);
   background: linear-gradient(
@@ -690,7 +678,7 @@
   opacity: 1;
 }
 
-/* Nav dropdown */
+
 .nav-dropdown-wrap {
   position: relative;
 }
@@ -748,7 +736,6 @@
   padding-left: 26px;
 }
 
-/* Promo link */
 .promo-link {
   color: #fde68a;
 }
@@ -777,7 +764,6 @@
   }
 }
 
-/* ─── RESPONSIVE ─────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .action-label {
     display: none;
@@ -813,7 +799,6 @@
   }
 }
 
-/* ─── CATEGORY DROPDOWN (dynamic, wider) ────────────────────────────── */
 .nav-dropdown--categories {
   min-width: 260px;
   padding: 8px 0;
@@ -825,7 +810,6 @@
   margin: 6px 12px;
 }
 
-/* Override: dropdown-item as button (reset button styles) */
 .nav-dropdown-item[type='button'] {
   width: 100%;
   border: none;
@@ -835,7 +819,6 @@
   text-align: left;
 }
 
-/* Remove icon gap override for category dropdown */
 .nav-dropdown--categories .nav-dropdown-item {
   gap: 0;
   padding: 11px 20px;
@@ -846,13 +829,11 @@
   padding-left: 28px;
 }
 
-/* nav-link as span for "Danh mục" trigger */
 span.nav-link {
   cursor: pointer;
   user-select: none;
 }
 
-/* ── nav-link as <button> reset ─────────────────────────────────────── */
 button.nav-link {
   background: none;
   border: none;

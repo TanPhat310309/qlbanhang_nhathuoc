@@ -1,6 +1,7 @@
 .product-carousel-wrapper {
   position: relative;
   width: 100%;
+  padding: 0 45px;
 }
 
 .product-carousel {
@@ -10,6 +11,8 @@
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   padding: 10px 0;
+  margin: -10px 0;
+  scrollbar-width: none;
 }
 
 .product-carousel::-webkit-scrollbar {
@@ -25,37 +28,70 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: white;
-  border: 1px solid #c8d8e4;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 10;
   color: #0082b5;
-  transition: all 0.2s;
-  font-size: 14px;
+  transition: all 0.3s ease;
+  font-size: 16px;
 }
 
 .carousel-arrow:hover {
-  background: #f0f7fb;
+  background: #0082b5;
+  color: white;
   border-color: #0082b5;
+  box-shadow: 0 4px 12px rgba(0, 130, 181, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow:active {
+  transform: translateY(-50%) scale(0.95);
 }
 
 .carousel-arrow--left {
-  left: -20px;
+  left: 0;
 }
 
 .carousel-arrow--right {
-  right: -20px;
+  right: 0;
 }
 
 @media (max-width: 768px) {
+  .product-carousel-wrapper {
+    padding: 0 35px;
+  }
+
   .carousel-arrow {
-    display: none; /* Hide arrows on mobile, users can swipe */
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .product-carousel > * {
+    flex: 0 0 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-carousel-wrapper {
+    padding: 0 30px;
+  }
+
+  .carousel-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .product-carousel > * {
+    flex: 0 0 150px;
   }
 }

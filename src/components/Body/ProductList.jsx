@@ -247,11 +247,7 @@ const ProductList = () => {
                 Xem tất cả <i className="fas fa-arrow-right"></i>
               </button>
             </div>
-            <div className="product-list">
-              {saleProducts.slice(0, 5).map(product => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
+            <ProductCarousel products={saleProducts} />
           </div>
         </section>
       )}
@@ -270,11 +266,7 @@ const ProductList = () => {
               Xem tất bộ <i className="fas fa-arrow-right"></i>
             </button>
           </div>
-          <div className="product-list">
-            {displayFeatured.slice(0, 5).map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <ProductCarousel products={displayFeatured} />
         </div>
       </section>
 

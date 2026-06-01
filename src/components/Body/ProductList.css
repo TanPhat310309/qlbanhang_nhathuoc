@@ -1,7 +1,5 @@
-/* Import same font as header to keep typography consistent */
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
 
-/* ── CONTAINER ──────────────────────────────────────────────────────── */
 .product-list-container {
   padding: 32px 24px 60px;
   background-color: #f5f8fb;
@@ -12,7 +10,6 @@
   color: #1a2332;
 }
 
-/* ── LOADING & ERROR ────────────────────────────────────────────────── */
 .product-list-loading {
   display: flex;
   flex-direction: column;
@@ -51,7 +48,6 @@
   gap: 8px;
 }
 
-/* ── BREADCRUMB ─────────────────────────────────────────────────────── */
 .pl-breadcrumb {
   display: flex;
   align-items: center;
@@ -82,7 +78,6 @@
   font-weight: 600;
 }
 
-/* ── SECTION ────────────────────────────────────────────────────────── */
 .pl-section {
   margin-bottom: 52px;
 }
@@ -128,14 +123,13 @@
 
 .pl-section-title {
   font-size: 20px;
-  font-weight: 700; /* bớt nặng hơn để gần với font sản phẩm */
+  font-weight: 700;
   color: #1a2332;
   margin: 0;
   letter-spacing: -0.3px;
   font-family: inherit;
 }
 
-/* Highlight box for sale and featured sections */
 .pl-highlight {
   border-radius: 12px;
   padding: 18px;
@@ -143,7 +137,6 @@
   flex-direction: column;
 }
 
-/* Sale highlight — orange background */
 .pl-highlight--sale {
   background: #f97316;
 }
@@ -169,7 +162,6 @@
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* Featured highlight — blue background */
 .pl-highlight--featured {
   background: #0082b5;
 }
@@ -195,7 +187,6 @@
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* Product cards inside highlights stay white */
 .pl-highlight .product-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -203,7 +194,6 @@
   align-items: stretch;
 }
 
-/* Also used in category-view heading row */
 .pl-count {
   font-size: 13px;
   color: #8fa1b3;
@@ -239,7 +229,6 @@
   font-size: 11px;
 }
 
-/* ── PRODUCT GRID & CAROUSEL ────────────────────────────────────────── */
 .product-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -247,9 +236,6 @@
   align-items: stretch;
 }
 
-
-
-/* ── EMPTY STATE ────────────────────────────────────────────────────── */
 .product-list-empty {
   display: flex;
   flex-direction: column;
@@ -272,7 +258,6 @@
   margin: 0;
 }
 
-/* ── PAGINATION ─────────────────────────────────────────────────────── */
 .product-list-pagination {
   display: flex;
   justify-content: center;
@@ -339,7 +324,6 @@
   color: #fff;
 }
 
-/* ── RESPONSIVE ─────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .product-list {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -366,7 +350,6 @@
   }
 }
 
-/* ── breadcrumb buttons ─────────────────────────────────────────────── */
 .pl-breadcrumb-btn {
   background: none;
   border: none;
@@ -383,7 +366,6 @@
   color: #005f8e;
 }
 
-/* ── pl-section-link as <button> reset ─────────────────────────────── */
 button.pl-section-link {
   background: none;
   font-family: inherit;
